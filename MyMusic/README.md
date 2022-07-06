@@ -15,7 +15,7 @@ API responsável por gerenciar as musicas favoritas do usuário. Possui como pri
 1. Deve receber um request contendo o identificador da música e o identificador da playlist.
 2. Deve validar se o identificador da música e o identificador da playlist existem.
 
-● Permitir o usuário remover músicas de sua playlist:
+● Permitir o usuário remover músicas de sua playlist: 
 3. Deve receber um request contendo o identificador da música e o identificador da playlist.
 4. Deve validar se o identificador da música e o identificador da playlist existem.
 
