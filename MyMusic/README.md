@@ -67,7 +67,8 @@ RETORNO: 201 Created
 Para auxiliar o desenvolvimento do API, a estrutura inicial conta com uma base de dados pré-definida e populada
 
 Modelagem: 
-Consultar arquivo modelagemBD.png na raiz do projeto.
+<div align="center"><img src="https://i.imgur.com/yfMGrur.png" title="source:modelagem imgur" /></div>
+
 
 Atenção:
 Os campos Id que utilizam GUID mapear como string devido à complexidade na compatibilidade com o UUID nativo do Java.
