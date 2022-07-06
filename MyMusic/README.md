@@ -76,5 +76,5 @@ Os campos Id que utilizam GUID mapear como string devido à complexidade na comp
 Dica:
 Não é necessário, porém é possível utilizar uma ferramenta para abrir e visualizar o arquivo MyMusic.db de maneira mais fácil, como:
 
-https://sqlitestudio.pl/index.rvt
+https://sqlitestudio.pl
 
