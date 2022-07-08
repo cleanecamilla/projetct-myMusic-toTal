@@ -26,6 +26,10 @@ disponbilizado junto com estrutura do projeto: token-provider-0.0.1-SNAPSHOT.jar
 
 # token-provider
 
+Baixar o .jar a partir do link a seguir para compilar a aplicação de token 
+
+https://drive.google.com/file/d/17weBxIxAE0P1yimKTqBOfocIFi1VMkZQ/view?usp=sharing
+
 Para criação de token válidos utilizar o endpoint a seguir:
 
 ```
