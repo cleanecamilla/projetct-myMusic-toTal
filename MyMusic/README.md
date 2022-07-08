@@ -15,7 +15,7 @@ API responsável por gerenciar as musicas favoritas do usuário. Possui como pri
 1. Deve receber um request contendo o identificador da música e o identificador da playlist.
 2. Deve validar se o identificador da música e o identificador da playlist existem.
 
-● Permitir o usuário remover músicas de sua playlist:
+● Permitir o usuário remover músicas de sua playlist: 
 3. Deve receber um request contendo o identificador da música e o identificador da playlist.
 4. Deve validar se o identificador da música e o identificador da playlist existem.
 
@@ -67,7 +67,8 @@ RETORNO: 201 Created
 Para auxiliar o desenvolvimento do API, a estrutura inicial conta com uma base de dados pré-definida e populada
 
 Modelagem: 
-Consultar arquivo modelagemBD.png na raiz do projeto.
+<div align="center"><img src="https://i.imgur.com/yfMGrur.png" title="source:modelagem imgur" /></div>
+
 
 Atenção:
 Os campos Id que utilizam GUID mapear como string devido à complexidade na compatibilidade com o UUID nativo do Java.
@@ -75,5 +76,5 @@ Os campos Id que utilizam GUID mapear como string devido à complexidade na comp
 Dica:
 Não é necessário, porém é possível utilizar uma ferramenta para abrir e visualizar o arquivo MyMusic.db de maneira mais fácil, como:
 
-https://sqlitestudio.pl/index.rvt
+https://sqlitestudio.pl
 
