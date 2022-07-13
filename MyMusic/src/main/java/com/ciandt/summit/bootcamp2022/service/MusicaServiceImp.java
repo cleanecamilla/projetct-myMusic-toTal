@@ -6,6 +6,7 @@ import com.ciandt.summit.bootcamp2022.exception.FiltroInvalidoException;
 import com.ciandt.summit.bootcamp2022.repository.ArtistaRepository;
 import com.ciandt.summit.bootcamp2022.repository.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.TreeMap;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+@Service
 public class MusicaServiceImp implements MusicaService {
 
     @Autowired
