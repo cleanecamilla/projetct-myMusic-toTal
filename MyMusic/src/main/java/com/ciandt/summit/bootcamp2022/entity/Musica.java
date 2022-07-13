@@ -12,14 +12,15 @@ public class Musica {
     @Column
     private String nome;
     @OneToOne
-    private Artista artistaId;
+    @JoinColumn(name = "ArtistaId")
+    private Artista artista;
 
     public Musica() {
     }
 
     public Musica(String nome, Artista artistaId) {
         this.nome = nome;
-        this.artistaId = artistaId;
+        this.artista = artistaId;
     }
 
     public String getId() {
@@ -35,10 +36,10 @@ public class Musica {
     }
 
     public Artista getArtistaId() {
-        return artistaId;
+        return artista;
     }
 
     public void setArtistaId(Artista artistaId) {
-        this.artistaId = artistaId;
+        this.artista = artistaId;
     }
 }
