@@ -18,9 +18,9 @@ public class Musica {
     public Musica() {
     }
 
-    public Musica(String nome, Artista artistaId) {
+    public Musica(String nome, Artista artista) {
         this.nome = nome;
-        this.artista = artistaId;
+        this.artista = artista;
     }
 
     public String getId() {
@@ -35,11 +35,11 @@ public class Musica {
         this.nome = nome;
     }
 
-    public Artista getArtistaId() {
+    public Artista getArtista() {
         return artista;
     }
 
-    public void setArtistaId(Artista artistaId) {
-        this.artista = artistaId;
+    public void setArtista(Artista artista) {
+        this.artista = artista;
     }
 }
