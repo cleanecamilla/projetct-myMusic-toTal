@@ -17,7 +17,7 @@ public class ExceptionService {
     }
 
     @ExceptionHandler(MusicaNaoEncontradaException.class)
-    ResponseEntity<MusicaNaoEncontradaException> handleException(BuscaNaoEncontradaException err){
+    ResponseEntity<MusicaNaoEncontradaException> handleException(MusicaNaoEncontradaException err){
         UserErrorResponse uer =new UserErrorResponse();
         uer.setStatus(HttpStatus.NO_CONTENT.value());
         uer.setMessage("A busca realizada não retornou nenhum resultado!");
