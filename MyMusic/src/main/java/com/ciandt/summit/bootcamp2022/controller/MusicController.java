@@ -20,11 +20,11 @@ public class MusicController {
         return ResponseEntity.ok("67f5976c-eb1e-404e-8220-2c2a8a23be47");
     }
     @GetMapping("/buscar")
-    public ResponseEntity<Object> buscar(@RequestParam(name = "filtro") String filtro){
+    public ResponseEntity<MusicaDto> buscar(@RequestParam(name = "filtro") String filtro){
         MusicaDto musicas = service.buscar(filtro);
         if(musicas.getData().isEmpty()){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(musicas);
         }
-        return ResponseEntity.ok(new Gson().toJson(musicas));
+        return ResponseEntity.ok(musicas);
     }
 }
