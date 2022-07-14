@@ -12,7 +12,7 @@ public class ExceptionService {
     ResponseEntity<FiltroErrorException> handleException(FiltroErrorException err){
         MusicaErrorResponse user = new MusicaErrorResponse();
         user.setStatus(HttpStatus.BAD_REQUEST.value());
-        user.setMessage("Números de caracteres inválidos!");
+        user.setMessage("Numeros de caracteres invalidos!");
         return new ResponseEntity(user,HttpStatus.BAD_REQUEST);
     }
 }

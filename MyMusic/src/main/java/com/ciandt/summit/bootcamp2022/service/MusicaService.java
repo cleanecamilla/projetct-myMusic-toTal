@@ -16,10 +16,13 @@ public class MusicaService {
     private MusicaRepository musicaRepository;
 
     public MusicaDto buscar(String filtro){
+
         if(filtro.length() < 3){
             throw new FiltroErrorException();
         }
+
         List<Musica> lista = musicaRepository.buscarMusicaArtista(filtro);
+
         return new MusicaDto(lista);
     }
 }
