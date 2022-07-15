@@ -55,16 +55,16 @@ public class MusicControllerTest {
     }
 
     @Test
-    void whenFindMusicWithFilterThatThereNoRegisters() throws Exception {
+    void whenFindMusicWithFilterThereNoRegisters() throws Exception {
 
         List<Musica> musicaReturnWhenCallFindMusicFunction = new ArrayList<>();
 
         MusicaDto musicaDto = new MusicaDto(musicaReturnWhenCallFindMusicFunction);
 
-        when(musicaService.buscar("bru")).thenReturn(musicaDto);
+        when(musicaService.buscar("saiu")).thenReturn(musicaDto);
 
         RequestBuilder request = get("/api/v1/music/buscar")
-                .param("filtro", "bru");
+                .param("filtro", "saiu");
         MvcResult result = mvc.perform(request).andReturn();
 
         assertEquals(204, result.getResponse().getStatus());

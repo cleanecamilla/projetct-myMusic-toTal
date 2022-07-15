@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class MusicaService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SummitBootcampApplication.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MusicaService.class);
 
     @Autowired
     private MusicaRepository musicaRepository;
