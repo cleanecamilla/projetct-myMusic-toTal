@@ -5,6 +5,8 @@ import com.ciandt.summit.bootcamp2022.entity.Musica;
 import com.ciandt.summit.bootcamp2022.exception.FiltroInvalidoException;
 import com.ciandt.summit.bootcamp2022.repository.ArtistaRepository;
 import com.ciandt.summit.bootcamp2022.repository.MusicaRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ import java.util.stream.Collectors;
 @Service
 public class MusicaServiceImp implements MusicaService {
 
+    private static final Logger logger = LoggerFactory.getLogger(MusicaServiceImp.class);
+
     @Autowired
     private MusicaRepository musicaRepository;
     @Autowired
@@ -26,8 +30,12 @@ public class MusicaServiceImp implements MusicaService {
 
     @Override
     public List<Musica> buscarMusicas(String filtro) {
-        if(filtro.length() < 3 )
-            throw new FiltroInvalidoException("Filtro invalido.");
+        logger.info("Buscando musicas com o filtro: " + filtro);
+
+        if(filtro.length() < 3 ) {
+            logger.error("O filtro informado para busca de musicas eh invalido");
+            throw new FiltroInvalidoException(filtro);
+        }
 
         List<Musica> musicasEncontradas = musicaRepository.findByNomeContaining(filtro);
         List<Artista> artistasEncontrados = artistaRepository.findByNomeContaining(filtro);
@@ -39,6 +47,7 @@ public class MusicaServiceImp implements MusicaService {
     }
 
     public List<Musica> ordernarMusicas(Set<Musica> musicas){
+        logger.info("Ordenando as musicas encontradas");
         TreeMap<Artista, TreeSet<Musica>> musicasOrdenadas = musicas.stream()
                 .collect(Collectors.groupingBy(
                         Musica::getArtista,
