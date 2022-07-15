@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/music")
 public class MusicController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SummitBootcampApplication.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MusicController.class);
     @Autowired
     private MusicaService service;
 
@@ -25,7 +25,7 @@ public class MusicController {
     }
 
     @GetMapping("/buscar")
-    public ResponseEntity<MusicaDto> buscar(@RequestParam(name = "filtro") String filtro){
+    public ResponseEntity<MusicaDto> buscar(@RequestParam(name = "filtro", required = false) String filtro){
 
         LOGGER.info("Acessando método de buscar musicas por filtro!");
         MusicaDto musicas = service.buscar(filtro);
