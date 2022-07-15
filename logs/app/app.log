@@ -1,0 +1,77 @@
+14-07-2022 20:34:43.543 | 164  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Inicializando Aplicação
+14-07-2022 20:34:43.965 | 586  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Starting SummitBootcampApplication using Java 11.0.14 on lnb035864cps with PID 194181 (/home/alefep/Documentos/projetct-myMusic-toTal/MyMusic/target/classes started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal)
+14-07-2022 20:34:43.965 | 586  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - No active profile set, falling back to default profiles: default
+14-07-2022 20:34:46.565 | 3186 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Started SummitBootcampApplication in 2.916 seconds (JVM running for 3.362)
+14-07-2022 20:34:46.600 | 3221 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Aplicação inicializada!
+14-07-2022 20:34:59.154 | 15775 | [http-nio-8080-exec-2] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 20:35:32.334 | 152  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Inicializando Aplicação
+14-07-2022 20:35:32.753 | 571  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Starting SummitBootcampApplication using Java 11.0.14 on lnb035864cps with PID 194324 (/home/alefep/Documentos/projetct-myMusic-toTal/MyMusic/target/classes started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal)
+14-07-2022 20:35:32.754 | 572  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - No active profile set, falling back to default profiles: default
+14-07-2022 20:35:35.473 | 3291 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Started SummitBootcampApplication in 3.032 seconds (JVM running for 3.43)
+14-07-2022 20:35:35.510 | 3328 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Aplicação inicializada!
+14-07-2022 20:35:58.138 | 157  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Inicializando Aplicação
+14-07-2022 20:35:58.527 | 546  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Starting SummitBootcampApplication using Java 11.0.14 on lnb035864cps with PID 194430 (/home/alefep/Documentos/projetct-myMusic-toTal/MyMusic/target/classes started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal)
+14-07-2022 20:35:58.528 | 547  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - No active profile set, falling back to default profiles: default
+14-07-2022 20:36:01.171 | 3190 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Started SummitBootcampApplication in 2.942 seconds (JVM running for 3.346)
+14-07-2022 20:36:01.213 | 3232 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Aplicação inicializada!
+14-07-2022 20:36:14.644 | 160  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Inicializando Aplicação
+14-07-2022 20:36:15.071 | 587  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Starting SummitBootcampApplication using Java 11.0.14 on lnb035864cps with PID 194520 (/home/alefep/Documentos/projetct-myMusic-toTal/MyMusic/target/classes started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal)
+14-07-2022 20:36:15.072 | 588  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - No active profile set, falling back to default profiles: default
+14-07-2022 20:36:17.793 | 3309 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Started SummitBootcampApplication in 3.054 seconds (JVM running for 3.439)
+14-07-2022 20:36:17.832 | 3348 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Aplicação inicializada!
+14-07-2022 20:36:36.063 | 159  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Inicializando Aplicação
+14-07-2022 20:36:36.476 | 572  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Starting SummitBootcampApplication using Java 11.0.14 on lnb035864cps with PID 194605 (/home/alefep/Documentos/projetct-myMusic-toTal/MyMusic/target/classes started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal)
+14-07-2022 20:36:36.477 | 573  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - No active profile set, falling back to default profiles: default
+14-07-2022 20:36:39.131 | 3227 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Started SummitBootcampApplication in 2.972 seconds (JVM running for 3.361)
+14-07-2022 20:36:39.165 | 3261 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Aplicação inicializada!
+14-07-2022 20:37:07.338 | 159  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Inicializando Aplicação
+14-07-2022 20:37:07.726 | 547  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Starting SummitBootcampApplication using Java 11.0.14 on lnb035864cps with PID 194712 (/home/alefep/Documentos/projetct-myMusic-toTal/MyMusic/target/classes started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal)
+14-07-2022 20:37:07.726 | 547  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - No active profile set, falling back to default profiles: default
+14-07-2022 20:37:10.382 | 3203 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Started SummitBootcampApplication in 2.957 seconds (JVM running for 3.335)
+14-07-2022 20:37:10.416 | 3237 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Aplicação inicializada!
+14-07-2022 20:37:27.286 | 20107 | [http-nio-8080-exec-1] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 20:37:36.550 | 29371 | [http-nio-8080-exec-3] | ERROR | c.c.s.b.SummitBootcampApplication - Erro ao filtrar musicas!
+14-07-2022 20:38:37.706 | 155  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Inicializando Aplicação
+14-07-2022 20:38:38.119 | 568  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Starting SummitBootcampApplication using Java 11.0.14 on lnb035864cps with PID 194907 (/home/alefep/Documentos/projetct-myMusic-toTal/MyMusic/target/classes started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal)
+14-07-2022 20:38:38.119 | 568  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - No active profile set, falling back to default profiles: default
+14-07-2022 20:38:40.836 | 3285 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Started SummitBootcampApplication in 3.036 seconds (JVM running for 3.43)
+14-07-2022 20:38:40.873 | 3322 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Aplicação inicializada!
+14-07-2022 20:38:44.974 | 7423 | [http-nio-8080-exec-2] | ERROR | c.c.s.b.SummitBootcampApplication - Erro ao filtrar musicas!
+14-07-2022 20:38:49.745 | 12194 | [http-nio-8080-exec-4] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando o repository
+14-07-2022 20:38:49.830 | 12279 | [http-nio-8080-exec-4] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 20:41:48.277 | 149  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Inicializando Aplicação
+14-07-2022 20:41:48.691 | 563  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Starting SummitBootcampApplication using Java 11.0.14 on lnb035864cps with PID 195312 (/home/alefep/Documentos/projetct-myMusic-toTal/MyMusic/target/classes started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal)
+14-07-2022 20:41:48.694 | 566  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - No active profile set, falling back to default profiles: default
+14-07-2022 20:41:51.631 | 3503 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Started SummitBootcampApplication in 3.256 seconds (JVM running for 3.668)
+14-07-2022 20:41:51.691 | 3563 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Aplicação inicializada!
+14-07-2022 20:41:57.617 | 9489 | [http-nio-8080-exec-1] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 20:41:57.617 | 9489 | [http-nio-8080-exec-1] | ERROR | c.c.s.b.SummitBootcampApplication - Erro ao filtrar musicas!
+14-07-2022 20:42:12.372 | 24244 | [http-nio-8080-exec-4] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 20:42:12.464 | 24336 | [http-nio-8080-exec-4] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 20:42:12.464 | 24336 | [http-nio-8080-exec-4] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas encontradas com sucesso!
+14-07-2022 20:42:29.906 | 171  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Inicializando Aplicação
+14-07-2022 20:42:30.317 | 582  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Starting SummitBootcampApplication using Java 11.0.14 on lnb035864cps with PID 195458 (/home/alefep/Documentos/projetct-myMusic-toTal/MyMusic/target/classes started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal)
+14-07-2022 20:42:30.318 | 583  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - No active profile set, falling back to default profiles: default
+14-07-2022 20:42:32.962 | 3227 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Started SummitBootcampApplication in 2.958 seconds (JVM running for 3.38)
+14-07-2022 20:42:32.997 | 3262 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Aplicação inicializada!
+14-07-2022 20:42:36.462 | 6727 | [http-nio-8080-exec-2] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 20:42:36.502 | 6767 | [http-nio-8080-exec-2] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 20:42:36.502 | 6767 | [http-nio-8080-exec-2] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas não encontradas
+14-07-2022 20:42:46.315 | 16580 | [http-nio-8080-exec-3] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 20:42:46.315 | 16580 | [http-nio-8080-exec-3] | ERROR | c.c.s.b.SummitBootcampApplication - Erro ao filtrar musicas!
+14-07-2022 20:42:51.793 | 22058 | [http-nio-8080-exec-5] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 20:42:51.859 | 22124 | [http-nio-8080-exec-5] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 20:42:51.859 | 22124 | [http-nio-8080-exec-5] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas retornadas com sucesso!
+14-07-2022 20:44:12.389 | 254  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Inicializando Aplicação
+14-07-2022 20:44:13.130 | 995  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Starting SummitBootcampApplication using Java 11.0.14 on lnb035864cps with PID 196424 (/home/alefep/Documentos/projetct-myMusic-toTal/MyMusic/target/classes started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal)
+14-07-2022 20:44:13.131 | 996  | [main] | INFO  | c.c.s.b.SummitBootcampApplication - No active profile set, falling back to default profiles: default
+14-07-2022 20:44:17.708 | 5573 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Started SummitBootcampApplication in 5.155 seconds (JVM running for 5.828)
+14-07-2022 20:44:17.771 | 5636 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Aplicação inicializada!
+14-07-2022 20:44:32.223 | 20088 | [http-nio-8080-exec-1] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 20:44:32.223 | 20088 | [http-nio-8080-exec-1] | ERROR | c.c.s.b.SummitBootcampApplication - Erro ao filtrar musicas!
+14-07-2022 20:44:46.793 | 34658 | [http-nio-8080-exec-4] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 20:44:46.854 | 34719 | [http-nio-8080-exec-4] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 20:44:46.854 | 34719 | [http-nio-8080-exec-4] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas não encontradas
+14-07-2022 20:45:05.220 | 53085 | [http-nio-8080-exec-5] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 20:45:05.310 | 53175 | [http-nio-8080-exec-5] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 20:45:05.310 | 53175 | [http-nio-8080-exec-5] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas retornadas com sucesso!

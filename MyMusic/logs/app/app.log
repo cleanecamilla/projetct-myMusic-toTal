@@ -1,0 +1,28 @@
+14-07-2022 21:11:20.161 | 552  | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Starting MusicControllerTest using Java 11.0.14 on lnb035864cps with PID 199979 (started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal/MyMusic)
+14-07-2022 21:11:20.162 | 553  | [main] | INFO  | c.c.s.b.c.MusicControllerTest - No active profile set, falling back to default profiles: default
+14-07-2022 21:11:21.236 | 1627 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Started MusicControllerTest in 1.296 seconds (JVM running for 2.244)
+14-07-2022 21:11:21.323 | 1714 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 21:11:21.326 | 1717 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas retornadas com sucesso!
+14-07-2022 21:11:21.402 | 1793 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 21:11:21.402 | 1793 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas não encontradas
+14-07-2022 21:11:21.412 | 1803 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 21:11:21.413 | 1804 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas não encontradas
+14-07-2022 21:11:21.422 | 1813 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 21:11:21.522 | 1913 | [main] | ERROR | c.c.s.b.SummitBootcampApplication - Erro ao filtrar musicas!
+14-07-2022 21:11:21.526 | 1917 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 21:11:21.529 | 1920 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 21:11:21.532 | 1923 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 21:11:55.338 | 1026 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Starting MusicControllerTest using Java 11.0.14 on lnb035864cps with PID 200083 (started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal/MyMusic)
+14-07-2022 21:11:55.342 | 1030 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - No active profile set, falling back to default profiles: default
+14-07-2022 21:11:57.088 | 2776 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Started MusicControllerTest in 2.157 seconds (JVM running for 3.77)
+14-07-2022 21:11:57.178 | 2866 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 21:11:57.182 | 2870 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas retornadas com sucesso!
+14-07-2022 21:11:57.277 | 2965 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 21:11:57.277 | 2965 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas não encontradas
+14-07-2022 21:11:57.286 | 2974 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 21:11:57.286 | 2974 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas não encontradas
+14-07-2022 21:11:57.295 | 2983 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Acessando método de buscar musicas por filtro!
+14-07-2022 21:11:57.427 | 3115 | [main] | ERROR | c.c.s.b.SummitBootcampApplication - Erro ao filtrar musicas!
+14-07-2022 21:11:57.431 | 3119 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 21:11:57.434 | 3122 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+14-07-2022 21:11:57.437 | 3125 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
