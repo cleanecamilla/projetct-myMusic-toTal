@@ -1,6 +1,5 @@
 package com.ciandt.summit.bootcamp2022.service;
 
-import com.ciandt.summit.bootcamp2022.SummitBootcampApplication;
 import com.ciandt.summit.bootcamp2022.controller.dto.MusicaDto;
 import com.ciandt.summit.bootcamp2022.entity.Musica;
 import com.ciandt.summit.bootcamp2022.exceptions.FiltroErrorException;
@@ -21,7 +20,7 @@ public class MusicaService {
     private MusicaRepository musicaRepository;
 
 
-    public MusicaDto buscar(String filtro){
+    public MusicaDto buscarMusicas(String filtro){
 
         if(filtro.length() < 3){
             LOGGER.error("Erro ao filtrar musicas!");
