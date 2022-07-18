@@ -2,6 +2,7 @@ package com.ciandt.summit.bootcamp2022.config;
 
 import java.sql.Types;
 
+
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.function.StandardSQLFunction;
 import org.hibernate.dialect.function.SQLFunctionTemplate;

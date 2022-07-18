@@ -26,3 +26,129 @@
 14-07-2022 21:11:57.431 | 3119 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
 14-07-2022 21:11:57.434 | 3122 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
 14-07-2022 21:11:57.437 | 3125 | [main] | INFO  | c.c.s.b.SummitBootcampApplication - Musicas filtradas com sucesso!
+15-07-2022 10:15:34.817 | 1205 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Starting MusicControllerTest using Java 11.0.14 on lnb035864cps with PID 57288 (started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal/MyMusic)
+15-07-2022 10:15:34.820 | 1208 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - No active profile set, falling back to default profiles: default
+15-07-2022 10:15:36.947 | 3335 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Started MusicControllerTest in 2.682 seconds (JVM running for 4.507)
+15-07-2022 10:15:37.071 | 3459 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:15:37.076 | 3464 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas retornadas com sucesso!
+15-07-2022 10:15:37.175 | 3563 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:15:37.176 | 3564 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:15:37.190 | 3578 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:15:37.220 | 3608 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:15:37.221 | 3609 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:15:37.356 | 3744 | [main] | ERROR | c.c.s.b.service.MusicaService - Erro ao filtrar musicas!
+15-07-2022 10:15:37.361 | 3749 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:15:37.365 | 3753 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:15:37.368 | 3756 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:16:28.483 | 1424 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Starting MusicControllerTest using Java 11.0.14 on lnb035864cps with PID 57432 (started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal/MyMusic)
+15-07-2022 10:16:28.490 | 1431 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - No active profile set, falling back to default profiles: default
+15-07-2022 10:16:30.897 | 3838 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Started MusicControllerTest in 3.065 seconds (JVM running for 5.133)
+15-07-2022 10:16:31.004 | 3945 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:16:31.007 | 3948 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas retornadas com sucesso!
+15-07-2022 10:16:31.111 | 4052 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:16:31.111 | 4052 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:16:31.121 | 4062 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:16:31.146 | 4087 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:16:31.146 | 4087 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:16:31.253 | 4194 | [main] | ERROR | c.c.s.b.service.MusicaService - Erro ao filtrar musicas!
+15-07-2022 10:16:31.256 | 4197 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:16:31.259 | 4200 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:16:31.262 | 4203 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:20:07.498 | 1135 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Starting MusicControllerTest using Java 11.0.14 on lnb035864cps with PID 57716 (started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal/MyMusic)
+15-07-2022 10:20:07.501 | 1138 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - No active profile set, falling back to default profiles: default
+15-07-2022 10:20:09.612 | 3249 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Started MusicControllerTest in 2.648 seconds (JVM running for 4.685)
+15-07-2022 10:20:09.722 | 3359 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:20:09.727 | 3364 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas retornadas com sucesso!
+15-07-2022 10:20:09.829 | 3466 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:20:09.830 | 3467 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:20:09.842 | 3479 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:20:09.877 | 3514 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:20:09.877 | 3514 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:20:10.002 | 3639 | [main] | ERROR | c.c.s.b.service.MusicaService - Erro ao filtrar musicas!
+15-07-2022 10:20:10.007 | 3644 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:20:10.011 | 3648 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:20:10.015 | 3652 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:20:41.928 | 1319 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Starting MusicControllerTest using Java 11.0.14 on lnb035864cps with PID 57811 (started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal/MyMusic)
+15-07-2022 10:20:41.931 | 1322 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - No active profile set, falling back to default profiles: default
+15-07-2022 10:20:44.247 | 3638 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Started MusicControllerTest in 2.822 seconds (JVM running for 4.979)
+15-07-2022 10:20:44.401 | 3792 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:20:44.405 | 3796 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas retornadas com sucesso!
+15-07-2022 10:20:44.492 | 3883 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:20:44.493 | 3884 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:20:44.512 | 3903 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:20:44.546 | 3937 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:20:44.546 | 3937 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:20:44.695 | 4086 | [main] | ERROR | c.c.s.b.service.MusicaService - Erro ao filtrar musicas!
+15-07-2022 10:20:44.701 | 4092 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:20:44.707 | 4098 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:20:44.710 | 4101 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:22:32.270 | 1102 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Starting MusicControllerTest using Java 11.0.14 on lnb035864cps with PID 58193 (started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal/MyMusic)
+15-07-2022 10:22:32.273 | 1105 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - No active profile set, falling back to default profiles: default
+15-07-2022 10:22:34.064 | 2896 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Started MusicControllerTest in 2.276 seconds (JVM running for 3.918)
+15-07-2022 10:22:34.165 | 2997 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:22:34.168 | 3000 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas retornadas com sucesso!
+15-07-2022 10:22:34.265 | 3097 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:22:34.265 | 3097 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:22:34.275 | 3107 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:22:34.312 | 3144 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:22:34.312 | 3144 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:22:34.431 | 3263 | [main] | ERROR | c.c.s.b.service.MusicaService - Erro ao filtrar musicas!
+15-07-2022 10:22:34.436 | 3268 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:22:34.439 | 3271 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:22:34.443 | 3275 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:26:31.950 | 1034 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Starting MusicControllerTest using Java 11.0.14 on lnb035864cps with PID 59114 (started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal/MyMusic)
+15-07-2022 10:26:31.955 | 1039 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - No active profile set, falling back to default profiles: default
+15-07-2022 10:26:33.769 | 2853 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Started MusicControllerTest in 2.256 seconds (JVM running for 3.895)
+15-07-2022 10:26:33.878 | 2962 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:26:33.881 | 2965 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas retornadas com sucesso!
+15-07-2022 10:26:33.977 | 3061 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:26:33.978 | 3062 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:26:33.990 | 3074 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:26:34.015 | 3099 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:26:34.015 | 3099 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:26:34.135 | 3219 | [main] | ERROR | c.c.s.b.service.MusicaService - Erro ao filtrar musicas!
+15-07-2022 10:26:34.139 | 3223 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:26:34.143 | 3227 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:26:34.146 | 3230 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:27:26.156 | 1077 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Starting MusicControllerTest using Java 11.0.14 on lnb035864cps with PID 59344 (started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal/MyMusic)
+15-07-2022 10:27:26.160 | 1081 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - No active profile set, falling back to default profiles: default
+15-07-2022 10:27:27.977 | 2898 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Started MusicControllerTest in 2.291 seconds (JVM running for 3.674)
+15-07-2022 10:27:28.094 | 3015 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:27:28.097 | 3018 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas retornadas com sucesso!
+15-07-2022 10:27:28.214 | 3135 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:27:28.215 | 3136 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:27:28.229 | 3150 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:27:28.257 | 3178 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:27:28.258 | 3179 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:27:28.377 | 3298 | [main] | ERROR | c.c.s.b.service.MusicaService - Erro ao filtrar musicas!
+15-07-2022 10:27:28.381 | 3302 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:27:28.383 | 3304 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:27:28.386 | 3307 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:29:52.332 | 1291 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Starting MusicControllerTest using Java 11.0.14 on lnb035864cps with PID 59603 (started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal/MyMusic)
+15-07-2022 10:29:52.337 | 1296 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - No active profile set, falling back to default profiles: default
+15-07-2022 10:29:54.448 | 3407 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Started MusicControllerTest in 2.7 seconds (JVM running for 4.655)
+15-07-2022 10:29:54.593 | 3552 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:29:54.598 | 3557 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas retornadas com sucesso!
+15-07-2022 10:29:54.696 | 3655 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:29:54.697 | 3656 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:29:54.707 | 3666 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:29:54.734 | 3693 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:29:54.734 | 3693 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:29:54.865 | 3824 | [main] | ERROR | c.c.s.b.service.MusicaService - Erro ao filtrar musicas!
+15-07-2022 10:29:54.869 | 3828 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:29:54.872 | 3831 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:29:54.875 | 3834 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:56:13.300 | 1625 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Starting MusicControllerTest using Java 11.0.14 on lnb035864cps with PID 77376 (started by CIANDT\alefep in /home/alefep/Documentos/projetct-myMusic-toTal/MyMusic)
+15-07-2022 10:56:13.305 | 1630 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - No active profile set, falling back to default profiles: default
+15-07-2022 10:56:16.919 | 5244 | [main] | INFO  | c.c.s.b.c.MusicControllerTest - Started MusicControllerTest in 4.325 seconds (JVM running for 7.561)
+15-07-2022 10:56:17.180 | 5505 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:56:17.191 | 5516 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas retornadas com sucesso!
+15-07-2022 10:56:17.526 | 5851 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:56:17.527 | 5852 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:56:17.579 | 5904 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:56:17.663 | 5988 | [main] | INFO  | c.c.s.b.controller.MusicController - Acessando método de buscar musicas por filtro!
+15-07-2022 10:56:17.664 | 5989 | [main] | INFO  | c.c.s.b.controller.MusicController - Musicas não encontradas
+15-07-2022 10:56:18.003 | 6328 | [main] | ERROR | c.c.s.b.service.MusicaService - Erro ao filtrar musicas!
+15-07-2022 10:56:18.012 | 6337 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:56:18.019 | 6344 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!
+15-07-2022 10:56:18.028 | 6353 | [main] | INFO  | c.c.s.b.service.MusicaService - Musicas filtradas com sucesso!

@@ -1,6 +1,5 @@
 package com.ciandt.summit.bootcamp2022.controller;
 
-import com.ciandt.summit.bootcamp2022.SummitBootcampApplication;
 import com.ciandt.summit.bootcamp2022.controller.dto.MusicaDto;
 import com.ciandt.summit.bootcamp2022.service.MusicaService;
 
@@ -28,7 +27,7 @@ public class MusicController {
     public ResponseEntity<MusicaDto> buscar(@RequestParam(name = "filtro", required = false) String filtro){
 
         LOGGER.info("Acessando método de buscar musicas por filtro!");
-        MusicaDto musicas = service.buscar(filtro);
+        MusicaDto musicas = service.buscarMusicas(filtro);
 
         if(musicas.getData().isEmpty()){
             LOGGER.info("Musicas não encontradas");
