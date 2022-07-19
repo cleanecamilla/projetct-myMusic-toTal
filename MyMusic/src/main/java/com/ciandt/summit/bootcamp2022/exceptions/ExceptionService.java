@@ -23,4 +23,20 @@ public class ExceptionService {
 
         return new ResponseEntity(user, HttpStatus.UNAUTHORIZED);
     }
+
+    @ExceptionHandler
+    ResponseEntity<MusicaNaoEncontradaException> handleException(MusicaNaoEncontradaException err){
+        MusicaErrorResponse user = new MusicaErrorResponse(HttpStatus.BAD_REQUEST.value(),
+                "Música não encontrada!");
+
+        return new ResponseEntity(user, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    ResponseEntity<PlayListNaoEncontradaException> handleException(PlayListNaoEncontradaException err){
+        MusicaErrorResponse user = new MusicaErrorResponse(HttpStatus.BAD_REQUEST.value(),
+                "PlayList não encontrada!");
+
+        return new ResponseEntity(user, HttpStatus.BAD_REQUEST);
+    }
 }
