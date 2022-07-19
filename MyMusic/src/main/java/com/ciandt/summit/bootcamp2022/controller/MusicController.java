@@ -1,6 +1,5 @@
 package com.ciandt.summit.bootcamp2022.controller;
 
-import com.ciandt.summit.bootcamp2022.SummitBootcampApplication;
 import com.ciandt.summit.bootcamp2022.controller.dto.MusicaDto;
 import com.ciandt.summit.bootcamp2022.service.MusicaService;
 
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/music")
 public class MusicController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SummitBootcampApplication.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MusicController.class);
     @Autowired
     private MusicaService service;
 
@@ -25,10 +24,10 @@ public class MusicController {
     }
 
     @GetMapping("/buscar")
-    public ResponseEntity<MusicaDto> buscar(@RequestParam(name = "filtro") String filtro){
+    public ResponseEntity<MusicaDto> buscar(@RequestParam(name = "filtro", required = false) String filtro){
 
         LOGGER.info("Acessando método de buscar musicas por filtro!");
-        MusicaDto musicas = service.buscar(filtro);
+        MusicaDto musicas = service.buscarMusicas(filtro);
 
         if(musicas.getData().isEmpty()){
             LOGGER.info("Musicas não encontradas");

@@ -39,7 +39,7 @@ class MusicaServiceTest {
         when(musicaRepository.buscarMusicaArtista("bru")).thenReturn(musicaList);
 
 
-        MusicaDto musicaDto = musicaService.buscar("bru");
+        MusicaDto musicaDto = musicaService.buscarMusicas("bru");
 
         assertNotNull(musicaDto);
         assertTrue(musicaDto.getData().isEmpty());
@@ -53,7 +53,7 @@ class MusicaServiceTest {
 
         when(musicaRepository.buscarMusicaArtista("bru")).thenReturn(musicaList);
 
-        MusicaDto musicaDto = musicaService.buscar("bru");
+        MusicaDto musicaDto = musicaService.buscarMusicas("bru");
 
         assertTrue(musicaDto.getData().isEmpty());
 
@@ -61,7 +61,6 @@ class MusicaServiceTest {
 
     @Test
     void whenFindMusicWithObjectsOnListThenReturnTrue(){
-
 
         Artista artista = new Artista();
 
@@ -76,7 +75,7 @@ class MusicaServiceTest {
 
         when(musicaRepository.buscarMusicaArtista("bru")).thenReturn(musicaList);
 
-        MusicaDto musicaDto = musicaService.buscar("bru");
+        MusicaDto musicaDto = musicaService.buscarMusicas("bru");
 
         assertFalse(musicaDto.getData().isEmpty());
     }
@@ -84,7 +83,7 @@ class MusicaServiceTest {
     @Test
     void whenFindMusicWithThreeTwoThenReturnException(){
 
-        assertThrows(FiltroErrorException.class, () -> musicaService.buscar("br"));
+        assertThrows(FiltroErrorException.class, () -> musicaService.buscarMusicas("br"));
 
     }
 }

@@ -15,4 +15,12 @@ public class ExceptionService {
         user.setMessage("Numeros de caracteres invalidos!");
         return new ResponseEntity(user,HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler
+    ResponseEntity<UnauthorizedException> handleException(UnauthorizedException err){
+        UnauthorizedErrorResponse user = new UnauthorizedErrorResponse(HttpStatus.UNAUTHORIZED.value(),
+                "Usuário não autorizado!");
+
+        return new ResponseEntity(user, HttpStatus.UNAUTHORIZED);
+    }
 }

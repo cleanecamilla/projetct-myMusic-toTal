@@ -55,16 +55,16 @@ public class MusicControllerTest {
     }
 
     @Test
-    void whenFindMusicWithFilterThatThereNoRegisters() throws Exception {
+    void whenFindMusicWithFilterThereNoRegisters() throws Exception {
 
         List<Musica> musicaReturnWhenCallFindMusicFunction = new ArrayList<>();
 
         MusicaDto musicaDto = new MusicaDto(musicaReturnWhenCallFindMusicFunction);
 
-        when(musicaService.buscar("bru")).thenReturn(musicaDto);
+        when(musicaService.buscarMusicas("saiu")).thenReturn(musicaDto);
 
         RequestBuilder request = get("/api/v1/music/buscar")
-                .param("filtro", "bru");
+                .param("filtro", "saiu");
         MvcResult result = mvc.perform(request).andReturn();
 
         assertEquals(204, result.getResponse().getStatus());
@@ -82,7 +82,7 @@ public class MusicControllerTest {
 
         MusicaDto musicaDto = new MusicaDto(musicaList);
 
-        when(musicaService.buscar("bru")).thenReturn(musicaDto);
+        when(musicaService.buscarMusicas("bru")).thenReturn(musicaDto);
 
         RequestBuilder request = get("/api/v1/music/buscar")
                 .param("filtro", "bru");
@@ -102,7 +102,7 @@ public class MusicControllerTest {
 
         MusicaDto musicaDto = new MusicaDto(musicaList);
 
-        when(musicaService.buscar("saiu")).thenReturn(musicaDto);
+        when(musicaService.buscarMusicas("saiu")).thenReturn(musicaDto);
 
         RequestBuilder request = get("/api/v1/music/buscar")
                 .param("filtro", "saiu");
@@ -120,7 +120,7 @@ public class MusicControllerTest {
 
         MusicaDto musicaDto = new MusicaDto(musicaList);
 
-        when(musicaService.buscar("br")).thenThrow(FiltroErrorException.class);
+        when(musicaService.buscarMusicas("br")).thenThrow(FiltroErrorException.class);
 
         RequestBuilder request = get("/api/v1/music/buscar")
                 .param("filtro", "br");
@@ -129,7 +129,7 @@ public class MusicControllerTest {
 
         MusicaErrorResponse convertReturnInObject = gson.fromJson(result.getResponse().getContentAsString(), MusicaErrorResponse.class);
 
-        assertThrows(FiltroErrorException.class, () -> musicaService.buscar("br"));
+        assertThrows(FiltroErrorException.class, () -> musicaService.buscarMusicas("br"));
         assertEquals("Numeros de caracteres invalidos!", convertReturnInObject.getMessage());
         assertNotNull(convertReturnInObject);
 
