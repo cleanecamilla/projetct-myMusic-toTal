@@ -5,17 +5,20 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "PlayLists")
+@Table(name = "Playlists")
 public class PlayList {
 
     @Id
     private final String id = UUID.randomUUID().toString();
     @OneToMany
-    @JoinColumn(name = "PlayListMusicas")
+    @JoinTable(name = "PlaylistMusicas", joinColumns = @JoinColumn(name = "PlaylistId"), inverseJoinColumns = @JoinColumn(name = "MusicaId"))
     private List<Musica> musicas;
 
     public PlayList(List<Musica> musicas) {
         this.musicas = musicas;
+    }
+
+    public PlayList() {
     }
 
     public String getId() {

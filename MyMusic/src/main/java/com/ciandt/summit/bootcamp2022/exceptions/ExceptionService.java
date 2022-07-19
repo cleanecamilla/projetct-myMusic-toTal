@@ -34,7 +34,7 @@ public class ExceptionService {
 
     @ExceptionHandler
     ResponseEntity<PlayListNaoEncontradaException> handleException(PlayListNaoEncontradaException err){
-        MusicaErrorResponse user = new MusicaErrorResponse(HttpStatus.BAD_REQUEST.value(),
+        PlayListErrorResponse user = new PlayListErrorResponse(HttpStatus.BAD_REQUEST.value(),
                 "PlayList não encontrada!");
 
         return new ResponseEntity(user, HttpStatus.BAD_REQUEST);
