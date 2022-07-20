@@ -3,6 +3,7 @@ package com.ciandt.summit.bootcamp2022.service;
 import com.ciandt.summit.bootcamp2022.entity.Artista;
 import com.ciandt.summit.bootcamp2022.entity.Musica;
 import com.ciandt.summit.bootcamp2022.exception.FiltroInvalidoException;
+import com.ciandt.summit.bootcamp2022.exception.MusicaNaoExisteException;
 import com.ciandt.summit.bootcamp2022.repository.ArtistaRepository;
 import com.ciandt.summit.bootcamp2022.repository.MusicaRepository;
 import org.slf4j.Logger;
@@ -10,12 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.TreeMap;
-import java.util.Collection;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,4 +53,11 @@ public class MusicaServiceImp implements MusicaService {
 
         return musicasOrdenadas.values().stream().flatMap(Collection::stream).collect(Collectors.toList());
     }
+
+    @Override
+    public Musica buscarMusicaPorId(String id) {
+        logger.info("Buscando música com id: " + id);
+        return musicaRepository.findById(id).orElseThrow(() -> new MusicaNaoExisteException(id));
+    }
+
 }
