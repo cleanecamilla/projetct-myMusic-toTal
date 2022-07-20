@@ -24,7 +24,7 @@ public class CreateAuthorizerUseCase {
 
     private boolean isExpiredToken(final String token) {
         final LocalDateTime dateTime = LocalDateTime.parse(token);
-        final LocalDateTime dateLimit = dateTime.plusMinutes(1);
+        final LocalDateTime dateLimit = dateTime.plusMinutes(60);
         return dateLimit.compareTo(LocalDateTime.now()) < 0;
     }
 }
