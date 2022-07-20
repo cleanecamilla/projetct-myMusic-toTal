@@ -13,6 +13,7 @@ public class Usuario {
     @Id
     private String id;
     private String nome;
+
     @OneToOne
     @JoinColumn(name = "PlaylistId")
     private Playlist playlist;
