@@ -35,9 +35,7 @@ class MusicaServiceTest {
 
         List<Musica> musicaList = new ArrayList<>();
 
-
         when(musicaRepository.buscarMusicaArtista("bru")).thenReturn(musicaList);
-
 
         MusicaDto musicaDto = musicaService.buscarMusicas("bru");
 

@@ -9,7 +9,7 @@ import java.util.UUID;
 public class PlayList {
 
     @Id
-    private final String id = UUID.randomUUID().toString();
+    private String id = UUID.randomUUID().toString();
     @OneToMany
     @JoinTable(name = "PlaylistMusicas", joinColumns = @JoinColumn(name = "PlaylistId"), inverseJoinColumns = @JoinColumn(name = "MusicaId"))
     private List<Musica> musicas;
@@ -19,6 +19,10 @@ public class PlayList {
     }
 
     public PlayList() {
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getId() {

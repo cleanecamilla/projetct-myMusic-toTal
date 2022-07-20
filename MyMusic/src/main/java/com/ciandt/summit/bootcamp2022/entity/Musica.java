@@ -8,7 +8,7 @@ import java.util.UUID;
 public class Musica {
 
     @Id
-    private final String id = UUID.randomUUID().toString();
+    private String id = UUID.randomUUID().toString();
     @Column
     private String nome;
     @OneToOne
@@ -21,6 +21,10 @@ public class Musica {
     public Musica(String nome, Artista artista) {
         this.nome = nome;
         this.artista = artista;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getId() {
