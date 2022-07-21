@@ -43,7 +43,7 @@ public class ExceptionService {
     ResponseEntity<UserErrorResponse> handleException(NaoPermitidoSalvarAMesmaMusicaException err){
         UserErrorResponse uer =new UserErrorResponse();
         uer.setStatus(HttpStatus.FORBIDDEN.value());
-        uer.setMessage(err.getMessage("Não é permitido salvar a mesma música duas vezes."));
+        uer.setMessage("Não é permitido salvar a mesma música duas vezes.");
         logger.error(uer.getMessage() + " - " + HttpStatus.FORBIDDEN);
         return new ResponseEntity(uer,HttpStatus.FORBIDDEN);
     }

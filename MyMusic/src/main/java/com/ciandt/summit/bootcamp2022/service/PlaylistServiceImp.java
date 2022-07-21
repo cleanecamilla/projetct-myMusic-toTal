@@ -5,6 +5,7 @@ import com.ciandt.summit.bootcamp2022.entity.Musica;
 import com.ciandt.summit.bootcamp2022.entity.Playlist;
 import com.ciandt.summit.bootcamp2022.entity.PlaylistMusica;
 import com.ciandt.summit.bootcamp2022.entity.PlaylistMusicaKey;
+import com.ciandt.summit.bootcamp2022.exception.NaoPermitidoSalvarAMesmaMusicaException;
 import com.ciandt.summit.bootcamp2022.exception.PayloadBodyInvalidoException;
 import com.ciandt.summit.bootcamp2022.exception.PlaylistNaoExisteException;
 import com.ciandt.summit.bootcamp2022.model.MusicaDTO;
