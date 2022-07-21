@@ -40,7 +40,7 @@ public class PlaylistServiceImp implements PlaylistService{
         Optional<PlaylistMusica> relacaoPlaylistMusica = playlistMusicaRepository.findByPlaylistIdAndMusicaId(playlistId, musicaRequest.getData().getId());
 
         if (!relacaoPlaylistMusica.isPresent()) {
-            //throw new NaoPermitidoSalvarAMesmaMusicaException("Música duplicada.");
+            throw new NaoPermitidoSalvarAMesmaMusicaException("Música duplicada.");
         }
 
         PlaylistMusica playlistMusica = new PlaylistMusica(new PlaylistMusicaKey(playlistId, musicaRequest.getData().getId()));
