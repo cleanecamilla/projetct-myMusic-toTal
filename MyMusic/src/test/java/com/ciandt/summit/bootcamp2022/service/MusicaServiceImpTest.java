@@ -3,6 +3,7 @@ package com.ciandt.summit.bootcamp2022.service;
 import com.ciandt.summit.bootcamp2022.entity.Artista;
 import com.ciandt.summit.bootcamp2022.entity.Musica;
 import com.ciandt.summit.bootcamp2022.exception.FiltroInvalidoException;
+import com.ciandt.summit.bootcamp2022.exception.MusicaNaoExisteException;
 import com.ciandt.summit.bootcamp2022.repository.ArtistaRepository;
 import com.ciandt.summit.bootcamp2022.repository.MusicaRepository;
 import org.junit.jupiter.api.Test;
@@ -11,13 +12,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.util.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
@@ -85,5 +82,21 @@ class MusicaServiceImpTest {
             assertEquals(FiltroInvalidoException.class, ex.getClass());
             assertEquals("Filtro invalido.", ex.getMessage());
         }
+    }
+
+    @Test
+    void test_buscaPlaylistIdCorreto(){
+        Musica m1 = new Musica("b97e179d-76f1-44bb-a04f-1d678c1269ff", "Marseilles", new Artista("771bc41f-20dd-418b-9df1-5b01e8cf0658","Brian Eno"));
+
+        given(musicaRepository.findById(m1.getId())).willReturn(Optional.of(m1));
+
+        assertEquals(m1, musicaServiceImp.buscarMusicaPorId(m1.getId()));
+    }
+
+    @Test
+    void test_buscaPlaylistIdIncorreto(){
+        Musica m1 = new Musica("b97e179d-76f1-44bb-a04f-1d678c1269ff", "Marseilles", new Artista("771bc41f-20dd-418b-9df1-5b01e8cf0658","Brian Eno"));
+
+        assertThrows(MusicaNaoExisteException.class, () -> musicaServiceImp.buscarMusicaPorId(m1.getId()));
     }
 }

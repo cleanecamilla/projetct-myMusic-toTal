@@ -16,11 +16,12 @@ public class Playlist {
     @Id
     private String id;
 
-    @ManyToMany
-    @JoinTable(name = "PlaylistMusicas",
-            joinColumns = {@JoinColumn(name = "PlaylistId")},
-            inverseJoinColumns = {@JoinColumn(name = "MusicasId")})
-    private List<Musica> musicas = new ArrayList<>();
+    public Playlist() {
+    }
+
+    public Playlist(String id) {
+        this.id = id;
+    }
 
     public String getId() {
         return id;
@@ -30,11 +31,4 @@ public class Playlist {
         this.id = id;
     }
 
-    public List<Musica> getMusicas() {
-        return musicas;
-    }
-
-    public void setMusicas(List<Musica> musicas) {
-        this.musicas = musicas;
-    }
 }
