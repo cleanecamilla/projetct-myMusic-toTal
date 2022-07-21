@@ -3,17 +3,18 @@ package com.ciandt.summit.bootcamp2022.service;
 import com.ciandt.summit.bootcamp2022.controller.request.PlaylistRequest;
 import com.ciandt.summit.bootcamp2022.entity.Musica;
 import com.ciandt.summit.bootcamp2022.entity.Playlist;
+import com.ciandt.summit.bootcamp2022.entity.PlaylistMusica;
+import com.ciandt.summit.bootcamp2022.entity.PlaylistMusicaKey;
 import com.ciandt.summit.bootcamp2022.exception.PayloadBodyInvalidoException;
 import com.ciandt.summit.bootcamp2022.exception.PlaylistNaoExisteException;
+import com.ciandt.summit.bootcamp2022.model.MusicaDTO;
+import com.ciandt.summit.bootcamp2022.repository.PlaylistMusicaRepository;
 import com.ciandt.summit.bootcamp2022.repository.PlaylistRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Service
 public class PlaylistServiceImp implements PlaylistService{
@@ -23,26 +24,32 @@ public class PlaylistServiceImp implements PlaylistService{
     @Autowired
     private PlaylistRepository playlistRepository;
     @Autowired
+    private PlaylistMusicaRepository playlistMusicaRepository;
+    @Autowired
     private MusicaServiceImp musicaServiceImp;
 
     @Override
-    public Playlist adicionarMusicaNaPlaylist(String playlistId, PlaylistRequest musicaRequest) {
-        Playlist playlist = buscarPlaylistPorId(playlistId);
+    public PlaylistMusica adicionarMusicaNaPlaylist(String playlistId, PlaylistRequest musicaRequest) {
+        buscarPlaylistPorId(playlistId);
 
         Musica musicaDb = musicaServiceImp.buscarMusicaPorId(musicaRequest.getData().getId());
 
         validarPayloadBodyRequest(musicaRequest.getData(), musicaDb);
 
-        Set<Musica> musicas = new HashSet<>(playlist.getMusicas());
-        musicas.add(musicaRequest.getData());
-        playlist.setMusicas(new ArrayList<>(musicas));
+        List<PlaylistMusica> relacaoPlaylistMusica = playlistMusicaRepository.findByPlaylistIdAndMusicaId(playlistId, musicaRequest.getData().getId());
 
-        playlistRepository.save(playlist);
+        if (!relacaoPlaylistMusica.isEmpty()) {
+            throw new NaoPermitidoSalvarAMesmaMusicaException("Música duplicada.");
+        }
 
-        return playlist;
+        PlaylistMusica playlistMusica = new PlaylistMusica(new PlaylistMusicaKey(playlistId, musicaRequest.getData().getId()));
+
+        playlistMusicaRepository.save(playlistMusica);
+
+        return playlistMusica;
     }
 
-    public void validarPayloadBodyRequest(Musica musicaRequest, Musica musicaDb) {
+    public void validarPayloadBodyRequest(MusicaDTO musicaRequest, Musica musicaDb) {
         logger.info("Validando payload do RequestBody");
         if (!musicaDb.getNome().equalsIgnoreCase(musicaRequest.getNome())
                 || !musicaDb.getArtista().getId().equals(musicaRequest.getArtista().getId())

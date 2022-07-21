@@ -1,19 +1,20 @@
 package com.ciandt.summit.bootcamp2022.controller.request;
 
 import com.ciandt.summit.bootcamp2022.entity.Musica;
+import com.ciandt.summit.bootcamp2022.model.MusicaDTO;
 
 public class PlaylistRequest {
 
-    Musica data;
+    MusicaDTO data;
 
     public PlaylistRequest() {
     }
 
-    public PlaylistRequest(Musica data) {
+    public PlaylistRequest(MusicaDTO data) {
         this.data = data;
     }
 
-    public Musica getData() {
+    public MusicaDTO getData() {
         return data;
     }
 
