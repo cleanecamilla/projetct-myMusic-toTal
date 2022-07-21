@@ -39,33 +39,12 @@ public class ExceptionService {
         return new ResponseEntity(uer,HttpStatus.FORBIDDEN);
     }
 
-    @ExceptionHandler(MusicaNaoExisteException.class)
-    ResponseEntity<MusicaNaoExisteException> handleException(MusicaNaoExisteException err){
+    @ExceptionHandler(NaoPermitidoSalvarAMesmaMusicaException.class)
+    ResponseEntity<UserErrorResponse> handleException(NaoPermitidoSalvarAMesmaMusicaException err){
         UserErrorResponse uer =new UserErrorResponse();
-        uer.setStatus(HttpStatus.BAD_REQUEST.value());
-        uer.setMessage("A musica com o ID ("+err.getMessage()+") não existe.");
-        logger.error(uer.getMessage() + " - " + HttpStatus.BAD_REQUEST);
-        return new ResponseEntity(uer,HttpStatus.BAD_REQUEST);
+        uer.setStatus(HttpStatus.FORBIDDEN.value());
+        uer.setMessage(err.getMessage("Não é permitido salvar a mesma música duas vezes."));
+        logger.error(uer.getMessage() + " - " + HttpStatus.FORBIDDEN);
+        return new ResponseEntity(uer,HttpStatus.FORBIDDEN);
     }
-
-    @ExceptionHandler(PlaylistNaoExisteException.class)
-    ResponseEntity<PlaylistNaoExisteException> handleException(PlaylistNaoExisteException err){
-        UserErrorResponse uer =new UserErrorResponse();
-        uer.setStatus(HttpStatus.BAD_REQUEST.value());
-        uer.setMessage("A playlist com o ID ("+err.getMessage()+") não existe.");
-        logger.error(uer.getMessage() + " - " + HttpStatus.BAD_REQUEST);
-        return new ResponseEntity(uer,HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(PayloadBodyInvalidoException.class)
-    ResponseEntity<PayloadBodyInvalidoException> handleException(PayloadBodyInvalidoException err){
-        UserErrorResponse uer =new UserErrorResponse();
-        uer.setStatus(HttpStatus.BAD_REQUEST.value());
-        uer.setMessage("Os dados inseridos não existem para a musica ("+err.getMessage()+")");
-        logger.error(uer.getMessage() + " - " + HttpStatus.BAD_REQUEST);
-        return new ResponseEntity(uer,HttpStatus.BAD_REQUEST);
-    }
-
-
-
 }
