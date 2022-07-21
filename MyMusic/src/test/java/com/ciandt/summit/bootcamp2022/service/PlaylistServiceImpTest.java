@@ -7,7 +7,6 @@ import com.ciandt.summit.bootcamp2022.entity.Playlist;
 import com.ciandt.summit.bootcamp2022.exception.MusicaNaoExisteException;
 import com.ciandt.summit.bootcamp2022.exception.PayloadBodyInvalidoException;
 import com.ciandt.summit.bootcamp2022.exception.PlaylistNaoExisteException;
-import com.ciandt.summit.bootcamp2022.repository.MusicaRepository;
 import com.ciandt.summit.bootcamp2022.repository.PlaylistRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,13 +23,13 @@ class PlaylistServiceImpTest {
 
     @InjectMocks
     private PlaylistServiceImp playlistServiceImp;
+
     @Mock
     private MusicaServiceImp musicaServiceImp;
 
     @Mock
     private PlaylistRepository playlistRepository;
-    @Mock
-    private MusicaRepository musicaRepository;
+
 
     @Test
     void test_buscaPlaylistIdCorreto(){
@@ -62,11 +61,8 @@ class PlaylistServiceImpTest {
         given(musicaServiceImp.buscarMusicaPorId(mR1.getId())).willReturn(mR1);
 
         List<Musica> musicas = p1.getMusicas();
-
-        if (!musicas.contains(pR1.getData())) {
-            musicas.add(pR1.getData());
-            p1.setMusicas(musicas);
-        }
+        musicas.add(pR1.getData());
+        p1.setMusicas(musicas);
 
         assertEquals(p1, playlistServiceImp.adicionarMusicaNaPlaylist(p1.getId(), pR1));
     }

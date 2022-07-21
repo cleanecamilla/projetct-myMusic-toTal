@@ -34,6 +34,7 @@ public class PlaylistServiceImp implements PlaylistService{
         validarPayloadBodyRequest(musicaRequest.getData(), musicaDb);
 
         Set<Musica> musicas = new HashSet<>(playlist.getMusicas());
+        musicas.add(musicaRequest.getData());
         playlist.setMusicas(new ArrayList<>(musicas));
 
         playlistRepository.save(playlist);
