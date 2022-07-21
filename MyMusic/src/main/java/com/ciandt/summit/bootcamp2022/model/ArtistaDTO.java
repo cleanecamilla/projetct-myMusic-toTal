@@ -1,17 +1,13 @@
 package com.ciandt.summit.bootcamp2022.model;
 
-import com.ciandt.summit.bootcamp2022.entity.Artista;
-
-public class MusicaDTO {
+public class ArtistaDTO {
 
     private String id;
     private String nome;
-    private ArtistaDTO artista;
 
-    public MusicaDTO(String id, String nome, ArtistaDTO artista) {
+    public ArtistaDTO(String id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.artista = artista;
     }
 
     public String getId() {
@@ -28,13 +24,5 @@ public class MusicaDTO {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public ArtistaDTO getArtista() {
-        return artista;
-    }
-
-    public void setArtista(ArtistaDTO artista) {
-        this.artista = artista;
     }
 }

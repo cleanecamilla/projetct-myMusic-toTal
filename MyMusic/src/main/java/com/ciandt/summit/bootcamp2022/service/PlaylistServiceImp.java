@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlaylistServiceImp implements PlaylistService{
@@ -36,10 +37,10 @@ public class PlaylistServiceImp implements PlaylistService{
 
         validarPayloadBodyRequest(musicaRequest.getData(), musicaDb);
 
-        List<PlaylistMusica> relacaoPlaylistMusica = playlistMusicaRepository.findByPlaylistIdAndMusicaId(playlistId, musicaRequest.getData().getId());
+        Optional<PlaylistMusica> relacaoPlaylistMusica = playlistMusicaRepository.findByPlaylistIdAndMusicaId(playlistId, musicaRequest.getData().getId());
 
-        if (!relacaoPlaylistMusica.isEmpty()) {
-            throw new NaoPermitidoSalvarAMesmaMusicaException("Música duplicada.");
+        if (!relacaoPlaylistMusica.isPresent()) {
+            //throw new NaoPermitidoSalvarAMesmaMusicaException("Música duplicada.");
         }
 
         PlaylistMusica playlistMusica = new PlaylistMusica(new PlaylistMusicaKey(playlistId, musicaRequest.getData().getId()));
