@@ -7,4 +7,6 @@ import java.util.List;
 public interface MusicaService {
 
     List<Musica> buscarMusicas(String filtro);
+
+    Musica buscarMusicaPorId(String id);
 }
