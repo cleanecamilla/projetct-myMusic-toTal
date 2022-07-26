@@ -1,25 +1,23 @@
 package com.ciandt.summit.bootcamp2022.entity;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
-import java.util.TreeSet;
 
 @Entity
 @Table(name = "Artistas")
 @Getter
 @NoArgsConstructor
-@EqualsAndHashCode
 public class Artista implements Serializable {
 
     private static final long serialVersionUID = -2346155250576193121L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private String id;
 
@@ -27,11 +25,22 @@ public class Artista implements Serializable {
     private String nome;
 
     @OneToMany
-    @JoinColumn(name = "ArtistaId", referencedColumnName = "Id")
-    private Set<Musica> musicas = new TreeSet<>();
+    private Set<Musica> musicas = new HashSet<>();
 
     public Artista(String nome){
         this.nome = nome;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artista artista = (Artista) o;
+        return id.equals(artista.id) && nome.equals(artista.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome);
+    }
 }
