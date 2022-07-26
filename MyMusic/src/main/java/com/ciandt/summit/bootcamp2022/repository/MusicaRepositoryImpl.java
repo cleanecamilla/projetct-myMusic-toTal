@@ -10,7 +10,6 @@ import java.util.List;
     public interface MusicaRepositoryImpl extends JpaRepository<Musica, String>, MusicaRepository {
 
         @Override
-        @Query(value = "SELECT m FROM Musica m JOIN Artista a on a.id = m.artista WHERE a.nome like '%'|| :filtro ||'%' or m.nome like '%'|| :filtro ||'%' ORDER by a.nome, m.nome asc", nativeQuery = true)
-        List<Musica> encontrarMusicaPeloNome(@Param("nome") String nome);
+        @Query(value = "SELECT m FROM Musica m JOIN Artista a on a.id = m.artista WHERE a.nome like '%'|| :param ||'%' or m.nome like '%'|| :param ||'%' ORDER by a.nome, m.nome asc", nativeQuery = true)
+        List<Musica> encontrarMusicaPeloNome(@Param("param") String nome);
     }
-
