@@ -209,11 +209,8 @@ replay_pid*
 
 ### Maven ###
 target/
-<<<<<<< HEAD
 MyMusic/target/
 TokenProvider/target/
-=======
->>>>>>> Boot 374 - Criação do interceptor para a autenticação do Token
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -232,10 +229,7 @@ buildNumber.properties
 .classpath
 
 ### VisualStudioCode ###
-<<<<<<< HEAD
 .vscode/
-=======
->>>>>>> Boot 374 - Criação do interceptor para a autenticação do Token
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
