@@ -26,10 +26,9 @@ public class Artista implements Serializable {
     @Column(name = "Nome")
     private String nome;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "artista")
+    @OneToMany
     @JoinColumn(name = "ArtistaId", referencedColumnName = "Id")
-    /* alterar o ? para a entidade Musica quando estiver criada */
-    private Set<?> musicas = new TreeSet<>();
+    private Set<Musica> musicas = new TreeSet<>();
 
     public Artista(String nome){
         this.nome = nome;
