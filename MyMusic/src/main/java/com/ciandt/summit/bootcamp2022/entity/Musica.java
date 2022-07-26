@@ -1,6 +1,7 @@
 package com.ciandt.summit.bootcamp2022.entity;
 
-import javax.persistence.CascadeType;
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,18 +23,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Musica {
+public class Musica implements Serializable{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private String id;
 
-    @Column(name = "nome")
+    @Column(name = "Nome")
     private String nome;
 
     @ManyToOne
     @JoinColumn(name = "MusicaId", referencedColumnName = "Id")
-    @Column(name = "artista")
-    private Artista artista;
-
+    private Artista artista;    
 }
