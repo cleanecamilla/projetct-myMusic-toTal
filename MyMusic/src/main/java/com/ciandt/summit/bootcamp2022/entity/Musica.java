@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,8 +23,9 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 public class Musica implements Serializable{
 
+    private static final long serialVersionUID = 7139186871933172805L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
     private String id;
 
@@ -34,6 +33,6 @@ public class Musica implements Serializable{
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name = "MusicaId", referencedColumnName = "Id")
-    private Artista artista;    
+    @JoinColumn(name = "ArtistaId", referencedColumnName = "Id")
+    private Artista artista;
 }
