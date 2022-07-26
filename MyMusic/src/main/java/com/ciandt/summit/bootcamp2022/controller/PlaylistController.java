@@ -28,4 +28,13 @@ public class PlaylistController {
         logger.info("Música Adicionada - 201 OK");
         return new ResponseEntity<Playlist>(HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{playlistId}/musicas/{musicaId}")
+    public ResponseEntity<Playlist> removerMusicaPlaylist(@PathVariable String playlistId, @PathVariable String musicaId){
+        logger.info("Executando DELETE - /playlists/" + playlistId + "/musicas");
+        playlistServiceImp.removerMusicaFromPlaylist(playlistId,musicaId);
+
+        logger.info("Música removida - 200 OK");
+        return new ResponseEntity<Playlist>(HttpStatus.OK);
+    }
 }
