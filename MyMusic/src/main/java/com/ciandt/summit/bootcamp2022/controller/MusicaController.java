@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/musicas")
 @Tag(name = "Músicas")
 public class MusicaController {
+    //instância de service
+
     @GetMapping
     @Operation(summary = "Buscar músicas/artistas",
             description = "Buscar músicas/artistas, não case sensitive e necessário 2 caracteres mínimo")
