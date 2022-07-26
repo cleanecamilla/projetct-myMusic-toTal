@@ -7,6 +7,7 @@ import com.ciandt.summit.bootcamp2022.entity.PlaylistMusica;
 import com.ciandt.summit.bootcamp2022.entity.PlaylistMusicaKey;
 import com.ciandt.summit.bootcamp2022.exception.NaoPermitidoSalvarAMesmaMusicaException;
 import com.ciandt.summit.bootcamp2022.exception.PayloadBodyInvalidoException;
+import com.ciandt.summit.bootcamp2022.exception.PlaylistNaoContemMusicaException;
 import com.ciandt.summit.bootcamp2022.exception.PlaylistNaoExisteException;
 import com.ciandt.summit.bootcamp2022.model.MusicaDTO;
 import com.ciandt.summit.bootcamp2022.repository.PlaylistMusicaRepository;
@@ -74,7 +75,7 @@ public class PlaylistServiceImp implements PlaylistService {
         if (playlistMusicaRepository.findByPlaylistIdAndMusicaId(playlistId, musicaId).isPresent()) {
             playlistMusicaRepository.deleteById(new PlaylistMusicaKey(playlistId, musicaId));
         } else {
-            throw new IllegalArgumentException("Playlist ou música não encontrada!.");
+            throw new PlaylistNaoContemMusicaException(playlistId + " " + musicaId);
         }
         logger.info("Removendo a musica " + musica + " da playlist " + playlist.getId());
     }
