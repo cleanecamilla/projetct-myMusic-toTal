@@ -1,5 +1,7 @@
 # My Music 2022
 
+[![JUnit Test Flow](https://github.com/leleonelciandt/projetct-myMusic-toTal/actions/workflows/unit-test-workflow.yml/badge.svg)](https://github.com/leleonelciandt/projetct-myMusic-toTal/actions/workflows/unit-test-workflow.yml)
+
 API responsável por gerenciar as musicas favoritas do usuário. Possui como principais funcionalidades:
 
 ● Permitir o usuário buscar novas músicas:
