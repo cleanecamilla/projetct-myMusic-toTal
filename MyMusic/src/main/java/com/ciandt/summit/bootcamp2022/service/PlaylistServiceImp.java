@@ -15,10 +15,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Optional;
 
 @Service
-public class PlaylistServiceImp implements PlaylistService{
+public class PlaylistServiceImp implements PlaylistService {
 
     private static final Logger logger = LoggerFactory.getLogger(PlaylistServiceImp.class);
 
@@ -66,4 +67,15 @@ public class PlaylistServiceImp implements PlaylistService{
         return playlistRepository.findById(playlistId).orElseThrow(() -> new PlaylistNaoExisteException(playlistId));
     }
 
+    @Override
+    public void removerMusicaFromPlaylist(String playlistId, String musicaId) {
+        Playlist playlist = buscarPlaylistPorId(playlistId);
+        Musica musica = musicaServiceImp.buscarMusicaPorId(musicaId);
+        if (playlistMusicaRepository.findByPlaylistIdAndMusicaId(playlistId, musicaId).isPresent()) {
+            playlistMusicaRepository.deleteById(new PlaylistMusicaKey(playlistId, musicaId));
+        } else {
+            throw new IllegalArgumentException("Playlist ou música não encontrada!.");
+        }
+        logger.info("Removendo a musica " + musica + " da playlist " + playlist.getId());
+    }
 }
