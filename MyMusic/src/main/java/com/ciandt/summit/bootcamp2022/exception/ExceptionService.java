@@ -74,4 +74,13 @@ public class ExceptionService {
         logger.error(uer.getMessage() + " - " + HttpStatus.BAD_REQUEST);
         return new ResponseEntity(uer,HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(PlaylistNaoContemMusicaException.class)
+    ResponseEntity<PlaylistNaoContemMusicaException> handleException(PlaylistNaoContemMusicaException err){
+        UserErrorResponse uer =new UserErrorResponse();
+        uer.setStatus(HttpStatus.NOT_FOUND.value());
+        uer.setMessage("A playlist com o ID (" + err.getMessage().split(" ")[0] + ") não contém a música com o ID ("+ err.getMessage().split(" ")[1] + ").");
+        logger.error(uer.getMessage() + " - " + HttpStatus.NOT_FOUND);
+        return new ResponseEntity(uer,HttpStatus.NOT_FOUND);
+    }
 }
