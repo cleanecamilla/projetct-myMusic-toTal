@@ -186,10 +186,7 @@ fabric.properties
 
 # Log file
 *.log
-<<<<<<< HEAD
 TokenProvider/logs/
-=======
->>>>>>> Removing auto-generated files after rebasing
 
 # BlueJ files
 *.ctxt
