@@ -186,6 +186,7 @@ fabric.properties
 
 # Log file
 *.log
+TokenProvider/logs/
 
 # BlueJ files
 *.ctxt
