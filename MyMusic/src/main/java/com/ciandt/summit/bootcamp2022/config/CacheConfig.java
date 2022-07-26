@@ -6,7 +6,6 @@ import javax.cache.CacheManager;
 import javax.cache.configuration.MutableConfiguration;
 import javax.cache.expiry.CreatedExpiryPolicy;
 import javax.cache.expiry.Duration;
-
 import static java.util.concurrent.TimeUnit.MINUTES;
 
 @Component
