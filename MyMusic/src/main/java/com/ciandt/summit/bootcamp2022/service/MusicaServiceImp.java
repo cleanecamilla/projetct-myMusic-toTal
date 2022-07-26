@@ -9,6 +9,7 @@ import com.ciandt.summit.bootcamp2022.repository.MusicaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -25,6 +26,7 @@ public class MusicaServiceImp implements MusicaService {
     private ArtistaRepository artistaRepository;
 
     @Override
+    @Cacheable(value = "buscarMusicas")
     public List<Musica> buscarMusicas(String filtro) {
         logger.info("Buscando musicas com o filtro: " + filtro);
 
