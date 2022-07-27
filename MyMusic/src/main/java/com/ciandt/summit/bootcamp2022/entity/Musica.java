@@ -10,18 +10,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "Musicas")
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 @EqualsAndHashCode
-public class Musica implements Serializable{
+public class Musica implements Serializable {
 
     private static final long serialVersionUID = 7139186871933172805L;
 
@@ -30,9 +27,11 @@ public class Musica implements Serializable{
     private String id;
 
     @Column(name = "Nome")
+    @NonNull
     private String nome;
 
     @ManyToOne
     @JoinColumn(name = "ArtistaId", referencedColumnName = "Id")
-    private Artista artista;
+    @EqualsAndHashCode.Exclude private Artista artista;
+
 }
