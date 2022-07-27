@@ -10,5 +10,5 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class DataDTO {
-    private List<MusicDTO> musicDTOList;
+    private List<MusicDTO> data;
 }
