@@ -31,7 +31,8 @@ public class MusicaController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Operation success"),
             @ApiResponse(responseCode = "204", description = "No results"),
-            @ApiResponse(responseCode = "400", description = "Not enough characters")
+            @ApiResponse(responseCode = "400", description = "Not enough characters"),
+            @ApiResponse(responseCode = "403", description = "Not authorized")
     })
     public ResponseEntity<DataDTO> buscarMusicas(@RequestParam(name = "filtro", required = false)
                                                      @Size(min = 2, message = "lorem ipsum") String filtro) {
