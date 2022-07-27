@@ -13,7 +13,7 @@ public class SwaggerConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .components(new Components())
-                .info(new Info().title("API MyMusic").description(
-                        "Projeto final Bootcamp - grupo Sem Exceção - Turma Maio."));
+                .info(new Info().title("MyMusic API").description(
+                        "This project consists in an API for song/artist search..."));
     }
 }
