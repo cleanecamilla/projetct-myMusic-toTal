@@ -4,11 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
-public class DataDTO {
-    private List<MusicDTO> musicDTOList;
+public class ArtistDTO {
+    private String id;
+    private String nome;
 }

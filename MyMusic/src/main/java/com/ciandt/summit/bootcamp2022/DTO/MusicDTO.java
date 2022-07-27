@@ -1,14 +1,15 @@
 package com.ciandt.summit.bootcamp2022.DTO;
 
+import com.ciandt.summit.bootcamp2022.entity.Artista;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
-public class DataDTO {
-    private List<MusicDTO> musicDTOList;
+public class MusicDTO {
+    private String id;
+    private String nome;
+    private Artista artista;
 }
