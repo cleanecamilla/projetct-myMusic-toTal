@@ -1,6 +1,7 @@
 package com.ciandt.summit.bootcamp2022.controller;
 
-import com.ciandt.summit.bootcamp2022.DTO.DataDTO;
+import com.ciandt.summit.bootcamp2022.common.response.ResponseData;
+import com.ciandt.summit.bootcamp2022.controller.dto.MusicDto;
 import com.ciandt.summit.bootcamp2022.service.MusicaService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -14,15 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
 
+//@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/musicas")
 @Tag(name = "Music")
 @Validated
 public class MusicaController {
-
-    MusicaService musicaService;
+    MusicaService musicaService; //injeção de dependência pendente
 
     @GetMapping
     @Operation(summary = "Find songs/artists",
@@ -34,11 +34,11 @@ public class MusicaController {
             @ApiResponse(responseCode = "400", description = "Not enough characters"),
             @ApiResponse(responseCode = "403", description = "Not authorized")
     })
-    public ResponseEntity<DataDTO> buscarMusicas(@RequestParam(name = "filtro", required = false)
-                                                     @Size(min = 2, message = "lorem ipsum") String filtro) {
+    public ResponseEntity<ResponseData<MusicDto>> buscarMusicas(
+            @RequestParam(name = "filtro", required = false) @Size(min = 2) String filtro) {
 
-        DataDTO dataDTO = new DataDTO(new ArrayList<>());//chamar service
+        //chamar service
 
-        return ResponseEntity.ok(dataDTO);
+        return ResponseEntity.ok(ResponseData.of(new MusicDto()));
     }
 }

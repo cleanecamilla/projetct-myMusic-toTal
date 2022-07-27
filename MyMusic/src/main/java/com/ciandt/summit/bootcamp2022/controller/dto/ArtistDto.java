@@ -1,15 +1,15 @@
-package com.ciandt.summit.bootcamp2022.DTO;
+package com.ciandt.summit.bootcamp2022.controller.dto;
 
-import com.ciandt.summit.bootcamp2022.entity.Artista;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
-public class MusicDTO {
+@NoArgsConstructor
+public class ArtistDto {
     private String id;
     private String nome;
-    private Artista artista;
 }
