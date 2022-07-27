@@ -16,7 +16,7 @@ import com.ciandt.summit.bootcamp2022.exception.RequestTokenProviderException;
 import com.ciandt.summit.bootcamp2022.security.Token.TokenDTO;
 
 @Service
-public class TokenServices {
+public class TokenService {
 
     private final String TOKEN_PROVIDER_URL = "http://localhost:8080/api/v1/token";
     private final String TOKEN_PROVIDER_AUTHENTICATION_PATH = "/authorizer";
@@ -36,10 +36,11 @@ public class TokenServices {
     private List<String> getCredentials(HttpServletRequest request) throws MissingCredentialsException {
         try {
             String authorizationHeader = request.getHeader("Authorization");
+
             String base64Credentials = authorizationHeader.substring("Basic".length()).trim();
-        
-            byte[] credDecoded = Base64.getDecoder().decode(base64Credentials);
-            String credentials = new String(credDecoded, StandardCharsets.UTF_8);
+            byte[] credentialsDecoded = Base64.getDecoder().decode(base64Credentials);
+
+            String credentials = new String(credentialsDecoded, StandardCharsets.UTF_8);
             
             return List.of(credentials.split(":"));
         } catch(Exception e) {
@@ -50,15 +51,17 @@ public class TokenServices {
     private ResponseEntity<String> getApiAuthenticationResponse(TokenDTO tokenDto) throws RequestTokenProviderException {
         try {
             final String URI = this.TOKEN_PROVIDER_URL + this.TOKEN_PROVIDER_AUTHENTICATION_PATH;
-            HttpEntity<TokenDTO> requestTokenApi = new HttpEntity<>(tokenDto);
-
-            RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<String> apiResponse = restTemplate.postForEntity(URI, requestTokenApi, String.class);
-
-            return apiResponse;
+            HttpEntity<TokenDTO> bodyRequestTokenApi = new HttpEntity<>(tokenDto);
+            
+            return postRequestAndResponseWithString(URI, bodyRequestTokenApi);
         } catch (Exception e) {
             throw new RequestTokenProviderException("TokenProvider Api cannot be reached");
         }
+    }
+
+    private ResponseEntity<String> postRequestAndResponseWithString(String uri, HttpEntity<?> body) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(uri, body, String.class);
     }
 
 }
