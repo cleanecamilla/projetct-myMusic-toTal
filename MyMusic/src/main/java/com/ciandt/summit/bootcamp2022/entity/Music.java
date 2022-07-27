@@ -18,7 +18,7 @@ import lombok.*;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @EqualsAndHashCode
-public class Musica implements Serializable {
+public class Music implements Serializable {
 
     private static final long serialVersionUID = 7139186871933172805L;
 
@@ -28,10 +28,10 @@ public class Musica implements Serializable {
 
     @Column(name = "Nome")
     @NonNull
-    private String nome;
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "ArtistaId", referencedColumnName = "Id")
-    @EqualsAndHashCode.Exclude private Artista artista;
+    @EqualsAndHashCode.Exclude private Artist artist;
 
 }
