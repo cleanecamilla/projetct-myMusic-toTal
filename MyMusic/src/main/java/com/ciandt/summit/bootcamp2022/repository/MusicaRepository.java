@@ -1,12 +1,14 @@
 package com.ciandt.summit.bootcamp2022.repository;
 
+import com.ciandt.summit.bootcamp2022.entity.Artista;
 import com.ciandt.summit.bootcamp2022.entity.Musica;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-@Repository
-public interface  MusicaRepository {
+import java.util.Set;
 
-    List<Musica> encontrarMusicaPeloNome(String nome);
+public interface MusicaRepository extends JpaRepository<Musica, String> {
 
+    Set<Musica> findByNomeContainingIgnoreCaseOrderByNomeAsc(String nome);
+
+    Set<Musica> findByArtista(Artista artista);
 }
