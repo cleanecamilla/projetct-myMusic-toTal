@@ -24,8 +24,5 @@ public class Artist implements Serializable {
     @Column(name = "Nome")
     @NonNull
     private String name;
-
-    @OneToMany
-    @EqualsAndHashCode.Exclude private Set<Music> musics = new HashSet<>();
-
+    
 }

@@ -1,5 +1,7 @@
 package com.ciandt.summit.bootcamp2022.service;
 
+import com.ciandt.summit.bootcamp2022.common.exception.service.InvalidParameterException;
+import com.ciandt.summit.bootcamp2022.common.exception.service.MusicsAndArtistsNotFoundException;
 import com.ciandt.summit.bootcamp2022.entity.Artist;
 import com.ciandt.summit.bootcamp2022.entity.Music;
 import com.ciandt.summit.bootcamp2022.repository.ArtistRepository;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class MusicServiceImpl implements MusicService {
@@ -26,44 +29,27 @@ public class MusicServiceImpl implements MusicService {
         return true;
     }
 
-
-
     @Override
-    public Map<Artist, Set<Music>> searchMusicsByFilter(String filter) {
+    public Set<Music> searchMusicsByFilter(String filter) {
 
         if(isAValidSearch(filter)){
-
+            Set<Music> musics;
 
             Set<Artist> foundedArtists = artistRepository.findByNameContainingIgnoreCaseOrderByNameAsc(filter);
-            Map<Artist, Set<Music>> musics = new HashMap<>();
+            musics = musicRepository.findByNameContainingIgnoreCaseOrderByNameAsc(filter);
 
-
-            for (Artist artist : foundedArtists) {
-                Set<Music> foundedMusics = musicRepository.findByArtist(artist);
-                musics.put(artist, foundedMusics);
-
+            foundedArtists.forEach(a -> musics.addAll(musicRepository.findByArtist(a)));
+            if (musics.isEmpty()) {
+                throw new MusicsAndArtistsNotFoundException();
             }
 
-            Set<Music> foundedMusics = musicRepository.findByNameContainingIgnoreCaseOrderByNameAsc(filter);
-
-            for (Music music : foundedMusics) {
-                if(!musics.containsKey(music.getArtist())){
-                    musics.put(music.getArtist(), Collections.singleton(music));
-                } else {
-                    Set<Music> artistsMusics = musics.get(music.getArtist());
-                    artistsMusics.add(music);
-                    musics.put(music.getArtist(), artistsMusics);
-                }
-            }
-
-            return musics;
+            return musics.stream().sorted(Comparator.comparing((Music m) -> m.getArtist().getName().toLowerCase()).thenComparing(Music::getName))
+                    .collect(Collectors.toCollection(LinkedHashSet::new));
         }
 
-        throw new RuntimeException();
+        throw new InvalidParameterException("The filter must have at least 2 characters.");
 
     }
-
-
 
     @Override
     public Set<Music> searchAllMusics(){
@@ -71,23 +57,11 @@ public class MusicServiceImpl implements MusicService {
         Set<Music> allMusics = musicRepository.findByNameContainingIgnoreCaseOrderByNameAsc("");
 
         if(allMusics.isEmpty()){
-            throw new RuntimeException();
+            throw new MusicsAndArtistsNotFoundException();
 
         }
-
-        return allMusics;
-
+        return allMusics.stream().sorted(Comparator.comparing((Music m) -> m.getArtist().getName().toLowerCase()).thenComparing(Music::getName))
+                .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
-    @Override
-    public Set<Music> searchMusicByName(String filtro) {
-        Set<Music> musics = new HashSet<>();
-
-        for (Music music: musics) {
-           if(music.getName().contains(filtro)){
-               musics.add(music);
-           }
-        }
-        return musics;
-    }
 }

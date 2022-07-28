@@ -23,19 +23,16 @@ public class TokenService {
     private final String TOKEN_PROVIDER_URL = "http://localhost:8080/api/v1/token";
     private final String TOKEN_PROVIDER_AUTHENTICATION_PATH = "/authorizer";
 
-    public boolean isAuthorized(HttpServletRequest request) throws Exception {
+    public boolean isAuthorized(HttpServletRequest request) {
         List<String> credentials = getCredentials(request);
         TokenDTO tokenAuthorizerDto = new TokenDTO(credentials.get(0), credentials.get(1)); // name and token
-        
+
         ResponseEntity<String> responseTokenProvider = getApiAuthenticationResponse(tokenAuthorizerDto);
 
-        if(responseTokenProvider.getBody().equals("ok")) {
-            return true;
-        }else
-            return false;
+        return responseTokenProvider.getBody().equals("ok");
     }
     
-    private List<String> getCredentials(HttpServletRequest request) throws CredentialsException {
+    private List<String> getCredentials(HttpServletRequest request) {
         try {
             String authorizationHeader = request.getHeader("Authorization");
 
@@ -59,11 +56,11 @@ public class TokenService {
         }
     }
 
-    private ResponseEntity<String> getApiAuthenticationResponse(TokenDTO tokenDto) throws Exception {
+    private ResponseEntity<String> getApiAuthenticationResponse(TokenDTO tokenDto) {
         try {
             final String URI = this.TOKEN_PROVIDER_URL + this.TOKEN_PROVIDER_AUTHENTICATION_PATH;
             HttpEntity<TokenDTO> bodyRequestTokenApi = new HttpEntity<>(tokenDto);
-            
+
             return postRequestAndResponseWithString(URI, bodyRequestTokenApi);
         } catch(HttpClientErrorException e) { // 4XX
             throw new CredentialsException("Credentials not authorized");
