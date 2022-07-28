@@ -9,10 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import com.ciandt.summit.bootcamp2022.common.exception.MissingCredentialsException;
-import com.ciandt.summit.bootcamp2022.common.exception.RequestTokenProviderException;
+import com.ciandt.summit.bootcamp2022.common.exception.CredentialsException;
+import com.ciandt.summit.bootcamp2022.common.exception.RequestTokenProviderApiException;
 import com.ciandt.summit.bootcamp2022.security.Token.TokenDTO;
 
 @Service
@@ -33,7 +34,7 @@ public class TokenService {
             return false;
     }
     
-    private List<String> getCredentials(HttpServletRequest request) throws MissingCredentialsException {
+    private List<String> getCredentials(HttpServletRequest request) throws CredentialsException {
         try {
             String authorizationHeader = request.getHeader("Authorization");
 
@@ -42,20 +43,31 @@ public class TokenService {
 
             String credentials = new String(credentialsDecoded, StandardCharsets.UTF_8);
             
-            return List.of(credentials.split(":"));
+            String[] credentialsArray = credentials.split(":");
+            
+            if (credentialsArray.length == 2) {
+                return List.of(credentialsArray);
+            } else {
+                throw new CredentialsException("Credentials missing");
+            }
+
+        } catch(CredentialsException e) {
+            throw e;
         } catch(Exception e) {
-            throw new MissingCredentialsException("Credentials missing or not in Basic Auth format");
+            throw new CredentialsException("Credentials not in Basic Auth format");
         }
     }
 
-    private ResponseEntity<String> getApiAuthenticationResponse(TokenDTO tokenDto) throws RequestTokenProviderException {
+    private ResponseEntity<String> getApiAuthenticationResponse(TokenDTO tokenDto) throws RequestTokenProviderApiException {
         try {
             final String URI = this.TOKEN_PROVIDER_URL + this.TOKEN_PROVIDER_AUTHENTICATION_PATH;
             HttpEntity<TokenDTO> bodyRequestTokenApi = new HttpEntity<>(tokenDto);
             
             return postRequestAndResponseWithString(URI, bodyRequestTokenApi);
+        } catch(HttpServerErrorException e) {
+            throw new RequestTokenProviderApiException("Invalid credentials");
         } catch (Exception e) {
-            throw new RequestTokenProviderException("TokenProvider Api cannot be reached");
+            throw new RequestTokenProviderApiException("TokenProvider Api can't be reached");
         }
     }
 
