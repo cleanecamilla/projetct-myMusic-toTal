@@ -1,7 +1,6 @@
 package com.ciandt.summit.bootcamp2022.service;
 
 import com.ciandt.summit.bootcamp2022.common.exception.service.MusicServiceImpl;
-import com.ciandt.summit.bootcamp2022.entity.Artist;
 import com.ciandt.summit.bootcamp2022.entity.Music;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
