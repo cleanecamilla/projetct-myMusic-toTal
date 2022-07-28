@@ -13,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @EqualsAndHashCode
-public class Artista implements Serializable {
+public class Artist implements Serializable {
 
     private static final long serialVersionUID = -2346155250576193121L;
 
@@ -23,9 +23,9 @@ public class Artista implements Serializable {
 
     @Column(name = "Nome")
     @NonNull
-    private String nome;
+    private String name;
 
     @OneToMany
-    @EqualsAndHashCode.Exclude private Set<Musica> musicas = new HashSet<>();
+    @EqualsAndHashCode.Exclude private Set<Music> musics = new HashSet<>();
 
 }
