@@ -1,5 +1,5 @@
 package com.ciandt.summit.bootcamp2022.service;
 
-public class MusicaService {
+public class MusicService {
     //desenvolver service para buscar musicas
 }
