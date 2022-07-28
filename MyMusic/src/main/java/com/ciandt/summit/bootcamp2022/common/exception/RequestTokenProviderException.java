@@ -1,4 +1,4 @@
-package com.ciandt.summit.bootcamp2022.exception;
+package com.ciandt.summit.bootcamp2022.common.exception;
 
 public class RequestTokenProviderException extends Exception {
 

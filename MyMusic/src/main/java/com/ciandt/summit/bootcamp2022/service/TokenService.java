@@ -11,8 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.ciandt.summit.bootcamp2022.exception.MissingCredentialsException;
-import com.ciandt.summit.bootcamp2022.exception.RequestTokenProviderException;
+import com.ciandt.summit.bootcamp2022.common.exception.MissingCredentialsException;
+import com.ciandt.summit.bootcamp2022.common.exception.RequestTokenProviderException;
 import com.ciandt.summit.bootcamp2022.security.Token.TokenDTO;
 
 @Service
