@@ -9,11 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import com.ciandt.summit.bootcamp2022.common.exception.CredentialsException;
-import com.ciandt.summit.bootcamp2022.common.exception.RequestTokenProviderApiException;
+import com.ciandt.summit.bootcamp2022.common.exception.service.CredentialsException;
+import com.ciandt.summit.bootcamp2022.common.exception.service.RequestTokenProviderApiException;
 import com.ciandt.summit.bootcamp2022.security.Token.TokenDTO;
 
 @Service
@@ -58,13 +59,15 @@ public class TokenService {
         }
     }
 
-    private ResponseEntity<String> getApiAuthenticationResponse(TokenDTO tokenDto) throws RequestTokenProviderApiException {
+    private ResponseEntity<String> getApiAuthenticationResponse(TokenDTO tokenDto) throws Exception {
         try {
             final String URI = this.TOKEN_PROVIDER_URL + this.TOKEN_PROVIDER_AUTHENTICATION_PATH;
             HttpEntity<TokenDTO> bodyRequestTokenApi = new HttpEntity<>(tokenDto);
             
             return postRequestAndResponseWithString(URI, bodyRequestTokenApi);
-        } catch(HttpServerErrorException e) {
+        } catch(HttpClientErrorException e) { // 4XX
+            throw new CredentialsException("Credentials not authorized");
+        } catch(HttpServerErrorException e) { // 5XX
             throw new RequestTokenProviderApiException("Invalid credentials");
         } catch (Exception e) {
             throw new RequestTokenProviderApiException("TokenProvider Api can't be reached");
