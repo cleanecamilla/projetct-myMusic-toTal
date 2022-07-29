@@ -12,6 +12,7 @@ API responsável por gerenciar as musicas favoritas do usuário. Possui como pri
 4. A busca deve retornar valores contendo o filtro, não necessitando de ser informado o nome
    completo de música ou artista.
 5. O retorno deve estar ordenado pelo nome do artista e depois pelo nome da música. 
+6. Caso não encontrado o filtro, deve retornar um status 204 - NO CONTENT.
 
 ● Permitir adicionar as músicas favoritas do usuário na playlist:
 1. Deve receber um request contendo o identificador da música e o identificador da playlist.
