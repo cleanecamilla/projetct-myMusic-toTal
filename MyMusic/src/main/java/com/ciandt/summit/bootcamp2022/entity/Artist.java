@@ -4,8 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "Artistas")
@@ -24,8 +22,5 @@ public class Artist implements Serializable {
     @Column(name = "Nome")
     @NonNull
     private String name;
-
-    @OneToMany
-    @EqualsAndHashCode.Exclude private Set<Music> musics = new HashSet<>();
-
+    
 }
