@@ -43,7 +43,7 @@ public class TokenService {
             
             String[] credentialsArray = credentials.split(":");
             
-            if (credentialsArray.length == 2) {
+            if (credentialsArray.length == 2 && !(credentialsArray[0].isEmpty() || credentialsArray[1].isEmpty())) {
                 return List.of(credentialsArray);
             } else {
                 throw new CredentialsException("Credentials missing");
