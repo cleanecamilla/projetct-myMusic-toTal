@@ -16,7 +16,11 @@ public class SecurityConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(tokenInterceptor);
+        registry.addInterceptor(tokenInterceptor)
+            .excludePathPatterns("/swagger-ui.html/**")
+            .excludePathPatterns("/swagger-resources/**")
+            .excludePathPatterns("/error")
+            .addPathPatterns("/**");;
     }
 
 }
