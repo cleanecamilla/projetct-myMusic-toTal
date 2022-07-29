@@ -17,10 +17,12 @@ public class SecurityConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(tokenInterceptor)
-            .excludePathPatterns("/swagger-ui.html/**")
-            .excludePathPatterns("/swagger-resources/**")
+            .excludePathPatterns("/mymusic/swagger-ui/**")
+            .excludePathPatterns("/mymusic/swagger-ui.html")
+            .excludePathPatterns("/v3/api-docs/**")
+            .excludePathPatterns("/mymusic/swagger-resources/**")
             .excludePathPatterns("/error")
-            .addPathPatterns("/**");;
+            .addPathPatterns("/**");
     }
 
 }
