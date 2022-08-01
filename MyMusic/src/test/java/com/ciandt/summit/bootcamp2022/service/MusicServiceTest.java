@@ -1,6 +1,5 @@
 package com.ciandt.summit.bootcamp2022.service;
 
-import com.ciandt.summit.bootcamp2022.entity.Music;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,15 +7,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class MusicServiceTest {
 
     @Autowired
-    private MusicServiceImpl musicService;
+    private MusicService musicService;
 
 
     @DisplayName(value = "Valid Parameter")
