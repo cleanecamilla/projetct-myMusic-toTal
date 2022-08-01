@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a83a1366-a188-42f3-97cd-24137d130ad4",
+		"_postman_id": "129512f1-573a-4ab8-9361-bbb4b9ef1a26",
 		"name": "MyMusic",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -10,12 +10,24 @@
 			"item": [
 				{
 					"name": "Token Generation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"data\":{\n        \"name\": \"mgalvao\"\n    }\n}",
+							"raw": "{\n    \"data\":{\n        \"name\": \"user\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -23,17 +35,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/token/",
-							"protocol": "http",
+							"raw": "{{host}}/api/v1/token",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
-								"token",
-								""
+								"token"
 							]
 						}
 					},
@@ -41,12 +50,26 @@
 				},
 				{
 					"name": "Token Authorization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"data\": {\n        \"name\": \"mgalvao\",\n        \"token\": \"stEENBJSodzDaGspkxFiozOQn7p7nfT14WLoR+QON8wCi+Nj0XyoB/ivJJ+o5mvM\"\n    }\n}",
+							"raw": "{\n    \"data\": {\n        \"name\": \"{{user}}\",\n        \"token\": \"{{token}}\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -54,12 +77,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/v1/token/authorizer",
-							"protocol": "http",
+							"raw": "{{host}}/api/v1/token/authorizer",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "8080",
 							"path": [
 								"api",
 								"v1",
@@ -76,27 +97,35 @@
 			"name": "Application",
 			"item": [
 				{
-					"name": "Endpoint Musicas",
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "stEENBJSodzDaGspkxFiozOQn7p7nfT14WLoR+QON8wCi+Nj0XyoB/ivJJ+o5mvM",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "mgalvao",
-									"type": "string"
-								}
-							]
+					"name": "findAllMusics",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
 						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followAuthorizationHeader": false
+					},
+					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/api/musicas?Teste",
+							"raw": "http://localhost:8081/api/musicas?filtro=ar",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -108,8 +137,34 @@
 							],
 							"query": [
 								{
-									"key": "Teste",
-									"value": null
+									"key": "filtro",
+									"value": "ar"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findMusicsByFilter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/musicas?filtro=long",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"musicas"
+							],
+							"query": [
+								{
+									"key": "filtro",
+									"value": "long"
 								}
 							]
 						}
@@ -117,6 +172,69 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "{{user}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.sendRequest({",
+					"    url: \"http://localhost:8080/api/v1/token\",",
+					"    method: \"POST\",",
+					"    header: {",
+					"        \"Content-Type\": \"application/json\"",
+					"    },",
+					"    body: { ",
+					"        mode: 'raw',",
+					"        raw:JSON.stringify({",
+					"            \"data\": {",
+					"                    \"name\":pm.collectionVariables.get(\"user\")",
+					"                }",
+					"            })",
+					"        }  ",
+					"    }, (err, res) => {",
+					"    pm.collectionVariables.set(\"token\", res.text());",
+					"});",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "token-key"
+		},
+		{
+			"key": "user",
+			"value": "user",
+			"type": "default"
 		}
 	]
 }
