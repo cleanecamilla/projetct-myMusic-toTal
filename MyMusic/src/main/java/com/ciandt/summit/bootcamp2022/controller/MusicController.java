@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ import java.util.Set;
 @Tag(name = "Music")
 @Validated
 @RequiredArgsConstructor
+@Log4j2
 public class MusicController {
     private final MusicService musicService;
 
@@ -40,8 +42,10 @@ public class MusicController {
         Set<Music> result;
         if (filter == null) {
             result = musicService.searchAllMusics();
+            log.info("FindMusics Null filter");
         } else {
             result = musicService.searchMusicsByFilter(filter);
+            log.info("FindMusics With filter {}, total rows: {}", filter, result.size());
         }
 
         return ResponseEntity.ok(ResponseData.of(result));
