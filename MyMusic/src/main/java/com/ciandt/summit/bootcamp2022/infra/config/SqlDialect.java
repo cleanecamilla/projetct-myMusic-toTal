@@ -1,4 +1,4 @@
-package com.ciandt.summit.bootcamp2022.config;
+package com.ciandt.summit.bootcamp2022.infra.config;
 
 import java.sql.Types;
 

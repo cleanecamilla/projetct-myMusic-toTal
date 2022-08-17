@@ -1,4 +1,4 @@
-package com.ciandt.summit.bootcamp2022.controller;
+package com.ciandt.summit.bootcamp2022.application.adapters.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
