@@ -1,31 +1,42 @@
-import java.sql.Blob;
+package com.ciandt.summit.bootcamp2022.infra.adapters.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Musicas")
 public class MusicEntity {
-    private String Id;
-    private String Nome;
-    private String ArtistaId;
-
-    public String getArtistaId() {
-        return ArtistaId;
-    }
-
-    public void setArtistaId(String artistaId) {
-        ArtistaId = artistaId;
-    }
+    @Id
+    @Column(name="Id")
+    private String id;
+    @Column(name="Nome")
+    private String nome;
+    @Column(name="ArtistaId")
+    private String artistaId;
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getNome() {
-        return Nome;
+        return nome;
     }
 
     public void setNome(String nome) {
-        Nome = nome;
+        this.nome = nome;
+    }
+
+    public String getArtistaId() {
+        return artistaId;
+    }
+
+    public void setArtistaId(String artistaId) {
+        this.artistaId = artistaId;
     }
 }
