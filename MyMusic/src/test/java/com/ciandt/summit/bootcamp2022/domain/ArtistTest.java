@@ -7,49 +7,43 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.UUID;
-
 public class ArtistTest {
 
     private Artist artist;
-    private UUID id;
-    private UUID wrongId;
 
     @BeforeEach
     void setup() {
         artist = new Artist();
-        id = UUID.randomUUID();
-        wrongId = UUID.randomUUID();
     }
 
     @Test
     void artistGettersSettersTest() {
-        artist.setId(id);
+        artist.setId("32844fdd-bb76-4c0a-9627-e34ddc9fd892");
         artist.setName("Alceu");
 
-        assertEquals(id, artist.getId());
+        assertEquals("32844fdd-bb76-4c0a-9627-e34ddc9fd892", artist.getId());
         assertEquals("Alceu", artist.getName());
 
-        assertNotEquals(wrongId, artist.getId());
+        assertNotEquals("efb6b534-3434-4d4e-b70c-a7bfe76e53cc", artist.getId());
         assertNotEquals("Gonzaga", artist.getName());
     }
 
     @Test
     void artistCreatedFromArtistDTOTest() {
-        ArtistDTO artistDTO = new ArtistDTO(id, "Lenine");
+        ArtistDTO artistDTO = new ArtistDTO("32844fdd-bb76-4c0a-9627-e34ddc9fd892", "Lenine");
 
         artist = new Artist(artistDTO);
 
-        assertEquals(id, artist.getId());
+        assertEquals("32844fdd-bb76-4c0a-9627-e34ddc9fd892", artist.getId());
         assertEquals("Lenine", artist.getName());
 
-        assertNotEquals(wrongId, artist.getId());
+        assertNotEquals("efb6b534-3434-4d4e-b70c-a7bfe76e53cc", artist.getId());
         assertNotEquals("Chico", artist.getName());
     }
 
     @Test
     void artistTurnedIntoArtistDTOTest() {
-        artist.setId(id);
+        artist.setId("32844fdd-bb76-4c0a-9627-e34ddc9fd892");
         artist.setName("Ramalho");
 
         ArtistDTO artistDTO = artist.toArtistDTO();
@@ -57,7 +51,7 @@ public class ArtistTest {
         assertEquals(artistDTO.getId(), artist.getId());
         assertEquals(artistDTO.getName(), artist.getName());
 
-        assertNotEquals(wrongId, artist.getId());
+        assertNotEquals("efb6b534-3434-4d4e-b70c-a7bfe76e53cc", artist.getId());
         assertNotEquals("Cesar", artist.getName());
     }
 }

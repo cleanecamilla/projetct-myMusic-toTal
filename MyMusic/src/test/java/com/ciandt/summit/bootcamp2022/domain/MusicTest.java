@@ -6,63 +6,54 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.UUID;
-
 public class MusicTest {
 
     private Music music;
-    private UUID id;
-    private UUID artistId;
-
-    private UUID wrongId;
-
-    private UUID wrongArtistId;
 
     @BeforeEach
     void setup() {
         music = new Music();
-        id = UUID.randomUUID();
-        artistId = UUID.randomUUID();
-        wrongId = UUID.randomUUID();
-        wrongArtistId = UUID.randomUUID();
     }
 
     @Test
     void musicGettersSettersTest() {
-        music.setId(id);
+        music.setId("67f5976c-eb1e-404e-8220-2c2a8a23be47");
         music.setName("Asa Branca");
-        music.setArtistId(artistId);
+        music.setArtistId("32844fdd-bb76-4c0a-9627-e34ddc9fd892");
 
-        assertEquals(id, music.getId());
+        assertEquals("67f5976c-eb1e-404e-8220-2c2a8a23be47", music.getId());
         assertEquals("Asa Branca", music.getName());
-        assertEquals(artistId, music.getArtistId());
+        assertEquals("32844fdd-bb76-4c0a-9627-e34ddc9fd892", music.getArtistId());
 
 
-        assertNotEquals(wrongId, music.getId());
+        assertNotEquals("6ec77cba-4842-4ecd-9775-c75ba96694e2", music.getId());
         assertNotEquals("Maluco Beleza", music.getName());
-        assertNotEquals(wrongArtistId, music.getArtistId());
+        assertNotEquals("efb6b534-3434-4d4e-b70c-a7bfe76e53cc", music.getArtistId());
     }
 
     @Test
     void musicCreatedFromDTOTest() {
-        MusicDTO musicDTO = new MusicDTO(id, "La belle de jour", artistId);
+        MusicDTO musicDTO = new MusicDTO(
+                "67f5976c-eb1e-404e-8220-2c2a8a23be47",
+                "La belle de jour",
+                "32844fdd-bb76-4c0a-9627-e34ddc9fd892");
 
         music = new Music(musicDTO);
 
-        assertEquals(id, music.getId());
+        assertEquals("67f5976c-eb1e-404e-8220-2c2a8a23be47", music.getId());
         assertEquals("La belle de jour", music.getName());
-        assertEquals(artistId, music.getArtistId());
+        assertEquals("32844fdd-bb76-4c0a-9627-e34ddc9fd892", music.getArtistId());
 
-        assertNotEquals(wrongId, music.getId());
+        assertNotEquals("6ec77cba-4842-4ecd-9775-c75ba96694e2", music.getId());
         assertNotEquals("Maluco Beleza", music.getName());
-        assertNotEquals(wrongArtistId, music.getArtistId());
+        assertNotEquals("efb6b534-3434-4d4e-b70c-a7bfe76e53cc", music.getArtistId());
     }
 
     @Test
     void musicTurnedIntoMusicDTOTest() {
-        music.setId(id);
+        music.setId("67f5976c-eb1e-404e-8220-2c2a8a23be47");
         music.setName("Leao do norte");
-        music.setArtistId(artistId);
+        music.setArtistId("32844fdd-bb76-4c0a-9627-e34ddc9fd892");
 
         MusicDTO musicDTO = music.toMusicDTO();
 
@@ -70,8 +61,8 @@ public class MusicTest {
         assertEquals(musicDTO.getName(), music.getName());
         assertEquals(musicDTO.getArtistId(), music.getArtistId());
 
-        assertNotEquals(wrongId, music.getId());
+        assertNotEquals("6ec77cba-4842-4ecd-9775-c75ba96694e2", music.getId());
         assertNotEquals("Maluco Beleza", music.getName());
-        assertNotEquals(wrongArtistId, music.getArtistId());
+        assertNotEquals("efb6b534-3434-4d4e-b70c-a7bfe76e53cc", music.getArtistId());
     }
 }

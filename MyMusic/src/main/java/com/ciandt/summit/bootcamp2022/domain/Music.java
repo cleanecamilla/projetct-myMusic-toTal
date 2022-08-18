@@ -2,17 +2,15 @@ package com.ciandt.summit.bootcamp2022.domain;
 
 import com.ciandt.summit.bootcamp2022.domain.dtos.MusicDTO;
 
-import java.util.UUID;
-
 public class Music {
 
-    private UUID id;
+    private String  id;
     private String name;
-    private UUID artistId;
+    private String artistId;
 
     public Music() {}
 
-    public Music(UUID id, String name, UUID artistId) {
+    public Music(String  id, String name, String artistId) {
         this.id = id;
         this.name = name;
         this.artistId = artistId;
@@ -24,7 +22,7 @@ public class Music {
         this.artistId = musicDTO.getArtistId();
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
@@ -32,11 +30,11 @@ public class Music {
         return name;
     }
 
-    public UUID getArtistId() {
+    public String getArtistId() {
         return artistId;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -44,7 +42,7 @@ public class Music {
         this.name = name;
     }
 
-    public void setArtistId(UUID artistId) {
+    public void setArtistId(String artistId) {
         this.artistId = artistId;
     }
 

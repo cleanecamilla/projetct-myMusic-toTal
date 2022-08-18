@@ -1,32 +1,22 @@
 package com.ciandt.summit.bootcamp2022.domain.dtos;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.UUID;
 
 public class ArtistDTOTest {
 
     private ArtistDTO artistDTO;
-    private UUID id;
-    private UUID wrongId;
-
-    @BeforeEach
-    void setup() {
-        id = UUID.randomUUID();
-        wrongId = UUID.randomUUID();
-    }
 
     @Test
     void artistDTOGettersTest() {
-        artistDTO = new ArtistDTO(id, "Chico");
+        artistDTO = new ArtistDTO("32844fdd-bb76-4c0a-9627-e34ddc9fd892", "Chico");
 
-        assertEquals(id, artistDTO.getId());
+        assertEquals("32844fdd-bb76-4c0a-9627-e34ddc9fd892", artistDTO.getId());
         assertEquals("Chico", artistDTO.getName());
 
-        assertNotEquals(wrongId, artistDTO.getId());
+        assertNotEquals("efb6b534-3434-4d4e-b70c-a7bfe76e53cc", artistDTO.getId());
         assertNotEquals("Lia", artistDTO.getName());
     }
 }
