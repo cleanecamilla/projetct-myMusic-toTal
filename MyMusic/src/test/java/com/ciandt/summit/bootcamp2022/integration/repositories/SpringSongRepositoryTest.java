@@ -22,7 +22,7 @@ public class SpringSongRepositoryTest {
 
     @Test
     public void findPaginatedSons() {
-        Page<SongEntity> result = springSongRepository.findByName("The", Pageable.ofSize(10));
+        Page<SongEntity> result = springSongRepository.findByNameOrArtistName("The", Pageable.ofSize(10));
 
         assertFalse(result.isEmpty());
         assertEquals(result.getNumberOfElements(), 10);
@@ -30,7 +30,7 @@ public class SpringSongRepositoryTest {
 
     @Test
     public void findSongsByNameWithArtist() {
-        Page<SongEntity> result = springSongRepository.findByName("The", Pageable.ofSize(10));
+        Page<SongEntity> result = springSongRepository.findByNameOrArtistName("The", Pageable.ofSize(10));
 
         SongEntity firstSongEntity = result.stream().findFirst().get();
         boolean allSongsStartsWithFilter = result.stream().allMatch(s -> s.getName().startsWith("The"));
@@ -41,7 +41,7 @@ public class SpringSongRepositoryTest {
 
     @Test
     public void findSongsByArtistName() {
-        Page<SongEntity> result = springSongRepository.findByName("R.E.M.", Pageable.ofSize(10));
+        Page<SongEntity> result = springSongRepository.findByNameOrArtistName("R.E.M.", Pageable.ofSize(10));
 
         boolean allSongsNotStartsWithFilter = result.stream().noneMatch(s -> s.getName().startsWith("R.E.M."));
         boolean allArtistsIsREM = result.stream().allMatch(s -> s.getArtist().getName().equalsIgnoreCase("R.E.M."));
