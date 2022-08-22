@@ -18,6 +18,7 @@ public class Song {
         this.id = id;
         this.name = name;
         this.artist = artist;
+        artist.getSongs().add(this);
     }
 
     public Song(SongDTO songDTO) {
