@@ -1,26 +1,28 @@
 package com.ciandt.summit.bootcamp2022.domains.songs;
 
+import com.ciandt.summit.bootcamp2022.domains.artists.Artist;
 import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongDTO;
+import com.ciandt.summit.bootcamp2022.infra.adapters.entities.ArtistEntity;
 
 import java.util.Objects;
 
 public class Song {
     private String id;
     private String name;
-    private String artistId;
+    private Artist artist;
 
     public Song() {
     }
 
-    public Song(String id, String name, String artistId) {
+    public Song(String id, String name, Artist artist) {
         this.id = id;
         this.name = name;
-        this.artistId = artistId;
+        this.artist = artist;
     }
 
     public Song(SongDTO songDTO) {
         this.name = songDTO.getName();
-        this.artistId = songDTO.getArtistId();
+        this.artist = songDTO.getArtist().toArtist();
     }
 
     public String getId() {
@@ -31,8 +33,8 @@ public class Song {
         return name;
     }
 
-    public String getArtistId() {
-        return artistId;
+    public Artist getArtistId() {
+        return artist;
     }
 
     @Override
@@ -40,12 +42,12 @@ public class Song {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Song song = (Song) o;
-        return Objects.equals(id, song.id) && Objects.equals(name, song.name) && Objects.equals(artistId, song.artistId);
+        return Objects.equals(id, song.id) && Objects.equals(name, song.name) && Objects.equals(artist, song.artist);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, artistId);
+        return Objects.hash(id, name, artist);
     }
 
     @Override
@@ -53,7 +55,7 @@ public class Song {
         return "Song{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", artistId='" + artistId + '\'' +
+                ", artistId='" + artist + '\'' +
                 '}';
     }
 }
