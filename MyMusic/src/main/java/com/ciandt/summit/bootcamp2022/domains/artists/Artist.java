@@ -17,10 +17,10 @@ public class Artist {
     public Artist() {
     }
 
-    public Artist(String id, String name, List<Song> listOfSong) {
+    public Artist(String id, String name, List<Song> songs) {
         this.id = id;
         this.name = name;
-        this.songs = listOfSong;
+        this.songs = songs;
     }
 
     public String getId() {
