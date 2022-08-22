@@ -39,6 +39,4 @@ public class SongDTO {
     public void setArtist(ArtistDTO artist) {
         this.artist = artist;
     }
-
-
 }
