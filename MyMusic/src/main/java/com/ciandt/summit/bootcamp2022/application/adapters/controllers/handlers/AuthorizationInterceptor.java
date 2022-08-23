@@ -2,8 +2,8 @@ package com.ciandt.summit.bootcamp2022.application.adapters.controllers.handlers
 
 import com.ciandt.summit.bootcamp2022.domains.token.exceptions.BadAuthRequestException;
 import com.ciandt.summit.bootcamp2022.domains.token.exceptions.UnauthorizedException;
-import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizer;
-import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerData;
+import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDTO;
+import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDataDTO;
 import com.ciandt.summit.bootcamp2022.infra.feignclients.TokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,8 +32,8 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
             throw new BadAuthRequestException("Auth headers not found: user or token are blank or null");
         }
 
-        CreateAuthorizerData createAuthorizerData = new CreateAuthorizerData(token, user);
-        CreateAuthorizer createAuthorizer = new CreateAuthorizer(createAuthorizerData);
+        CreateAuthorizerDataDTO createAuthorizerData = new CreateAuthorizerDataDTO(token, user);
+        CreateAuthorizerDTO createAuthorizer = new CreateAuthorizerDTO(createAuthorizerData);
 
         ResponseEntity<String> tokenProviderResponse = null;
 

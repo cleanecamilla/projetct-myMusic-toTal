@@ -2,11 +2,11 @@ package com.ciandt.summit.bootcamp2022.domains.token.dto;
 
 import java.util.Objects;
 
-public class CreateAuthorizerData {
+public class CreateAuthorizerDataDTO {
     private String token;
     private String name;
 
-    public CreateAuthorizerData(String token, String name) {
+    public CreateAuthorizerDataDTO(String token, String name) {
         this.token = token;
         this.name = name;
     }
@@ -15,7 +15,7 @@ public class CreateAuthorizerData {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CreateAuthorizerData that = (CreateAuthorizerData) o;
+        CreateAuthorizerDataDTO that = (CreateAuthorizerDataDTO) o;
         return Objects.equals(token, that.token) && Objects.equals(name, that.name);
     }
 

@@ -2,8 +2,8 @@ package com.ciandt.summit.bootcamp2022.unit.handlers;
 
 import com.ciandt.summit.bootcamp2022.application.adapters.controllers.MusicController;
 import com.ciandt.summit.bootcamp2022.domains.token.exceptions.BadAuthRequestException;
-import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizer;
-import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerData;
+import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDTO;
+import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDataDTO;
 import com.ciandt.summit.bootcamp2022.infra.feignclients.TokenProvider;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -41,12 +41,12 @@ public class AuthorizationInterceptorTest {
     private final String TOKEN = "token";
     private final String USER = "user";
 
-    private CreateAuthorizer fakeCreateAuthorizer;
+    private CreateAuthorizerDTO fakeCreateAuthorizer;
 
     @BeforeEach
     public void setup() {
-        CreateAuthorizerData createAuthorizerData = new CreateAuthorizerData(TOKEN, USER);
-        fakeCreateAuthorizer = new CreateAuthorizer(createAuthorizerData);
+        CreateAuthorizerDataDTO createAuthorizerData = new CreateAuthorizerDataDTO(TOKEN, USER);
+        fakeCreateAuthorizer = new CreateAuthorizerDTO(createAuthorizerData);
     }
 
     @Test
