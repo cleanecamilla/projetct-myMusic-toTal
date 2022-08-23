@@ -9,6 +9,19 @@ public class CreateAuthorizer {
         this.createAuthorizerData = createAuthorizerData;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CreateAuthorizer that = (CreateAuthorizer) o;
+        return Objects.equals(createAuthorizerData, that.createAuthorizerData);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(createAuthorizerData);
+    }
+
     public CreateAuthorizerData getCreateAuthorizerData() {
         return createAuthorizerData;
     }
