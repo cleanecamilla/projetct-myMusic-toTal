@@ -80,7 +80,7 @@ public class SongRepositoryTest {
     }
 
     @Test
-    public void noSongsFounded() {
+    public void noSongsFound() {
         Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(0);
         when(springSongRepository.findByNameOrArtistName("NOT FOUND", pageable))
                 .thenReturn(new PageImpl<>(new ArrayList<>()));
