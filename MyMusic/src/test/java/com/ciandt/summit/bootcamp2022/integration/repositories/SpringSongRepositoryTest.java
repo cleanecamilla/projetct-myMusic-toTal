@@ -21,7 +21,7 @@ public class SpringSongRepositoryTest {
     SpringSongRepository springSongRepository;
 
     @Test
-    public void findPaginatedSons() {
+    public void findPaginatedSongs() {
         Page<SongEntity> result = springSongRepository.findByNameOrArtistName("The", Pageable.ofSize(10));
 
         assertFalse(result.isEmpty());
