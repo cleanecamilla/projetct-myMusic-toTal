@@ -1,7 +1,7 @@
 package com.ciandt.summit.bootcamp2022.application.adapters.controllers.handlers;
 
-import com.ciandt.summit.bootcamp2022.domains.token.exceptions.BadAuthRequestException;
-import com.ciandt.summit.bootcamp2022.domains.token.exceptions.UnauthorizedException;
+import com.ciandt.summit.bootcamp2022.domains.exceptions.tokens.BadAuthRequestException;
+import com.ciandt.summit.bootcamp2022.domains.exceptions.tokens.UnauthorizedException;
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDTO;
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDataDTO;
 import com.ciandt.summit.bootcamp2022.infra.feignclients.TokenProvider;
