@@ -1,25 +1,16 @@
-package com.ciandt.summit.bootcamp2022.application.adapters.entities;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
-
 @Entity
-public class ArtistEntity implements Serializable {
+public class ArtistEntity extends Serializable{
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private String id;
     private String nome;
 
-    public ArtistEntity(String id, String nome) {
+    public ArtistaEntity(String id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public ArtistEntity() {
-
+    public ArtistaEntity() {
     }
 
     public String getId() {
