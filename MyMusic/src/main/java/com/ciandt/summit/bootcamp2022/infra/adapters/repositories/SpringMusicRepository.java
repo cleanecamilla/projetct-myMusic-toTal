@@ -8,9 +8,5 @@ import java.util.List;
 
 @Repository
 public interface SpringMusicRepository extends JpaRepository<MusicEntity, String> {
-
-    List<MusicEntity> findByNameContains(String name);
-
-
-
+    List<MusicEntity> findByNomeContains(String name);
 }

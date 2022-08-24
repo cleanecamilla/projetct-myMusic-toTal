@@ -7,5 +7,8 @@ import java.util.Set;
 public interface MusicServicePort {
     Set<MusicDTO> searchMusics();
 
-    // nessa interface tem que ter os nomes dos métodos. findByName(String name);
+    Set<MusicDTO> getMusicsByFilter(String name);
+
+    void addMusic(MusicDTO musicDTO);
+
 }
