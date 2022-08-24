@@ -16,8 +16,14 @@ public class MusicController {
 
     final MusicServicePort musicServicePort;
 
+
     public MusicController(MusicServicePort musicServicePort) {
         this.musicServicePort = musicServicePort;
+        
+    @GetMapping
+    public ResponseEntity<String> getMusic() {
+        return ResponseEntity.ok("Authorization ok!!");
+
     }
 
     @GetMapping(value = "/all")
