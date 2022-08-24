@@ -69,7 +69,6 @@ public class AuthorizationInterceptorTest {
     }
 
     @Test
-    @Disabled("i can't run this test without the exception handler")
     public void authHeadersNotFoundTest() throws Exception {
         mockMvc.perform(get("/api/v1/music"))
                 .andExpect(result -> {
@@ -82,7 +81,6 @@ public class AuthorizationInterceptorTest {
     }
 
     @Test
-    @Disabled("i can't run this test without the exception handler")
     public void unauthorizedRequestTest() throws Exception {
         String expected = "User unauthorized";
 
