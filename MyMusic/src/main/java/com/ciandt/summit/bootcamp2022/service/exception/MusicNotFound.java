@@ -1,2 +1,9 @@
-package com.ciandt.summit.bootcamp2022.service.exception;public class MusicNotFound {
-}
+package com.ciandt.summit.bootcamp2022.service.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(
+        value = HttpStatus.NO_CONTENT,
+        reason = "Music not found")
+public class MusicNotFound extends RuntimeException{}

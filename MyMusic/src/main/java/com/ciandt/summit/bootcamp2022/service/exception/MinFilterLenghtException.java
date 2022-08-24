@@ -5,6 +5,5 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(
         value = HttpStatus.BAD_REQUEST,
-        reason = too_short: "The user name must have at least %{count} characters"Minimum s")
-public class MinimumFilterLenghtException extends RuntimeException{
-}
+        reason = "The filter must have at least 3 characters")
+public class MinFilterLenghtException extends RuntimeException {}
