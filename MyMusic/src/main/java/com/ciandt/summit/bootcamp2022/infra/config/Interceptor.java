@@ -15,11 +15,13 @@ public class Interceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (request.getHeader("Authorization") == null) {
             log.info("Authorization token not sent.");
+            response.setStatus(401);
             return false;
         } else if (request.getHeader("Authorization").equals(TokenConfiguration.token)) {
             log.info("Authorization OK");
             return true;
         } else {
+            response.setStatus(401);
             log.info("Authentication failed: Invalid token.");
             return false;
         }

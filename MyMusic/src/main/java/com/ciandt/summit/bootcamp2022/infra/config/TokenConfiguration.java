@@ -13,7 +13,6 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class TokenConfiguration {
 
-
     public static String token;
 
     @Value("${user}")
@@ -27,24 +26,30 @@ public class TokenConfiguration {
     @Bean
     public CommandLineRunner generateToken(RestTemplate restTemplate) throws Exception {
         return args -> {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            JSONObject data = new JSONObject();
-            JSONObject user = new JSONObject();
-            user.put("name", username);
-            data.put("data", user);
-
-            HttpEntity<String> request = new HttpEntity<>(data.toString(), headers);
+            HttpEntity<String> request = new HttpEntity<>(buildBodyRequestString(), generateHeaders());
             token = restTemplate.postForObject("http://localhost:8080/api/v1/token", request, String.class);
-            //token = response.toString();
-            System.out.println("==================================================");
-            System.out.println("Token: " + token);
-            System.out.println("==================================================");
+            printToken();
         };
     }
 
-/*    public static boolean authenticateToken() {
 
-    }*/
+    public HttpHeaders generateHeaders() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return headers;
+    }
+    public String buildBodyRequestString() {
+        JSONObject data = new JSONObject();
+        JSONObject user = new JSONObject();
+        user.put("name", username);
+        data.put("data", user);
+        return data.toString();
+    }
+
+    public static void printToken() {
+        System.out.println("============================================================================");
+        System.out.println("Token: " + token);
+        System.out.println("============================================================================");
+    }
 
 }

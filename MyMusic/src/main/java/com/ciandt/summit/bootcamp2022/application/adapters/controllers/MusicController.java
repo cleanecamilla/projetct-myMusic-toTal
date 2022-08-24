@@ -11,6 +11,6 @@ public class MusicController {
 
     @GetMapping
     public ResponseEntity<String> getMusic() {
-        return ResponseEntity.ok("Conseguiu luan, conseguiu...");
+        return ResponseEntity.ok("Authorization ok!!");
     }
 }
