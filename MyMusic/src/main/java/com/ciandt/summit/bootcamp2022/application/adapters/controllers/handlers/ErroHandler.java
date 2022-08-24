@@ -48,7 +48,7 @@ public class ErroHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(UnauthorizedException.class)
     public final ResponseEntity<SongDTO> handlerUnauthorizedExceptions (Exception exception, WebRequest request){
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
 }
