@@ -74,7 +74,7 @@ public class AuthorizationInterceptorTest {
 
     @Test
     public void authHeadersNotFoundTest() throws Exception {
-        mockMvc.perform(get("/api/v1/music"))
+        mockMvc.perform(get("/api/musicas?filtro=filter"))
                 .andExpect(result -> {
                     Exception exception = result.getResolvedException();
 
@@ -90,7 +90,7 @@ public class AuthorizationInterceptorTest {
                 .thenThrow(new ResponseStatusException(HttpStatus.BAD_REQUEST, "Token expirado"));
 
         mockMvc.perform(
-                    get("/api/v1/music")
+                    get("/api/musicas?filtro=filter")
                             .header("token", TOKEN)
                             .header("user", USER)
                 )
