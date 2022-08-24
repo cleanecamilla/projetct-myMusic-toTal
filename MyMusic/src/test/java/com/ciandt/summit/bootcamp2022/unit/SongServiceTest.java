@@ -63,7 +63,7 @@ public class SongServiceTest {
             songServicePort.findByNameOrArtistName(parameter, PAGE_SIZE);
         });
 
-        assertEquals("Parameter must be at least 2 characters long.", thrown.getMessage());
+        assertEquals("Filter must be at least 2 characters long.", thrown.getMessage());
     }
 
     @Test

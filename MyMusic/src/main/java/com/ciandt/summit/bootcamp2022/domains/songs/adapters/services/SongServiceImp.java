@@ -9,6 +9,7 @@ import com.ciandt.summit.bootcamp2022.domains.songs.ports.repositories.SongRepos
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SongServiceImp implements SongServicePort {
     private final SongRepositoryPort songRepositoryPort;
@@ -22,7 +23,7 @@ public class SongServiceImp implements SongServicePort {
             throws InvalidSongNameOrArtistNameException, SongsNotFoundException {
 
         if(name == null || name.isBlank() || name.length() < 2){
-            throw new InvalidSongNameOrArtistNameException("Parameter must be at least 2 characters long.");
+            throw new InvalidSongNameOrArtistNameException("Filter must be at least 2 characters long.");
         }
 
         List<Song> songs = songRepositoryPort.findByNameOrArtistName(name, pageNumber);
@@ -30,16 +31,12 @@ public class SongServiceImp implements SongServicePort {
     }
 
     private List<SongDTO> convertSongListToDTOList(List<Song> songs) throws SongsNotFoundException {
-        List<SongDTO> songsDTO = new ArrayList<>();
-
         if(songs.isEmpty()){
             throw new SongsNotFoundException("No songs were found.");
-        } else {
-            songs.forEach(song -> {
-                songsDTO.add(song.toDTO());
-            });
         }
 
-        return songsDTO;
+        return songs.stream()
+                .map(Song::toDTO)
+                .collect(Collectors.toList());
     }
 }
