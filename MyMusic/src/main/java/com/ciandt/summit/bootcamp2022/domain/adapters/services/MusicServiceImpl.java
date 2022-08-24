@@ -34,7 +34,7 @@ public class MusicServiceImpl implements MusicServicePort {
         if (name.length() < 2) {
             throw new IllegalArgumentException("Insira um nome com 2 caracteres ou mais");
         } else if (name==null){
-            throw new IllegalArgumentException("Insira um nome");
+            throw new IllegalArgumentException("Insira um nome válido");
         } else {
             return musicDTOS;
         }
