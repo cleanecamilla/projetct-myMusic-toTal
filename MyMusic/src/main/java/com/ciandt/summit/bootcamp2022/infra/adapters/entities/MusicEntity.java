@@ -54,4 +54,6 @@ public class MusicEntity {
     public Music toMusic() {
         return new Music(this.id, this.nome, this.artistaId);
     }
+
 }
+
