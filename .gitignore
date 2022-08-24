@@ -11,7 +11,8 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-
+*/target/*
+*/summit-bootcamp.iml 
 # AWS User-specific
 .idea/**/aws.xml
 
@@ -41,8 +42,9 @@
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
-# *.iml
+*.iml
 # *.ipr
+#
 
 # CMake
 cmake-build-*/
