@@ -36,7 +36,7 @@ public class Song {
 
     public Artist getArtistId() {
         return artist;
-    }
+    } //TODO: refatorar
 
     @Override
     public boolean equals(Object o) {
