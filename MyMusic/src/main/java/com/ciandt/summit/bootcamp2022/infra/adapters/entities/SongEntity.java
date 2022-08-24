@@ -26,7 +26,16 @@ public class SongEntity {
     @JoinColumn(name = "ArtistaId")
     private ArtistEntity artist;
 
+    public SongEntity(Song song) {
+        this.id = song.getId();
+        this.name = song.getName();
+        ArtistEntity artistEntity = new ArtistEntity(song.getArtistId());
+        this.artist = artistEntity;
+    }
+
     public Song toSong() {
         return new Song(this.id, this.name, this.artist.toArtist());
     }
+
+
 }
