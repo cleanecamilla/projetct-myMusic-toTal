@@ -31,8 +31,8 @@ public class MusicServiceImpl implements MusicServicePort {
         Set<Music> musicListFiltered = this.musicRepositoryPort.getMusicsByFilter(name);
         Set<MusicDTO> musicDTOS = musicListFiltered.stream().map(Music::toMusicDTO).collect(Collectors.toSet());
 
-        if (name.length() < 3) {
-            throw new IllegalArgumentException("Insira um nome com 3 caracteres ou mais");
+        if (name.length() < 2) {
+            throw new IllegalArgumentException("Insira um nome com 2 caracteres ou mais");
         } else if (name==null){
             throw new IllegalArgumentException("Insira um nome");
         } else {
