@@ -4,7 +4,6 @@ import com.ciandt.summit.bootcamp2022.domains.artists.Artist;
 import com.ciandt.summit.bootcamp2022.domains.songs.Song;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ArtistDTO {
     private String id;
@@ -35,4 +34,11 @@ public class ArtistDTO {
         return new Artist(id, name, new ArrayList<Song>());
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "\"id\":\"" + id + '\"' +
+                ",\"name\":\"" + name + '\"' +
+                '}';
+    }
 }

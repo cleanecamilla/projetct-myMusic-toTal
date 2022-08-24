@@ -2,8 +2,6 @@ package com.ciandt.summit.bootcamp2022.domains.songs.dtos;
 
 import com.ciandt.summit.bootcamp2022.domains.artists.dtos.ArtistDTO;
 
-import java.util.Objects;
-
 public class SongDTO {
 
     private String id;
@@ -38,5 +36,13 @@ public class SongDTO {
 
     public void setArtist(ArtistDTO artist) {
         this.artist = artist;
+    }
+
+    @Override
+    public String toString() {
+        return "{\"id\":\"" + id + '\"' +
+                ",\"name\":\"" + name + '\"' +
+                ",\"artist\":" + artist +
+                '}';
     }
 }
