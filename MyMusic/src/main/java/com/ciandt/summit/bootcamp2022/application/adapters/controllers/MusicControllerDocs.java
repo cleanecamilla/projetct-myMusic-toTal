@@ -12,13 +12,6 @@ import java.util.List;
 
 @Api("MyMusic")
 public interface MusicControllerDocs {
-
-    @ApiOperation(value = "Get a song")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Song successfully located!"),
-            @ApiResponse(code = 204, message = "Song not found")})
-    public ResponseEntity<String> get();
-
     @ApiOperation(value = "Find song by name or artist")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Song located by name or artist!"),
