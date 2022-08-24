@@ -82,11 +82,6 @@ public class AuthorizationInterceptorTest {
 
     @Test
     public void unauthorizedRequestTest() throws Exception {
-        String expected = "User unauthorized";
-
-        when(musicController.get())
-                .thenReturn(ResponseEntity.ok(expected));
-
         when(tokenProvider.createTokenAuthorizer(fakeCreateAuthorizer))
                 .thenThrow(new ResponseStatusException(HttpStatus.BAD_REQUEST, "Token expirado"));
 
@@ -95,7 +90,6 @@ public class AuthorizationInterceptorTest {
                             .header("token", TOKEN)
                             .header("user", USER)
                 )
-                .andExpect(status().isUnauthorized())
-                .andExpect(content().string(expected));
+                .andExpect(status().isUnauthorized());
     }
 }
