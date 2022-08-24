@@ -1,5 +1,7 @@
 package com.ciandt.summit.bootcamp2022.infra.adapters.entities;
 
+import com.ciandt.summit.bootcamp2022.domain.Music;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,6 +26,15 @@ public class MusicEntity {
         this.id = id;
     }
 
+    public MusicEntity(String id, String nome, String artistaId) {
+        this.id = id;
+        this.nome = nome;
+        this.artistaId = artistaId;
+    }
+
+    public MusicEntity() {
+    }
+
     public String getNome() {
         return nome;
     }
@@ -38,5 +49,9 @@ public class MusicEntity {
 
     public void setArtistaId(String artistaId) {
         this.artistaId = artistaId;
+    }
+
+    public Music toMusic() {
+        return new Music(this.id, this.nome, this.artistaId);
     }
 }

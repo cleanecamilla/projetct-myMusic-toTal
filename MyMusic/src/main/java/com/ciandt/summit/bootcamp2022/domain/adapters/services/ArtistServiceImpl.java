@@ -4,6 +4,7 @@ import com.ciandt.summit.bootcamp2022.domain.Artist;
 import com.ciandt.summit.bootcamp2022.domain.dtos.ArtistDTO;
 import com.ciandt.summit.bootcamp2022.domain.ports.interfaces.ArtistServicePort;
 import com.ciandt.summit.bootcamp2022.domain.ports.repositories.ArtistRepositoryPort;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.stream.Collectors;

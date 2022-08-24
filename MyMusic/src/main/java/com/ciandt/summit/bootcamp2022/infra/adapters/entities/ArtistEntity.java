@@ -1,21 +1,21 @@
 package com.ciandt.summit.bootcamp2022.infra.adapters.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "Artist")
 public class ArtistEntity implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="Id")
     private String id;
-    private String nome;
+    @Column(name="Name")
+    private String name;
 
-    public ArtistEntity(String id, String nome) {
+    public ArtistEntity(String id, String name) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
     }
 
     public ArtistEntity() {
@@ -30,10 +30,10 @@ public class ArtistEntity implements Serializable {
     }
 
     public String getNome() {
-        return nome;
+        return name;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.name = nome;
     }
 }

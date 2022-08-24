@@ -6,4 +6,9 @@ import java.util.Set;
 
 public interface MusicServicePort {
     Set<MusicDTO> searchMusics();
+
+    Set<MusicDTO> getMusicsByFilter(String name);
+
+    void addMusic(MusicDTO musicDTO);
+
 }
