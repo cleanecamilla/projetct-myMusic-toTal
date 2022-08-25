@@ -3,6 +3,7 @@ package com.ciandt.summit.bootcamp2022.unit;
 import com.ciandt.summit.bootcamp2022.SummitBootcampApplication;
 import com.ciandt.summit.bootcamp2022.domains.playlists.Playlist;
 import com.ciandt.summit.bootcamp2022.domains.playlists.ports.repositories.PlaylistRespositoryPort;
+import com.ciandt.summit.bootcamp2022.domains.songs.Song;
 import com.ciandt.summit.bootcamp2022.infra.adapters.entities.PlaylistEntity;
 import com.ciandt.summit.bootcamp2022.infra.adapters.repositories.SpringPlaylistRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,10 +32,12 @@ public class PlaylistRespositoryTest {
     private Playlist playlist;
     private PlaylistEntity playlistEntity;
 
+    private Song song;
     @BeforeEach
     public void setup() {
         playlist = new Playlist();
         playlistEntity = new PlaylistEntity();
+        song = new Song();
     }
 
     @Test
@@ -48,11 +51,11 @@ public class PlaylistRespositoryTest {
     }
 
     @Test
-    public void noPlaylistFound() {
+    public void noPlaylistFoundWhenTryAddNewSong() {
         try {
             when(springPlaylistRepository.findById(ID))
                     .thenThrow(new RuntimeException());
-            playlistRespositoryPort.findById(ID);
+            playlistRespositoryPort.addSong("ahg66", song);
         } catch (RuntimeException e) {
             assertTrue(1 == 1);
 //            assertEquals("mensagem de erro a ser definida pela equipe",e.getMessage());
