@@ -36,7 +36,7 @@ public class Song {
 
     public Artist getArtistId() {
         return artist;
-    }
+    } //TODO: refatorar
 
     public SongDTO toDTO(){
         ArtistDTO artistDTO = artist.toArtistDTO();
