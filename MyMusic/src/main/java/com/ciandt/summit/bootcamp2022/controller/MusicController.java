@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/api/v1/music")
+@RequestMapping("/api/v1/")
 @RequiredArgsConstructor
 public class MusicController {
 
@@ -23,9 +23,9 @@ public class MusicController {
         return ResponseEntity.ok("67f5976c-eb1e-404e-8220-2c2a8a23be47");
     }
 
-    @GetMapping("/search")
+    @GetMapping("/musicas")
     public ResponseEntity<Set<MusicDTO>> findAllWithFilterByName(
-            @RequestParam(name = "name", required = false) final String name){
+            @RequestParam(name = "filtro", required = false) final String name){
 
         return
                 ResponseEntity.ok(musicService.findAllWithFilterByName(name));
