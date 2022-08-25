@@ -49,17 +49,12 @@ public class PlaylistRespositoryTest {
 
         assertTrue(result.isPresent());
     }
-
     @Test
-    public void noPlaylistFoundWhenTryAddNewSong() {
-        try {
-            when(springPlaylistRepository.findById(ID))
-                    .thenThrow(new RuntimeException());
-            playlistRespositoryPort.addSong("ahg66", song);
-        } catch (RuntimeException e) {
-            assertTrue(1 == 1);
-//            assertEquals("mensagem de erro a ser definida pela equipe",e.getMessage());
-            //TODO alterar para a mensagem criada no ExceptionHanders
-        }
+    public void PlaylistNotFound() {
+//               when(springPlaylistRepository.findById(ID))
+//                    .thenThrow(new RuntimeException());
+//            playlistRespositoryPort.addSong(playlistEntity);
+//            assert
+
     }
 }
