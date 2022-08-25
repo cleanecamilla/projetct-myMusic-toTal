@@ -1,7 +1,7 @@
 package com.ciandt.summit.bootcamp2022.unit;
 
 import com.ciandt.summit.bootcamp2022.SummitBootcampApplication;
-import com.ciandt.summit.bootcamp2022.domains.songs.Song;
+import com.ciandt.summit.bootcamp2022.domains.songs.SongsPaginated;
 import com.ciandt.summit.bootcamp2022.domains.songs.ports.repositories.SongRepositoryPort;
 import com.ciandt.summit.bootcamp2022.infra.adapters.entities.ArtistEntity;
 import com.ciandt.summit.bootcamp2022.infra.adapters.entities.SongEntity;
@@ -53,39 +53,43 @@ public class SongRepositoryTest {
         }
     }
 
-//    @Test
-//    public void findFirstSongsPage() {
-//        Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(0);
-//        when(springSongRepository.findByNameOrArtistName(FILTER, pageable))
-//                .thenReturn(new PageImpl<>(SONG_ENTITIES.subList(0, PAGE_SIZE)));
-//
-//        List<Song> songs = songRepositoryPort.findByNameOrArtistName(FILTER, 0);
-//        boolean hasAnySongsOfSecondPage = songs.stream().allMatch(s -> extractSongMockCode(s.getName()) <= 10);
-//
-//        assertEquals(songs.size(), 10);
-//        assertTrue(hasAnySongsOfSecondPage);
-//    }
-//
-//    @Test
-//    public void findSecondSongsPage() {
-//        Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(1);
-//        when(springSongRepository.findByNameOrArtistName(FILTER, pageable))
-//                .thenReturn(new PageImpl<>(SONG_ENTITIES.subList(PAGE_SIZE, PAGE_SIZE * 2)));
-//
-//        List<Song> songs = songRepositoryPort.findByNameOrArtistName(FILTER, 1);
-//        boolean hasOnlySongsOfSecondPage = songs.stream().allMatch(s -> extractSongMockCode(s.getName()) > 10);
-//
-//        assertEquals(songs.size(), 10);
-//        assertTrue(hasOnlySongsOfSecondPage);
-//    }
-//
-//    @Test
-//    public void noSongsFound() {
-//        Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(0);
-//        when(springSongRepository.findByNameOrArtistName("NOT FOUND", pageable))
-//                .thenReturn(new PageImpl<>(new ArrayList<>()));
-//
-//        List<Song> songs = assertDoesNotThrow(() -> songRepositoryPort.findByNameOrArtistName("NOT FOUND", 0));
-//        assertTrue(songs.isEmpty());
-//    }
+    @Test
+    public void findFirstSongsPage() {
+        Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(0);
+        when(springSongRepository.findByNameOrArtistName(FILTER, pageable))
+                .thenReturn(new PageImpl<>(SONG_ENTITIES.subList(0, PAGE_SIZE)));
+
+        SongsPaginated songsPaginated = songRepositoryPort.findByNameOrArtistName(FILTER, 0);
+        boolean hasAnySongsOfSecondPage = songsPaginated.getData().stream().allMatch(s -> extractSongMockCode(s.getName()) <= 10);
+
+        assertEquals(songsPaginated.getData().size(), 10);
+        assertTrue(hasAnySongsOfSecondPage);
+    }
+
+    @Test
+    public void findSecondSongsPage() {
+        Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(1);
+        when(springSongRepository.findByNameOrArtistName(FILTER, pageable))
+                .thenReturn(new PageImpl<>(SONG_ENTITIES.subList(PAGE_SIZE, PAGE_SIZE * 2)));
+
+        SongsPaginated songsPaginated = songRepositoryPort.findByNameOrArtistName(FILTER, 1);
+        boolean hasOnlySongsOfSecondPage = songsPaginated.getData().stream().allMatch(s -> extractSongMockCode(s.getName()) > 10);
+
+        assertTrue(hasOnlySongsOfSecondPage);
+        assertEquals(songsPaginated.getData().size(), 10);
+        assertEquals(songsPaginated.getTotalElements(), 10);
+        assertEquals(songsPaginated.getROWS_PER_PAGE(), 10);
+    }
+
+    @Test
+    public void noSongsFound() {
+        Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(0);
+        when(springSongRepository.findByNameOrArtistName("NOT FOUND", pageable))
+                .thenReturn(new PageImpl<>(new ArrayList<>()));
+
+        SongsPaginated songsPaginated = assertDoesNotThrow(() -> songRepositoryPort.findByNameOrArtistName("NOT FOUND", 0));
+
+        assertTrue(songsPaginated.getData().isEmpty());
+        assertEquals(songsPaginated.getTotalElements(), 0);
+    }
 }
