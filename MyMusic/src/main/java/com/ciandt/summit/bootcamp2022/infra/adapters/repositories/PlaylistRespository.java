@@ -23,7 +23,6 @@ public class PlaylistRespository implements PlaylistRespositoryPort {
     public void addSong(PlaylistEntity playlistEntity) {
         playlistRepository.save(playlistEntity);
     }
-
 }
 
 

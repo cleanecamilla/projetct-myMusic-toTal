@@ -16,8 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
@@ -42,7 +41,6 @@ public class PlaylistRespositoryTest {
 
     @Test
     public void PlaylistFound() {
-
         when(springPlaylistRepository.findById(ID))
                 .thenReturn(Optional.of(playlistEntity));
         Optional<PlaylistEntity> result = assertDoesNotThrow(() -> playlistRespositoryPort.findById(ID));
@@ -51,10 +49,10 @@ public class PlaylistRespositoryTest {
     }
     @Test
     public void PlaylistNotFound() {
-//               when(springPlaylistRepository.findById(ID))
-//                    .thenThrow(new RuntimeException());
-//            playlistRespositoryPort.addSong(playlistEntity);
-//            assert
+        when(springPlaylistRepository.findById(ID))
+                .thenReturn(Optional.empty());
+        Optional<PlaylistEntity> result = playlistRespositoryPort.findById(ID);
 
+        assertFalse(result.isPresent());
     }
 }
