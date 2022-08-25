@@ -6,9 +6,12 @@ import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongDTO;
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDTO;
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDataDTO;
 import com.ciandt.summit.bootcamp2022.infra.feignclients.TokenProvider;
+import feign.FeignException;
+import feign.Request;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -19,6 +22,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -86,8 +90,10 @@ public class AuthorizationInterceptorTest {
 
     @Test
     public void unauthorizedRequestTest() throws Exception {
+        Request fakeFeignRequest = Request.create(Request.HttpMethod.GET, "", new TreeMap<>(), null, null, null);
+
         when(tokenProvider.createTokenAuthorizer(fakeCreateAuthorizer))
-                .thenThrow(new ResponseStatusException(HttpStatus.BAD_REQUEST, "Token expirado"));
+                .thenThrow(new FeignException.FeignClientException(400, "message", fakeFeignRequest, null, null));
 
         mockMvc.perform(
                     get("/api/musicas?filtro=filter")
