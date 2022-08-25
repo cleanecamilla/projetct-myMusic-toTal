@@ -12,10 +12,10 @@ import java.util.Set;
 public interface MusicDTOMapper {
 
     MusicDTOMapper INSTANCE = Mappers.getMapper(MusicDTOMapper.class);
-    @Mapping(source = "artist.name", target = "artist")
+    @Mapping(source = "artist", target = "artist")
     MusicDTO toDto(Music music);
 
-    @Mapping(source = "artist.name", target = "artist")
+    @Mapping(source = "artist", target = "artist")
     Set<MusicDTO> toSetOfDTO(Set<Music> music);
 
 }

@@ -13,8 +13,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class ArtistDTO {
-
-    @JsonIgnore
     private String id;
     private String name;
 

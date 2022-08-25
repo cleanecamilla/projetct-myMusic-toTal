@@ -13,8 +13,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class MusicDTO {
-    @JsonIgnore
+
     String id;
-    String artist;
     String name;
+//    String artist;
+    ArtistDTO artist;
 }
