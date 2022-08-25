@@ -19,5 +19,4 @@ public interface SpringSongRepository extends JpaRepository<SongEntity, String> 
     )
     Page<SongEntity> findByNameOrArtistName(@Param("name") String name, Pageable pageable);
 
-    Page<SongEntity> findSongtById(String s, Pageable ofSize);
 }
