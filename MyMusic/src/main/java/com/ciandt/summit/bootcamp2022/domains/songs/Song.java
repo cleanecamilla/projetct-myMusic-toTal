@@ -1,8 +1,8 @@
 package com.ciandt.summit.bootcamp2022.domains.songs;
 
 import com.ciandt.summit.bootcamp2022.domains.artists.Artist;
+import com.ciandt.summit.bootcamp2022.domains.artists.dtos.ArtistDTO;
 import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongDTO;
-import com.ciandt.summit.bootcamp2022.infra.adapters.entities.ArtistEntity;
 
 import java.util.Objects;
 
@@ -36,6 +36,11 @@ public class Song {
 
     public Artist getArtistId() {
         return artist;
+    }
+
+    public SongDTO toDTO(){
+        ArtistDTO artistDTO = artist.toArtistDTO();
+        return new SongDTO(this.getId(), this.getName(), artistDTO);
     }
 
     @Override
