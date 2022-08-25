@@ -1,6 +1,6 @@
 package com.ciandt.summit.bootcamp2022.unit.handlers;
 
-import com.ciandt.summit.bootcamp2022.application.adapters.controllers.MusicController;
+import com.ciandt.summit.bootcamp2022.application.adapters.controllers.SongsController;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.tokens.BadAuthRequestException;
 import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongDTO;
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDTO;
@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //TODO: refinar testes após a conclusão da feature 812
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = MusicController.class)
+@WebMvcTest(controllers = SongsController.class)
 public class AuthorizationInterceptorTest {
     @Autowired
     private MockMvc mockMvc;
@@ -38,7 +38,7 @@ public class AuthorizationInterceptorTest {
     private TokenProvider tokenProvider;
 
     @MockBean
-    private MusicController musicController;
+    private SongsController songsController;
 
     private final String TOKEN = "token";
     private final String USER = "user";
@@ -55,7 +55,7 @@ public class AuthorizationInterceptorTest {
     public void authorizeRequestTest() throws Exception {
         List<SongDTO> expected = List.of();
 
-        when(musicController.findSongsByNameOrArtistName("filter"))
+        when(songsController.findSongsByNameOrArtistName("filter"))
                 .thenReturn(ResponseEntity.ok(expected));
 
         when(tokenProvider.createTokenAuthorizer(fakeCreateAuthorizer))

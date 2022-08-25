@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class MusicController {
+public class SongsController {
 
     @Autowired
     private SongServicePort songServicePort;
