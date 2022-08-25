@@ -19,7 +19,7 @@ public class ArtistEntity {
 
     @Column(name = "Nome")
     private String name;
-    
+
     public ArtistEntity(Artist artist) {
         this.id = artist.getId();
         this.name = artist.getName();
