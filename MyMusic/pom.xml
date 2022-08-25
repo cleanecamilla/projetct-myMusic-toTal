@@ -15,7 +15,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>		
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<jacoco.version>0.8.7</jacoco.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -56,7 +57,11 @@
 			<artifactId>sqlite-dialect</artifactId>
 			<version>1.0</version>
 		</dependency>
-				
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -85,6 +90,60 @@
                     <target>11</target>
                 </configuration>
             </plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<configuration>
+					<excludes>
+						<exclude>com/ciandt/summit/bootcamp2022/SummitBootcampApplication.*</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/infra/configs/**</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/infra/adapters/entities/**</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/domains/songs/Song.*</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/domains/songs/dtos/**</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/domains/artists/Artist.**</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/domains/artists/dtos/**</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/application/adapters/controllers/**</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/jacoco-report</outputDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>jacoco-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<rule>
+									<element>PACKAGE</element>
+									<limits>
+										<limit>
+											<counter>LINE</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>0.9</minimum>
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
         </plugins>
 	</build>
 </project>
