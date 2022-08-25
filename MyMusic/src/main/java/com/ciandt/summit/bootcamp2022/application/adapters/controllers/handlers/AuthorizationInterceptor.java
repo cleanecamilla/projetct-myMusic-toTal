@@ -5,6 +5,7 @@ import com.ciandt.summit.bootcamp2022.domains.exceptions.tokens.UnauthorizedExce
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDTO;
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDataDTO;
 import com.ciandt.summit.bootcamp2022.infra.feignclients.TokenProvider;
+import feign.FeignException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,8 +40,8 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
         try {
             tokenProviderResponse = tokenProvider.createTokenAuthorizer(createAuthorizer);
-        } catch (ResponseStatusException e) {
-            if (e.getStatus().equals(HttpStatus.BAD_REQUEST) && e.getReason().equals("Token expirado")) {
+        } catch (FeignException.FeignClientException e) {
+            if (e.status() == 400) {
                 throw new UnauthorizedException("User unauthorized");
             }
         }
