@@ -2,6 +2,7 @@ package com.ciandt.summit.bootcamp2022.infra.adapters.repositories;
 
 import com.ciandt.summit.bootcamp2022.domain.Music;
 import com.ciandt.summit.bootcamp2022.domain.ports.repositories.MusicRepositoryPort;
+import com.ciandt.summit.bootcamp2022.exceptions.NoContentException;
 import com.ciandt.summit.bootcamp2022.infra.adapters.entities.MusicEntity;
 import org.springframework.stereotype.Component;
 
