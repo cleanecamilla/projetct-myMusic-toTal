@@ -37,7 +37,6 @@ Os 3 tipos de commit que utilizaremos são:
 - **IDE**: IntelliJ
 - **Modelo de Gerenciamento do versionamento**: Git Flow e Git Flow Tool
 - **Arquitetura**: Arquitetura Hexagonal
-- **Link do Repositório**: myMusic-CheckerLovers
 - **SetUp**:
     * [Jacoco](https://www.eclemma.org/jacoco/)
     * [Lombok](https://projectlombok.org/)
@@ -58,7 +57,7 @@ Done: [status](https://img.shields.io/badge/-DONE-green)
 | Story                        | Descrição                                                          | Status                                                       |
 |------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------|
 | Buscar novas músicas         | Adicionar o sistema de busca de músicas, com filtro opcional       | ![status](https://img.shields.io/badge/-IN%20PROGRESS-blue)  |
-| Adicionar música na playlist | Adicionar o sistema de playlists, com adição de músicas à playlist | ![status](https://img.shields.io/badge/-TO%20DO-lightgrey)   |        |
+| Adicionar música na playlist | Adicionar o sistema de playlists, com adição de músicas à playlist | ![status](https://img.shields.io/badge/-IN%20PROGRESS-blue)  |        |
 
 ## ✒ Equipe
 
