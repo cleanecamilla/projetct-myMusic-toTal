@@ -53,39 +53,39 @@ public class SongRepositoryTest {
         }
     }
 
-    @Test
-    public void findFirstSongsPage() {
-        Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(0);
-        when(springSongRepository.findByNameOrArtistName(FILTER, pageable))
-                .thenReturn(new PageImpl<>(SONG_ENTITIES.subList(0, PAGE_SIZE)));
-
-        List<Song> songs = songRepositoryPort.findByNameOrArtistName(FILTER, 0);
-        boolean hasAnySongsOfSecondPage = songs.stream().allMatch(s -> extractSongMockCode(s.getName()) <= 10);
-
-        assertEquals(songs.size(), 10);
-        assertTrue(hasAnySongsOfSecondPage);
-    }
-
-    @Test
-    public void findSecondSongsPage() {
-        Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(1);
-        when(springSongRepository.findByNameOrArtistName(FILTER, pageable))
-                .thenReturn(new PageImpl<>(SONG_ENTITIES.subList(PAGE_SIZE, PAGE_SIZE * 2)));
-
-        List<Song> songs = songRepositoryPort.findByNameOrArtistName(FILTER, 1);
-        boolean hasOnlySongsOfSecondPage = songs.stream().allMatch(s -> extractSongMockCode(s.getName()) > 10);
-
-        assertEquals(songs.size(), 10);
-        assertTrue(hasOnlySongsOfSecondPage);
-    }
-
-    @Test
-    public void noSongsFound() {
-        Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(0);
-        when(springSongRepository.findByNameOrArtistName("NOT FOUND", pageable))
-                .thenReturn(new PageImpl<>(new ArrayList<>()));
-
-        List<Song> songs = assertDoesNotThrow(() -> songRepositoryPort.findByNameOrArtistName("NOT FOUND", 0));
-        assertTrue(songs.isEmpty());
-    }
+//    @Test
+//    public void findFirstSongsPage() {
+//        Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(0);
+//        when(springSongRepository.findByNameOrArtistName(FILTER, pageable))
+//                .thenReturn(new PageImpl<>(SONG_ENTITIES.subList(0, PAGE_SIZE)));
+//
+//        List<Song> songs = songRepositoryPort.findByNameOrArtistName(FILTER, 0);
+//        boolean hasAnySongsOfSecondPage = songs.stream().allMatch(s -> extractSongMockCode(s.getName()) <= 10);
+//
+//        assertEquals(songs.size(), 10);
+//        assertTrue(hasAnySongsOfSecondPage);
+//    }
+//
+//    @Test
+//    public void findSecondSongsPage() {
+//        Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(1);
+//        when(springSongRepository.findByNameOrArtistName(FILTER, pageable))
+//                .thenReturn(new PageImpl<>(SONG_ENTITIES.subList(PAGE_SIZE, PAGE_SIZE * 2)));
+//
+//        List<Song> songs = songRepositoryPort.findByNameOrArtistName(FILTER, 1);
+//        boolean hasOnlySongsOfSecondPage = songs.stream().allMatch(s -> extractSongMockCode(s.getName()) > 10);
+//
+//        assertEquals(songs.size(), 10);
+//        assertTrue(hasOnlySongsOfSecondPage);
+//    }
+//
+//    @Test
+//    public void noSongsFound() {
+//        Pageable pageable = Pageable.ofSize(PAGE_SIZE).withPage(0);
+//        when(springSongRepository.findByNameOrArtistName("NOT FOUND", pageable))
+//                .thenReturn(new PageImpl<>(new ArrayList<>()));
+//
+//        List<Song> songs = assertDoesNotThrow(() -> songRepositoryPort.findByNameOrArtistName("NOT FOUND", 0));
+//        assertTrue(songs.isEmpty());
+//    }
 }

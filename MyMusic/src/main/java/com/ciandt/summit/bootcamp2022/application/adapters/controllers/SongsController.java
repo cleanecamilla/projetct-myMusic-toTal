@@ -23,8 +23,7 @@ public class SongsController {
     public ResponseEntity<SongResponseDTO> findSongsByNameOrArtistName(@RequestParam(name = "filtro") String filter)
             throws SongsNotFoundException, InvalidSongNameOrArtistNameException {
 
-        List<SongDTO> list = songServicePort.findByNameOrArtistName(filter, 10);
-        SongResponseDTO response = new SongResponseDTO(list);
+        SongResponseDTO response = songServicePort.findByNameOrArtistName(filter, 10);
         return ResponseEntity.ok().body(response);
     }
 }
