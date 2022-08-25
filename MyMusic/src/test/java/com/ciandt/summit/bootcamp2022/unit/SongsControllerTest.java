@@ -55,7 +55,7 @@ public class SongsControllerTest {
 
     private static final List<SongDTO> SONGS_FROM_SERVICE = new ArrayList<>();
 
-    private final int PAGE_SIZE = 10;
+    private final int PAGE_NUMBER = 0;
 
     @BeforeAll
     static void setup(){
@@ -82,7 +82,7 @@ public class SongsControllerTest {
     @EmptySource
     @ValueSource(strings = {"A"})
     public void callFindSongsEndpointPassingInvalidParametersReturnsBadRequest(String parameter) throws Exception {
-        when(songServicePort.findByNameOrArtistName(parameter, PAGE_SIZE))
+        when(songServicePort.findByNameOrArtistName(parameter, PAGE_NUMBER))
                 .thenThrow(InvalidSongNameOrArtistNameException.class);
 
         List<SongDTO> expected = List.of();
@@ -104,7 +104,7 @@ public class SongsControllerTest {
     public void callFindSongsEndpointPassingValidParameterReturnsNotFound() throws Exception {
         String parameter = "NOT_FOUND";
 
-        when(songServicePort.findByNameOrArtistName(parameter, PAGE_SIZE))
+        when(songServicePort.findByNameOrArtistName(parameter, PAGE_NUMBER))
                 .thenThrow(SongsNotFoundException.class);
 
         when(tokenProvider.createTokenAuthorizer(fakeCreateAuthorizer))
@@ -127,8 +127,8 @@ public class SongsControllerTest {
     public void callFindSongsEndpointPassingValidParameterRelatedToSong() throws Exception {
         String parameter = "About";
 
-        when(songServicePort.findByNameOrArtistName(parameter, PAGE_SIZE))
-                .thenReturn(new ArrayList<>(SONGS_FROM_SERVICE.subList(0, 3)));
+        when(songServicePort.findByNameOrArtistName(parameter, PAGE_NUMBER))
+                .thenReturn(new SongResponseDTO(SONGS_FROM_SERVICE.subList(0, 3)));
 
         when(tokenProvider.createTokenAuthorizer(fakeCreateAuthorizer))
                 .thenReturn(ResponseEntity.status(201).body("ok"));
@@ -137,7 +137,7 @@ public class SongsControllerTest {
                 .perform(get("/api/musicas")
                         .header("token", TOKEN)
                         .header("user", USER)
-                        .param("filtro", parameter)).andReturn().getResponse();
+                        .param("filtro", parameter).param("pagina", "0")).andReturn().getResponse();
 
         SongResponseDTO expectedResponse = setupResponse(SONGS_FROM_SERVICE.subList(0, 3));
         String expectedResponseAsString = expectedResponse.toString().replaceAll(" ", "");
@@ -152,8 +152,8 @@ public class SongsControllerTest {
     public void callFindSongsEndpointPassingValidParameterRelatedToArtist() throws Exception {
         String parameter = "Artist";
 
-        when(songServicePort.findByNameOrArtistName(parameter, PAGE_SIZE))
-                .thenReturn(new ArrayList<>(SONGS_FROM_SERVICE.subList(0, 10)));
+        when(songServicePort.findByNameOrArtistName(parameter, PAGE_NUMBER))
+                .thenReturn(new SongResponseDTO(SONGS_FROM_SERVICE));
 
         when(tokenProvider.createTokenAuthorizer(fakeCreateAuthorizer))
                 .thenReturn(ResponseEntity.status(201).body("ok"));
@@ -162,7 +162,7 @@ public class SongsControllerTest {
                 .perform(get("/api/musicas")
                         .header("token", TOKEN)
                         .header("user", USER)
-                        .param("filtro", parameter)).andReturn().getResponse();
+                        .param("filtro", parameter).param("pagina", "0")).andReturn().getResponse();
 
         SongResponseDTO expectedResponse = setupResponse(SONGS_FROM_SERVICE);
         String expectedResponseAsString = expectedResponse.toString().replaceAll(" ", "");
@@ -174,6 +174,6 @@ public class SongsControllerTest {
     }
 
     private SongResponseDTO setupResponse(List<SongDTO> songs){
-        return new SongResponseDTO(songs);
+        return new SongResponseDTO(songs, songs.size());
     }
 }

@@ -60,7 +60,8 @@ public class AuthorizationInterceptorTest {
     public void authorizeRequestTest() throws Exception {
         List<SongDTO> expected = List.of();
         SongResponseDTO response = new SongResponseDTO(expected);
-        when(songsController.findSongsByNameOrArtistName("filter"))
+
+        when(songsController.findSongsByNameOrArtistName("filter", 0))
                 .thenReturn(ResponseEntity.ok(response));
 
         when(tokenProvider.createTokenAuthorizer(fakeCreateAuthorizer))
@@ -73,7 +74,8 @@ public class AuthorizationInterceptorTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect((mvcResult) -> {
-                    assertTrue(mvcResult.getResponse().getContentAsString().equals(response.toString()));
+                    assertEquals(mvcResult.getResponse().getContentAsString(),
+                            response.toString().replaceAll(" ", ""));
                 });
     }
 

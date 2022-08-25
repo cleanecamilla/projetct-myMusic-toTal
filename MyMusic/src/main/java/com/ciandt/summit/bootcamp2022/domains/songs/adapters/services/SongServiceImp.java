@@ -28,6 +28,11 @@ public class SongServiceImp implements SongServicePort {
         }
 
         SongsPaginated songs = songRepositoryPort.findByNameOrArtistName(name, pageNumber);
+
+        if(songs == null){
+            throw new SongsNotFoundException("No songs were found.");
+        }
+
         List<SongDTO> songDTOS = convertSongListToDTOList(songs.getData());
         return new SongResponseDTO(songDTOS, songs.getTotalElements());
     }
