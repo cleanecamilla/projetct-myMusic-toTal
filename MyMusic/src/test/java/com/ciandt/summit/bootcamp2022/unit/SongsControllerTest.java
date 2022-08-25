@@ -5,6 +5,7 @@ import com.ciandt.summit.bootcamp2022.domains.artists.dtos.ArtistDTO;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.InvalidSongNameOrArtistNameException;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.SongsNotFoundException;
 import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongDTO;
+import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongResponseDTO;
 import com.ciandt.summit.bootcamp2022.domains.songs.ports.interfaces.SongServicePort;
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDTO;
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDataDTO;
@@ -115,8 +116,11 @@ public class SongsControllerTest {
                         .header("user", USER)
                         .param("filtro", parameter)).andReturn().getResponse();
 
+        SongResponseDTO expectedResponse = setupResponse(List.of());
+        String expectedResponseAsString = expectedResponse.toString().replaceAll(" ", "");
+
         assertEquals(HttpStatus.NO_CONTENT.value(), response.getStatus());
-        assertEquals("[]", response.getContentAsString());
+        assertEquals(expectedResponseAsString, response.getContentAsString());
     }
 
     @Test
@@ -135,11 +139,13 @@ public class SongsControllerTest {
                         .header("user", USER)
                         .param("filtro", parameter)).andReturn().getResponse();
 
-        String responseContent = response.getContentAsString().replaceAll(" ", "");
-        String expectedContent = SONGS_FROM_SERVICE.subList(0, 3).toString().replaceAll(" ", "");
+        SongResponseDTO expectedResponse = setupResponse(SONGS_FROM_SERVICE.subList(0, 3));
+        String expectedResponseAsString = expectedResponse.toString().replaceAll(" ", "");
+
+        String actualResponseAsString = response.getContentAsString().replaceAll(" ", "");
 
         assertEquals(HttpStatus.OK.value(), response.getStatus());
-        assertEquals(expectedContent, responseContent);
+        assertEquals(expectedResponseAsString, actualResponseAsString);
     }
 
     @Test
@@ -158,10 +164,16 @@ public class SongsControllerTest {
                         .header("user", USER)
                         .param("filtro", parameter)).andReturn().getResponse();
 
-        String responseContent = response.getContentAsString().replaceAll(" ", "");
-        String expectedContent = SONGS_FROM_SERVICE.toString().replaceAll(" ", "");
+        SongResponseDTO expectedResponse = setupResponse(SONGS_FROM_SERVICE);
+        String expectedResponseAsString = expectedResponse.toString().replaceAll(" ", "");
+
+        String actualResponseAsString = response.getContentAsString().replaceAll(" ", "");
 
         assertEquals(HttpStatus.OK.value(), response.getStatus());
-        assertEquals(expectedContent, responseContent);
+        assertEquals(expectedResponseAsString, actualResponseAsString);
+    }
+
+    private SongResponseDTO setupResponse(List<SongDTO> songs){
+        return new SongResponseDTO(songs);
     }
 }
