@@ -1,5 +1,6 @@
 package com.ciandt.summit.bootcamp2022.application.adapters.controllers;
 
+import com.ciandt.summit.bootcamp2022.application.adapters.controllers.docs.SongControllerDocs;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.InvalidSongNameOrArtistNameException;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.SongsNotFoundException;
 import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongDTO;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class SongsController {
+public class SongsController implements SongControllerDocs {
 
     @Autowired
     private SongServicePort songServicePort;
