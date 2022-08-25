@@ -9,7 +9,6 @@ import com.ciandt.summit.bootcamp2022.service.mapper.MusicDTOMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -20,8 +19,9 @@ public class MusicService {
     private final MusicDTOMapper musicDTOMapper;
 
     public Set<MusicDTO> findAllWithFilterByName(String name) {
+        final int MIN_NAME_LENGTH = 2;
 
-        if (name.length() <= 2)
+        if (name.length() < MIN_NAME_LENGTH)
             throw new MinFilterLenghtException();
 
         Set<Music> musicSet = musicRepository
