@@ -39,7 +39,8 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build()
-                .apiInfo(metaInfo());
+                .apiInfo(metaInfo())
+                .useDefaultResponseMessages(false);
     }
 
     @Bean
