@@ -3,6 +3,7 @@ package com.ciandt.summit.bootcamp2022.application.adapters.controllers;
 
 import com.ciandt.summit.bootcamp2022.domain.dtos.MusicDTO;
 import com.ciandt.summit.bootcamp2022.domain.ports.interfaces.MusicServicePort;
+import com.ciandt.summit.bootcamp2022.exceptions.InvalidParameterException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,8 @@ public class MusicController {
 
     @GetMapping(value = "/music")
     public ResponseEntity<Set<MusicDTO>> findMusicByName(@RequestParam("name") String name) {
+        if(name == null || name.length() < 2)
+            throw new InvalidParameterException("O termo buscado deve ter pelo menos 2 caracteres.");
         return ResponseEntity.ok(musicServicePort.getMusicsByFilter(name));
     }
 

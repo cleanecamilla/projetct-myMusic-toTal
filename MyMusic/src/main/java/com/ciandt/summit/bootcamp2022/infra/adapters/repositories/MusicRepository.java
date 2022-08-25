@@ -25,12 +25,6 @@ public class MusicRepository implements MusicRepositoryPort {
         Set<Music> musicDTOList = musicEntityList.stream()
                 .map(MusicEntity::toMusic)
                 .collect(Collectors.toSet());
-
-        if (name.length() < 3) {
-            throw new IllegalArgumentException("Insira um nome com 3 caracteres ou mais");
-        } else if (name==null){
-            throw new IllegalArgumentException("Insira um nome");
-        }
         return musicDTOList;
     }
 
