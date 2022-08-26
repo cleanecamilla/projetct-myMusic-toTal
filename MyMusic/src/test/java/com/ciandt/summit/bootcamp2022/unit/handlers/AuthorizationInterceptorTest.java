@@ -3,6 +3,7 @@ package com.ciandt.summit.bootcamp2022.unit.handlers;
 import com.ciandt.summit.bootcamp2022.application.adapters.controllers.SongsController;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.tokens.BadAuthRequestException;
 import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongDTO;
+import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongResponseDTO;
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDTO;
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDataDTO;
 import com.ciandt.summit.bootcamp2022.infra.feignclients.TokenProvider;
@@ -58,9 +59,10 @@ public class AuthorizationInterceptorTest {
     @Test
     public void authorizeRequestTest() throws Exception {
         List<SongDTO> expected = List.of();
+        SongResponseDTO response = new SongResponseDTO(expected);
 
-        when(songsController.findSongsByNameOrArtistName("filter"))
-                .thenReturn(ResponseEntity.ok(expected));
+        when(songsController.findSongsByNameOrArtistName("filter", 0))
+                .thenReturn(ResponseEntity.ok(response));
 
         when(tokenProvider.createTokenAuthorizer(fakeCreateAuthorizer))
                 .thenReturn(ResponseEntity.status(201).body("ok"));
@@ -72,7 +74,8 @@ public class AuthorizationInterceptorTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect((mvcResult) -> {
-                    assertTrue(mvcResult.getResponse().getContentAsString().equals("[]"));
+                    assertEquals(mvcResult.getResponse().getContentAsString(),
+                            response.toString().replaceAll(" ", ""));
                 });
     }
 

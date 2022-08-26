@@ -6,6 +6,7 @@ import com.ciandt.summit.bootcamp2022.domains.exceptions.tokens.BadAuthRequestEx
 import com.ciandt.summit.bootcamp2022.domains.exceptions.tokens.UnauthorizedException;
 import com.ciandt.summit.bootcamp2022.domains.songs.Song;
 import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongDTO;
+import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongResponseDTO;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +32,10 @@ public class ErroHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(SongsNotFoundException.class)
-    public final ResponseEntity<ArrayList<SongDTO>> handlerSongNotFoundExceptions (Exception exception, WebRequest request){
+    public final ResponseEntity<SongResponseDTO> handlerSongNotFoundExceptions (Exception exception, WebRequest request){
         ArrayList<SongDTO> songDTOS = new ArrayList<>();
-        return new ResponseEntity<>(songDTOS, HttpStatus.NO_CONTENT);
+        SongResponseDTO response = new SongResponseDTO(songDTOS);
+        return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
     }
 
     @ExceptionHandler(InvalidSongNameOrArtistNameException.class)
