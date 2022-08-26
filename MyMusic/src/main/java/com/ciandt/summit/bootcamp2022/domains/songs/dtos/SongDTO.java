@@ -2,6 +2,8 @@ package com.ciandt.summit.bootcamp2022.domains.songs.dtos;
 
 import com.ciandt.summit.bootcamp2022.domains.artists.dtos.ArtistDTO;
 
+import java.util.Objects;
+
 public class SongDTO {
 
     private String id;
@@ -12,6 +14,19 @@ public class SongDTO {
         this.id = id;
         this.name = name;
         this.artist = artist;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SongDTO songDTO = (SongDTO) o;
+        return Objects.equals(id, songDTO.id) && Objects.equals(name, songDTO.name) && Objects.equals(artist, songDTO.artist);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, artist);
     }
 
     public String getName() {
