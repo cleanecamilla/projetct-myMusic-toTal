@@ -57,7 +57,6 @@ public class ErroHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(PlaylistsNotFoundException.class)
     public final ResponseEntity<ArrayList<Playlist>> handlerPlaylistsNotFoundException (Exception exception, WebRequest request){
         ArrayList<Playlist> playlists = new ArrayList<>();
-        return new ResponseEntity<>(playlists, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(playlists, HttpStatus.BAD_REQUEST);
     }
-
 }
