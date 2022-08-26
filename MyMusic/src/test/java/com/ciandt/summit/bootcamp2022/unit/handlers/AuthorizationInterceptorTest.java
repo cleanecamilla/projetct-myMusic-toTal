@@ -1,14 +1,18 @@
 package com.ciandt.summit.bootcamp2022.unit.handlers;
 
-import com.ciandt.summit.bootcamp2022.application.adapters.controllers.MusicController;
+import com.ciandt.summit.bootcamp2022.application.adapters.controllers.SongsController;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.tokens.BadAuthRequestException;
 import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongDTO;
+import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongResponseDTO;
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDTO;
 import com.ciandt.summit.bootcamp2022.domains.token.dto.CreateAuthorizerDataDTO;
 import com.ciandt.summit.bootcamp2022.infra.feignclients.TokenProvider;
+import feign.FeignException;
+import feign.Request;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -19,6 +23,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -29,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //TODO: refinar testes após a conclusão da feature 812
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(controllers = MusicController.class)
+@WebMvcTest(controllers = SongsController.class)
 public class AuthorizationInterceptorTest {
     @Autowired
     private MockMvc mockMvc;
@@ -38,7 +43,7 @@ public class AuthorizationInterceptorTest {
     private TokenProvider tokenProvider;
 
     @MockBean
-    private MusicController musicController;
+    private SongsController songsController;
 
     private final String TOKEN = "token";
     private final String USER = "user";
@@ -54,9 +59,10 @@ public class AuthorizationInterceptorTest {
     @Test
     public void authorizeRequestTest() throws Exception {
         List<SongDTO> expected = List.of();
+        SongResponseDTO response = new SongResponseDTO(expected);
 
-        when(musicController.findSongsByNameOrArtistName("filter"))
-                .thenReturn(ResponseEntity.ok(expected));
+        when(songsController.findSongsByNameOrArtistName("filter", 0))
+                .thenReturn(ResponseEntity.ok(response));
 
         when(tokenProvider.createTokenAuthorizer(fakeCreateAuthorizer))
                 .thenReturn(ResponseEntity.status(201).body("ok"));
@@ -68,13 +74,14 @@ public class AuthorizationInterceptorTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect((mvcResult) -> {
-                    assertTrue(mvcResult.getResponse().getContentAsString().equals("[]"));
+                    assertEquals(mvcResult.getResponse().getContentAsString(),
+                            response.toString().replaceAll(" ", ""));
                 });
     }
 
     @Test
     public void authHeadersNotFoundTest() throws Exception {
-        mockMvc.perform(get("/api/v1/music"))
+        mockMvc.perform(get("/api/musicas?filtro=filter"))
                 .andExpect(result -> {
                     Exception exception = result.getResolvedException();
 
@@ -86,11 +93,13 @@ public class AuthorizationInterceptorTest {
 
     @Test
     public void unauthorizedRequestTest() throws Exception {
+        Request fakeFeignRequest = Request.create(Request.HttpMethod.GET, "", new TreeMap<>(), null, null, null);
+
         when(tokenProvider.createTokenAuthorizer(fakeCreateAuthorizer))
-                .thenThrow(new ResponseStatusException(HttpStatus.BAD_REQUEST, "Token expirado"));
+                .thenThrow(new FeignException.FeignClientException(400, "message", fakeFeignRequest, null, null));
 
         mockMvc.perform(
-                    get("/api/v1/music")
+                    get("/api/musicas?filtro=filter")
                             .header("token", TOKEN)
                             .header("user", USER)
                 )
