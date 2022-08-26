@@ -23,12 +23,15 @@ public class PlaylistServiceImp implements PlaylistServicePort {
     }
 
     @Override
-    public void addSongsToPlaylist(String id, List<SongDTO> songs) throws SongsNotFoundException, PlaylistsNotFoundException {
+    public Playlist addSongsToPlaylist(String id, List<SongDTO> songs) throws SongsNotFoundException, PlaylistsNotFoundException {
         Playlist playlist = this.playlistRespositoryPort.findById(id);
         for (SongDTO songDTO : songs) {
             Song song = this.songRepositoryPort.findById(songDTO.getId());
             playlist.getSongs().add(song);
         }
+
         this.playlistRespositoryPort.addSong(new PlaylistEntity(playlist));
+
+        return playlist;
     }
 }
