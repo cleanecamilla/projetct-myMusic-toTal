@@ -1,9 +1,11 @@
 package com.ciandt.summit.bootcamp2022.application.adapters.controllers.handlers;
 
+import com.ciandt.summit.bootcamp2022.domains.exceptions.playlists.PlaylistsNotFoundException;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.InvalidSongNameOrArtistNameException;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.SongsNotFoundException;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.tokens.BadAuthRequestException;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.tokens.UnauthorizedException;
+import com.ciandt.summit.bootcamp2022.domains.playlists.Playlist;
 import com.ciandt.summit.bootcamp2022.domains.songs.Song;
 import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongDTO;
 import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongResponseDTO;
@@ -51,6 +53,11 @@ public class ErroHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UnauthorizedException.class)
     public final ResponseEntity<SongDTO> handlerUnauthorizedExceptions (Exception exception, WebRequest request){
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
+    @ExceptionHandler(PlaylistsNotFoundException.class)
+    public final ResponseEntity<ArrayList<Playlist>> handlerPlaylistsNotFoundException (Exception exception, WebRequest request){
+        ArrayList<Playlist> playlists = new ArrayList<>();
+        return new ResponseEntity<>(playlists, HttpStatus.NO_CONTENT);
     }
 
 }

@@ -4,6 +4,7 @@ import com.ciandt.summit.bootcamp2022.domains.artists.Artist;
 import com.ciandt.summit.bootcamp2022.domains.songs.Song;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ArtistDTO {
     private String id;
@@ -24,6 +25,22 @@ public class ArtistDTO {
     public ArtistDTO(String id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ArtistDTO artistDTO = (ArtistDTO) o;
+
+        return Objects.equals(id, artistDTO.id) && Objects.equals(name, artistDTO.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     public String getName() {
