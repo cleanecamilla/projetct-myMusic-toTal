@@ -76,7 +76,7 @@ public class CustomAuthenticationFilter extends AbstractAuthenticationProcessing
     }
 
     private boolean isBasic(String header){
-        return header.contains("Basic ");
+        return header != null && header.contains("Basic ");
     }
 
 }
