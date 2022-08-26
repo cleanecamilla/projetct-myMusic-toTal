@@ -5,7 +5,9 @@ import com.ciandt.summit.bootcamp2022.domains.artists.Artist;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.InvalidSongNameOrArtistNameException;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.SongsNotFoundException;
 import com.ciandt.summit.bootcamp2022.domains.songs.Song;
+import com.ciandt.summit.bootcamp2022.domains.songs.SongsPaginated;
 import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongDTO;
+import com.ciandt.summit.bootcamp2022.domains.songs.dtos.SongResponseDTO;
 import com.ciandt.summit.bootcamp2022.domains.songs.ports.interfaces.SongServicePort;
 import com.ciandt.summit.bootcamp2022.domains.songs.ports.repositories.SongRepositoryPort;
 import org.junit.jupiter.api.BeforeAll;
@@ -81,13 +83,15 @@ public class SongServiceTest {
             throws SongsNotFoundException, InvalidSongNameOrArtistNameException {
         String parameter = "About";
         when(songRepositoryPort.findByNameOrArtistName(parameter, PAGE_SIZE))
-                .thenReturn(new ArrayList<>(SONGS_FROM_REPO.subList(0, 3)));
+                .thenReturn(new SongsPaginated(SONGS_FROM_REPO.subList(0, 3),
+                        SONGS_FROM_REPO.subList(0, 3).size()));
 
-        List<SongDTO> songs = songServicePort.findByNameOrArtistName(parameter, PAGE_SIZE);
-        boolean returnedSongsContainParameterInName = songs.stream().allMatch(s -> s.getName().contains(parameter));
+        SongResponseDTO songResponseDTO = songServicePort.findByNameOrArtistName(parameter, PAGE_SIZE);
+        boolean returnedSongsContainParameterInName = songResponseDTO.getData()
+                .stream().allMatch(s -> s.getName().contains(parameter));
 
         assertTrue(returnedSongsContainParameterInName);
-        assertEquals(3, songs.size());
+        assertEquals(3, songResponseDTO.getData().size());
     }
 
     @Test
@@ -95,14 +99,14 @@ public class SongServiceTest {
             throws SongsNotFoundException, InvalidSongNameOrArtistNameException {
         String parameter = "Artist";
         when(songRepositoryPort.findByNameOrArtistName(parameter, PAGE_SIZE))
-                .thenReturn(new ArrayList<>(SONGS_FROM_REPO.subList(0, PAGE_SIZE)));
+                .thenReturn(new SongsPaginated(SONGS_FROM_REPO.subList(0, PAGE_SIZE), PAGE_SIZE));
 
-        List<SongDTO> songs = songServicePort.findByNameOrArtistName(parameter, PAGE_SIZE);
-        boolean returnedSongsContainParameterInName = songs.stream().allMatch(s ->
+        SongResponseDTO songResponseDTO = songServicePort.findByNameOrArtistName(parameter, PAGE_SIZE);
+        boolean returnedSongsContainParameterInName = songResponseDTO.getData().stream().allMatch(s ->
                 s.getArtist().getName().contains(parameter));
 
         assertTrue(returnedSongsContainParameterInName);
-        assertEquals(10, songs.size());
+        assertEquals(10, songResponseDTO.getData().size());
     }
 
 }
