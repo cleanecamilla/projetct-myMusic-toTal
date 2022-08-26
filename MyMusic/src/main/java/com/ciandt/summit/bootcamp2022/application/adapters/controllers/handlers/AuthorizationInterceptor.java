@@ -46,10 +46,6 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
             }
         }
 
-        if (tokenProviderResponse != null && tokenProviderResponse.getBody().equals("ok")) {
-            return true;
-        }
-
-        return false;
+        return tokenProviderResponse != null && tokenProviderResponse.getBody().equals("ok");
     }
 }
