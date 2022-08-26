@@ -18,8 +18,8 @@ public class SongsController implements SongControllerDocs {
 
     @GetMapping("/musicas")
     @ResponseBody
-    public ResponseEntity<SongResponseDTO> findSongsByNameOrArtistName(@RequestParam(name = "filtro") String filter
-            , @RequestParam(name = "pagina", defaultValue = "0") int pageNumber)
+    public ResponseEntity<SongResponseDTO> findSongsByNameOrArtistName(@RequestParam(name = "filtro") String filter,
+                                                                       @RequestParam(name = "pagina", defaultValue = "0") int pageNumber)
             throws SongsNotFoundException, InvalidSongNameOrArtistNameException {
 
         SongResponseDTO response = songServicePort.findByNameOrArtistName(filter, pageNumber);
