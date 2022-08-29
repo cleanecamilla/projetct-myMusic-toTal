@@ -83,9 +83,7 @@ public class SongsControllerTest {
     @ValueSource(strings = {"A"})
     public void callFindSongsEndpointPassingInvalidParametersReturnsBadRequest(String parameter) throws Exception {
         when(songServicePort.findByNameOrArtistName(parameter, PAGE_NUMBER))
-                .thenThrow(InvalidSongNameOrArtistNameException.class);
-
-        List<SongDTO> expected = List.of();
+                .thenThrow(new InvalidSongNameOrArtistNameException("Filter must be at least 2 characters long."));
 
         when(tokenProvider.createTokenAuthorizer(fakeCreateAuthorizer))
                 .thenReturn(ResponseEntity.status(201).body("ok"));
@@ -97,7 +95,6 @@ public class SongsControllerTest {
                         .param("filtro", parameter)).andReturn();
 
         assertEquals(HttpStatus.BAD_REQUEST.value(), response.getResponse().getStatus());
-
     }
 
     @Test
@@ -105,7 +102,7 @@ public class SongsControllerTest {
         String parameter = "NOT_FOUND";
 
         when(songServicePort.findByNameOrArtistName(parameter, PAGE_NUMBER))
-                .thenThrow(SongsNotFoundException.class);
+                .thenThrow(new SongsNotFoundException("No songs were found."));
 
         when(tokenProvider.createTokenAuthorizer(fakeCreateAuthorizer))
                 .thenReturn(ResponseEntity.status(201).body("ok"));
