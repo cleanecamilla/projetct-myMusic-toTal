@@ -26,4 +26,9 @@ public class PlaylistController implements PlaylistControllerDocs {
 
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @Override
+    public ResponseEntity<?> removeSongFromPlaylist(String playlistId, String songId) throws SongsNotFoundException, PlaylistsNotFoundException {
+        return null;
+    }
 }

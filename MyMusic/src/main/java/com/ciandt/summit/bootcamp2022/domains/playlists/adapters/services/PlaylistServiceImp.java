@@ -34,4 +34,9 @@ public class PlaylistServiceImp implements PlaylistServicePort {
 
         return playlist;
     }
+
+    @Override
+    public Playlist removeSongFromPlaylist(String id, String songId) throws SongsNotFoundException, PlaylistsNotFoundException {
+        return null;
+    }
 }

@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface PlaylistServicePort {
     Playlist addSongsToPlaylist(String id, List<SongDTO> songs) throws SongsNotFoundException, PlaylistsNotFoundException;
+
+    Playlist removeSongFromPlaylist(String id, String songId) throws SongsNotFoundException, PlaylistsNotFoundException;
 }
