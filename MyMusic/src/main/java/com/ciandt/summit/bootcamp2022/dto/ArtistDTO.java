@@ -1,6 +1,5 @@
-package com.ciandt.summit.bootcamp2022.service.dto;
+package com.ciandt.summit.bootcamp2022.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

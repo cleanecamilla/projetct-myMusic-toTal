@@ -1,7 +1,7 @@
 package com.ciandt.summit.bootcamp2022.controller;
 
 import com.ciandt.summit.bootcamp2022.service.MusicService;
-import com.ciandt.summit.bootcamp2022.service.dto.MusicDTO;
+import com.ciandt.summit.bootcamp2022.dto.MusicDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

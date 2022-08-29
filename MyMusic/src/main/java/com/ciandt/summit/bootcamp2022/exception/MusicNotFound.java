@@ -1,4 +1,4 @@
-package com.ciandt.summit.bootcamp2022.service.exception;
+package com.ciandt.summit.bootcamp2022.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -2,12 +2,11 @@ package com.ciandt.summit.bootcamp2022.service;
 
 import com.ciandt.summit.bootcamp2022.entity.Music;
 import com.ciandt.summit.bootcamp2022.repository.MusicRepository;
-import com.ciandt.summit.bootcamp2022.service.dto.MusicDTO;
-import com.ciandt.summit.bootcamp2022.service.exception.MusicNotFound;
+import com.ciandt.summit.bootcamp2022.dto.MusicDTO;
+import com.ciandt.summit.bootcamp2022.exception.MusicNotFound;
 import com.ciandt.summit.bootcamp2022.service.mapper.MusicDTOMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 
 import java.util.Set;
 
