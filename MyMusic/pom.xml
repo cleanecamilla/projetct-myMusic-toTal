@@ -1,21 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.handson</groupId>
-    <artifactId>summit-bootcamp</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.3</version>
-    </parent>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.handson</groupId>
+	<artifactId>summit-bootcamp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.3</version>
+	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>		
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<jacoco.version>0.8.7</jacoco.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -51,17 +52,22 @@
 		<dependency>
         	<groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.xerial</groupId>
-            <artifactId>sqlite-jdbc</artifactId>
-            <version>3.21.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.zsoltfabok</groupId>
-            <artifactId>sqlite-dialect</artifactId>
-            <version>1.0</version>
-        </dependency>
+		</dependency>
+		<dependency>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+			<version>3.21.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.zsoltfabok</groupId>
+			<artifactId>sqlite-dialect</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.1</version>
+		</dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -73,6 +79,25 @@
             <version>2.9.2</version>
         </dependency>
     </dependencies>
+=========
+		</dependency>
+		<dependency>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+			<version>3.21.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.zsoltfabok</groupId>
+			<artifactId>sqlite-dialect</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.1</version>
+		</dependency>
+	</dependencies>
+>>>>>>>>> Temporary merge branch 2
 
 	<dependencyManagement>
 		<dependencies>
@@ -86,32 +111,86 @@
 		</dependencies>
 	</dependencyManagement>
 
-    <build>
-        <plugins>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${parent.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<classifier>spring-boot</classifier>
+							<mainClass>${fully.qualified.main.class}</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${parent.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                        <configuration>
-                            <classifier>spring-boot</classifier>
-                            <mainClass>${fully.qualified.main.class}</mainClass>
-                        </configuration>
-                    </execution>
-                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
             </plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
 				<configuration>
-					<source>11</source>
-					<target>11</target>
+					<excludes>
+						<exclude>com/ciandt/summit/bootcamp2022/SummitBootcampApplication.*</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/infra/configs/**</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/infra/adapters/entities/**</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/domains/songs/Song.*</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/domains/songs/dtos/**</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/domains/artists/Artist.**</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/domains/artists/dtos/**</exclude>
+						<exclude>com/ciandt/summit/bootcamp2022/application/adapters/controllers/**</exclude>
+					</excludes>
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/jacoco-report</outputDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>jacoco-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<rule>
+									<element>PACKAGE</element>
+									<limits>
+										<limit>
+											<counter>LINE</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>0.9</minimum>
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
-		</plugins>
+        </plugins>
 	</build>
 </project>

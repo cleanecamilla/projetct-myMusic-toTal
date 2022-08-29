@@ -2,6 +2,7 @@ package com.ciandt.summit.bootcamp2022.domains.playlists;
 
 import com.ciandt.summit.bootcamp2022.domains.songs.Song;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,6 +12,11 @@ public class Playlist {
 
     public Playlist(String id, List<Song> songs) {
         this.id = id;
+        this.songs = (songs == null) ? new ArrayList<>() : songs;
+    }
+
+    public Playlist() {
+
     }
 
     @Override
