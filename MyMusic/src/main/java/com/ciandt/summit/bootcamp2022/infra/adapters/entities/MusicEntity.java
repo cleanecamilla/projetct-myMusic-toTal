@@ -20,6 +20,10 @@ public class MusicEntity {
     @ManyToMany(mappedBy = "musics")
     private List<PlaylistEntity> playlists = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name="ArtistaId", referencedColumnName = "Id")
+    private ArtistEntity artist;
+
     public String getId() {
         return id;
     }
@@ -55,5 +59,13 @@ public class MusicEntity {
 
     public Music toMusic() {
         return new Music(this.id, this.nome, this.artistaId);
+    }
+
+    public List<PlaylistEntity> getPlaylists() {
+        return playlists;
+    }
+
+    public ArtistEntity getArtist() {
+        return artist;
     }
 }

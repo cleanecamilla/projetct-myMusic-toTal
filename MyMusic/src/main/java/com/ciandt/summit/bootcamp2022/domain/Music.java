@@ -51,6 +51,10 @@ public class Music {
         this.artistId = artistId;
     }
 
+    public List<PlaylistEntity> getPlaylists() {
+        return playlists;
+    }
+
     public MusicDTO toMusicDTO() {
         return new MusicDTO(this.id, this.name, this.artistId);
     }

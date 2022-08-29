@@ -22,4 +22,7 @@ public class PlaylistDTO implements Serializable {
         return id;
     }
 
+    public List<Music> getMusics() {
+        return musics;
+    }
 }

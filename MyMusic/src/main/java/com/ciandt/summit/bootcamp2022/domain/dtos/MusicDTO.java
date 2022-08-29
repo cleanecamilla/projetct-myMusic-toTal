@@ -32,4 +32,8 @@ public class MusicDTO implements Serializable {
     public String getArtistId() {
         return artistId;
     }
+
+    public List<PlaylistEntity> getPlaylists() {
+        return playlists;
+    }
 }
