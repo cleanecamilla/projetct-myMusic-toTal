@@ -42,3 +42,4 @@ public class PlaylistEntity {
         return new Playlist(this.id, songsMapped);
     }
 }
+
