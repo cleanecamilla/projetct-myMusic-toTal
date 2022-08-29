@@ -20,6 +20,12 @@ public interface PlaylistControllerDocs {
             @ApiResponse(code = 401, message = "")
     })
     ResponseEntity<?> addSongsToPlaylist(@PathVariable String playlistId,
-                                                @RequestBody PlaylistSongsRequestDTO playlistSongsRequestDTO)
+                                         @RequestBody PlaylistSongsRequestDTO playlistSongsRequestDTO)
             throws SongsNotFoundException, PlaylistsNotFoundException;
+
+    ResponseEntity<?> removeSongFromPlaylist(@PathVariable String playlistId,
+                                             @PathVariable String songId)
+            throws SongsNotFoundException, PlaylistsNotFoundException;
+
+
 }
