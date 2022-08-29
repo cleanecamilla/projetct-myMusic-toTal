@@ -16,6 +16,5 @@ public class MusicDTO {
 
     String id;
     String name;
-//    String artist;
     ArtistDTO artist;
 }

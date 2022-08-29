@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -30,11 +28,10 @@ public class MusicController {
 
     @GetMapping("/musicas")
     public ResponseEntity<Set<MusicDTO>> findAllWithFilterByName(
-            @RequestParam(name = "filtro", required = false) @Size(min = 10, message = "The filter must have at least 2 characters")  final String name){
+            @RequestParam(name = "filtro", required = false)
+            @Size(min = 2, message = "The filter must have at least 2 characters")  final String name){
 
         return
                 ResponseEntity.ok(musicService.findAllWithFilterByName(name));
     }
-
-
 }
