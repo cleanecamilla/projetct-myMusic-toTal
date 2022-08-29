@@ -1,5 +1,6 @@
 package com.ciandt.summit.bootcamp2022.application.adapters.controllers;
 
+import com.ciandt.summit.bootcamp2022.application.adapters.controllers.docs.PlaylistControllerDocs;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.playlists.PlaylistsNotFoundException;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.SongsNotFoundException;
 import com.ciandt.summit.bootcamp2022.domains.playlists.dtos.PlaylistSongsRequestDTO;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/playlists")
-public class PlaylistController {
+public class PlaylistController implements PlaylistControllerDocs {
 
     @Autowired
     private PlaylistServicePort playlistServicePort;
