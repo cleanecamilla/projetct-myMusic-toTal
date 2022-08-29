@@ -42,7 +42,6 @@ public class Artist {
         return "Artist{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", songs=" + songs +
                 '}';
     }
 
