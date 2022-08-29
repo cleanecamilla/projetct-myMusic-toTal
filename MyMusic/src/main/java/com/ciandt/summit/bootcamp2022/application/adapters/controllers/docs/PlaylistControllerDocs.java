@@ -16,7 +16,8 @@ public interface PlaylistControllerDocs {
     @ApiOperation("Add songs to existing playlist")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Added songs successfully"),
-            @ApiResponse(code = 400, message = "Could not find specified song(s) in the database")
+            @ApiResponse(code = 400, message = "Could not find specified song(s) in the database"),
+            @ApiResponse(code = 401, message = "")
     })
     ResponseEntity<?> addSongsToPlaylist(@PathVariable String playlistId,
                                                 @RequestBody PlaylistSongsRequestDTO playlistSongsRequestDTO)
