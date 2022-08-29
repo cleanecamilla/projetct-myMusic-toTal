@@ -17,6 +17,6 @@ public interface MusicRepository extends JpaRepository<Music, String> {
             "ORDER BY art.Nome, msc.Nome",
 
             nativeQuery = true)
-    Optional<Set<Music>> findAllWithFilterByName(@Param("name") String name);
+    Optional<Set<Music>> findAllWithFilter(@Param("name") String name);
 
 }
