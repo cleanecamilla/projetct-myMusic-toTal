@@ -3,6 +3,7 @@ package com.ciandt.summit.bootcamp2022.unit;
 import com.ciandt.summit.bootcamp2022.SummitBootcampApplication;
 import com.ciandt.summit.bootcamp2022.domains.artists.Artist;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.playlists.PlaylistsNotFoundException;
+import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.DuplicatedSongInPlaylist;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.SongsNotFoundException;
 import com.ciandt.summit.bootcamp2022.domains.playlists.Playlist;
 import com.ciandt.summit.bootcamp2022.domains.playlists.ports.interfaces.PlaylistServicePort;
@@ -66,7 +67,7 @@ public class PlaylistServiceTest {
     }
 
     @Test
-    void addSongsToPlaylistPassingValidListOfSongs() throws PlaylistsNotFoundException, SongsNotFoundException {
+    void addSongsToPlaylistPassingValidListOfSongs() throws PlaylistsNotFoundException, SongsNotFoundException, DuplicatedSongInPlaylist {
         String id = PLAYLISTS_FROM_REPO.get(2).getId();
         List<SongDTO> songs = new ArrayList<>();
         songs.add(SONGS_FROM_REPO.get(0).toDTO());
