@@ -1,5 +1,7 @@
 package com.ciandt.summit.bootcamp2022.infra.adapters.entities;
 
+import com.ciandt.summit.bootcamp2022.domain.Artist;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -24,6 +26,11 @@ public class ArtistEntity implements Serializable {
     }
 
     public ArtistEntity() {
+    }
+
+    public ArtistEntity(Artist artist) {
+        this.id = artist.getId();
+        this.name = artist.getName();
     }
 
     public String getId() {

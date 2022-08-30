@@ -14,9 +14,6 @@ public class MusicEntity {
     private String id;
     @Column(name="Nome")
     private String nome;
-    @Column(name="ArtistaId")
-    private String artistaId;
-
     @ManyToMany(mappedBy = "musics")
     private List<PlaylistEntity> playlists = new ArrayList<>();
 
@@ -32,13 +29,18 @@ public class MusicEntity {
         this.id = id;
     }
 
-    public MusicEntity(String id, String nome, String artistaId) {
+    public MusicEntity(String id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.artistaId = artistaId;
     }
 
     public MusicEntity() {
+    }
+
+    public MusicEntity(Music music) {
+        this.id = music.getId();
+        this.nome = music.getName();
+        this.artist = new ArtistEntity(music.getArtist());
     }
 
     public String getNome() {
@@ -49,16 +51,8 @@ public class MusicEntity {
         this.nome = nome;
     }
 
-    public String getArtistaId() {
-        return artistaId;
-    }
-
-    public void setArtistaId(String artistaId) {
-        this.artistaId = artistaId;
-    }
-
     public Music toMusic() {
-        return new Music(this.id, this.nome, this.artistaId);
+        return new Music(this.id, this.nome);
     }
 
     public List<PlaylistEntity> getPlaylists() {

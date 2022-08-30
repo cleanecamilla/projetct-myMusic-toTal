@@ -1,10 +1,12 @@
 package com.ciandt.summit.bootcamp2022.infra.adapters.entities;
 
 import com.ciandt.summit.bootcamp2022.domain.Music;
+import com.ciandt.summit.bootcamp2022.domain.Playlist;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="Playlists")
@@ -19,7 +21,7 @@ public class PlaylistEntity {
             joinColumns = @JoinColumn(name = "PlaylistId"),
             inverseJoinColumns = @JoinColumn(name = "MusicaId")
     )
-    private List<Music> musics = new ArrayList<>();
+    private List<MusicEntity> musics = new ArrayList<>();
 
     public PlaylistEntity() {}
 
@@ -31,7 +33,7 @@ public class PlaylistEntity {
         return id;
     }
 
-    public List<Music> getMusics() {
+    public List<MusicEntity> getMusics() {
         return musics;
     }
 }
