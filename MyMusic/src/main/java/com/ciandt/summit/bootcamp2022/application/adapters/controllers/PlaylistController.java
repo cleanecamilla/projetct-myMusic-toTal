@@ -1,14 +1,17 @@
 package com.ciandt.summit.bootcamp2022.application.adapters.controllers;
 
+import com.ciandt.summit.bootcamp2022.application.dtos.MusicDataDTO;
 import com.ciandt.summit.bootcamp2022.domain.dtos.MusicDTO;
 import com.ciandt.summit.bootcamp2022.domain.ports.interfaces.PlaylistServicePort;
+import org.json.JSONObject;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController(value = "/api/playlists")
+import java.net.URI;
+
+@RestController
+@RequestMapping("/api/playlists")
 public class PlaylistController {
 
     private final PlaylistServicePort playlistServicePort;
@@ -17,8 +20,11 @@ public class PlaylistController {
         this.playlistServicePort = playlistServicePort;
     }
 
-    @PutMapping("/{playlistId}/musicas")
-    public ResponseEntity<MusicDTO> addMusicToPlaylist(@PathVariable String playlistId, @RequestBody MusicDTO musicDTO) {
+    @PostMapping("/{playlistId}/musicas")
+    public ResponseEntity<MusicDataDTO> addMusicToPlaylist(@PathVariable String playlistId, @RequestBody MusicDataDTO data) {
+        System.out.println("a");
+        //this.playlistServicePort.addMusicToPlaylist(playlistId, data.getMusicList().get(0));
+        //return ResponseEntity.status(HttpStatus.CREATED).body(data);
         return null;
     }
 
