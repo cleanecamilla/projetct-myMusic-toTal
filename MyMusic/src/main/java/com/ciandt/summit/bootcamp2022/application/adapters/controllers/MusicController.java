@@ -28,7 +28,7 @@ public class MusicController {
         return ResponseEntity.ok(musicServicePort.searchMusics());
     }
 
-    @GetMapping(value = "/music")
+    @GetMapping
     public ResponseEntity<Set<MusicDTO>> findMusicByName(@RequestParam("name") String name) {
         if(name == null || name.length() < 2)
             throw new InvalidParameterException("O termo buscado deve ter pelo menos 2 caracteres.");
