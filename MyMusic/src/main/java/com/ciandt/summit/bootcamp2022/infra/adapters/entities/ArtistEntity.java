@@ -8,17 +8,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Artist")
+@Table(name = "Artistas")
 public class ArtistEntity implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="Id")
     private String id;
-    @Column(name="Name")
+    @Column(name="Nome")
     private String name;
 
-    @OneToMany(mappedBy = "artist")
-    private Set<MusicEntity> musics = new HashSet<>();
 
     public ArtistEntity(String id, String name) {
         this.id = id;
@@ -49,10 +47,4 @@ public class ArtistEntity implements Serializable {
         this.name = nome;
     }
 
-    public Set<MusicEntity> getMusics() {
-        return musics;
-    }
-    public void setMusics(Set<MusicEntity> musics) {
-        this.musics = musics;
-    }
 }
