@@ -2,10 +2,9 @@ package com.ciandt.summit.bootcamp2022.infra.adapters.entities;
 
 import com.ciandt.summit.bootcamp2022.domain.Music;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Musicas")
@@ -17,6 +16,13 @@ public class MusicEntity {
     private String nome;
     @Column(name="ArtistaId")
     private String artistaId;
+
+    @ManyToMany(mappedBy = "musics")
+    private List<PlaylistEntity> playlists = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name="ArtistaId", referencedColumnName = "Id")
+    private ArtistEntity artist;
 
     public String getId() {
         return id;
@@ -53,6 +59,14 @@ public class MusicEntity {
 
     public Music toMusic() {
         return new Music(this.id, this.nome, this.artistaId);
+    }
+
+    public List<PlaylistEntity> getPlaylists() {
+        return playlists;
+    }
+
+    public ArtistEntity getArtist() {
+        return artist;
     }
 
 }

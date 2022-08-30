@@ -7,7 +7,6 @@ import com.ciandt.summit.bootcamp2022.domain.ports.interfaces.MusicServicePort;
 
 import com.ciandt.summit.bootcamp2022.domain.ports.repositories.MusicRepositoryPort;
 
-import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -31,13 +30,7 @@ public class MusicServiceImpl implements MusicServicePort {
         Set<Music> musicListFiltered = this.musicRepositoryPort.getMusicsByFilter(name);
         Set<MusicDTO> musicDTOS = musicListFiltered.stream().map(Music::toMusicDTO).collect(Collectors.toSet());
 
-        if (name.length() < 2) {
-            throw new IllegalArgumentException("Insira um nome com 2 caracteres ou mais");
-        } else if (name==null){
-            throw new IllegalArgumentException("Insira um nome");
-        } else {
-            return musicDTOS;
-        }
+        return musicDTOS;
     }
 
     @Override
