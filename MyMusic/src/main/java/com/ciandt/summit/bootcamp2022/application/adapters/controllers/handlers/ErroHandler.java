@@ -39,20 +39,20 @@ public class ErroHandler extends ResponseEntityExceptionHandler {
         ArrayList<SongDTO> songDTOS = new ArrayList<>();
         SongResponseDTO response = new SongResponseDTO(songDTOS);
         if (exception.getMessage().equals("No songs were found.")) {
-            return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
+            return ResponseEntity.noContent().build();
         } else {
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().build();
         }
     }
 
     @ExceptionHandler(InvalidSongNameOrArtistNameException.class)
     public final ResponseEntity<SongDTO> handlerInvalidSongNameExceptions(Exception exception, WebRequest request) {
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest().build();
     }
 
     @ExceptionHandler(BadAuthRequestException.class)
     public final ResponseEntity<SongDTO> handlerBadRequestExceptions(Exception exception, WebRequest request) {
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest().build();
     }
 
     @ExceptionHandler(UnauthorizedException.class)
@@ -62,8 +62,7 @@ public class ErroHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(PlaylistsNotFoundException.class)
     public final ResponseEntity<ArrayList<Playlist>> handlerPlaylistsNotFoundException(Exception exception, WebRequest request) {
-        ArrayList<Playlist> playlists = new ArrayList<>();
-        return new ResponseEntity<>(playlists, HttpStatus.BAD_REQUEST);
+        return ResponseEntity.badRequest().build();
     }
 
     @ExceptionHandler(DuplicatedSongInPlaylist.class)
