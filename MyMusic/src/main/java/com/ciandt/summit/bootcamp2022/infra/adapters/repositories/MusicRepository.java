@@ -1,7 +1,9 @@
 package com.ciandt.summit.bootcamp2022.infra.adapters.repositories;
 
 import com.ciandt.summit.bootcamp2022.domain.Music;
+import com.ciandt.summit.bootcamp2022.domain.dtos.MusicDTO;
 import com.ciandt.summit.bootcamp2022.domain.ports.repositories.MusicRepositoryPort;
+import com.ciandt.summit.bootcamp2022.exceptions.NoContentException;
 import com.ciandt.summit.bootcamp2022.infra.adapters.entities.MusicEntity;
 import org.springframework.stereotype.Component;
 
@@ -25,12 +27,6 @@ public class MusicRepository implements MusicRepositoryPort {
         Set<Music> musicDTOList = musicEntityList.stream()
                 .map(MusicEntity::toMusic)
                 .collect(Collectors.toSet());
-
-        if (name.length() < 3) {
-            throw new IllegalArgumentException("Insira um nome com 3 caracteres ou mais");
-        } else if (name==null){
-            throw new IllegalArgumentException("Insira um nome");
-        }
         return musicDTOList;
     }
 
@@ -40,7 +36,7 @@ public class MusicRepository implements MusicRepositoryPort {
     }
 
     @Override
-    public void save(Music music) {
+    public void save(MusicDTO music) {
         MusicEntity musicEntity;
         if (Objects.isNull(music.getId())) {
             musicEntity = new MusicEntity(music.getId(), music.getName(), music.getArtistId());
