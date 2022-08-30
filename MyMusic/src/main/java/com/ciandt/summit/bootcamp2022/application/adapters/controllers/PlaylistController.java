@@ -2,6 +2,7 @@ package com.ciandt.summit.bootcamp2022.application.adapters.controllers;
 
 import com.ciandt.summit.bootcamp2022.application.adapters.controllers.docs.PlaylistControllerDocs;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.playlists.PlaylistsNotFoundException;
+import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.DuplicatedSongInPlaylist;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.SongsNotFoundException;
 import com.ciandt.summit.bootcamp2022.domains.playlists.dtos.PlaylistSongsRequestDTO;
 import com.ciandt.summit.bootcamp2022.domains.playlists.ports.interfaces.PlaylistServicePort;
@@ -20,7 +21,7 @@ public class PlaylistController implements PlaylistControllerDocs {
     @PostMapping("/{playlistId}/musicas")
     public ResponseEntity<?> addSongsToPlaylist(@PathVariable String playlistId,
                                                 @RequestBody PlaylistSongsRequestDTO playlistSongsRequestDTO)
-            throws SongsNotFoundException, PlaylistsNotFoundException {
+            throws SongsNotFoundException, PlaylistsNotFoundException, DuplicatedSongInPlaylist {
 
         playlistServicePort.addSongsToPlaylist(playlistId, playlistSongsRequestDTO.getData());
 

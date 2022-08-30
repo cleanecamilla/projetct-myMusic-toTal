@@ -1,6 +1,7 @@
 package com.ciandt.summit.bootcamp2022.application.adapters.controllers.docs;
 
 import com.ciandt.summit.bootcamp2022.domains.exceptions.playlists.PlaylistsNotFoundException;
+import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.DuplicatedSongInPlaylist;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.SongsNotFoundException;
 import com.ciandt.summit.bootcamp2022.domains.playlists.dtos.PlaylistSongsRequestDTO;
 import io.swagger.annotations.ApiOperation;
@@ -20,12 +21,11 @@ public interface PlaylistControllerDocs {
             @ApiResponse(code = 401, message = "")
     })
     ResponseEntity<?> addSongsToPlaylist(@PathVariable String playlistId,
-                                         @RequestBody PlaylistSongsRequestDTO playlistSongsRequestDTO)
-            throws SongsNotFoundException, PlaylistsNotFoundException;
+                                                @RequestBody PlaylistSongsRequestDTO playlistSongsRequestDTO)
+            throws SongsNotFoundException, PlaylistsNotFoundException, DuplicatedSongInPlaylist;
 
     ResponseEntity<?> removeSongFromPlaylist(@PathVariable String playlistId,
                                              @PathVariable String songId)
             throws SongsNotFoundException, PlaylistsNotFoundException;
-
 
 }

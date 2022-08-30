@@ -1,6 +1,7 @@
 package com.ciandt.summit.bootcamp2022.application.adapters.controllers.handlers;
 
 import com.ciandt.summit.bootcamp2022.domains.exceptions.playlists.PlaylistsNotFoundException;
+import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.DuplicatedSongInPlaylist;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.InvalidSongNameOrArtistNameException;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.SongsNotFoundException;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.tokens.BadAuthRequestException;
@@ -63,5 +64,10 @@ public class ErroHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<ArrayList<Playlist>> handlerPlaylistsNotFoundException(Exception exception, WebRequest request) {
         ArrayList<Playlist> playlists = new ArrayList<>();
         return new ResponseEntity<>(playlists, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(DuplicatedSongInPlaylist.class)
+    public final ResponseEntity<?> handlerDuplicatedSongInPlaylist(Exception exception, WebRequest request) {
+        return ResponseEntity.badRequest().build();
     }
 }

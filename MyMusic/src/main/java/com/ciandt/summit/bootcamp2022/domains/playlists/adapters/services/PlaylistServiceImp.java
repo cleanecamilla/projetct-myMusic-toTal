@@ -1,6 +1,7 @@
 package com.ciandt.summit.bootcamp2022.domains.playlists.adapters.services;
 
 import com.ciandt.summit.bootcamp2022.domains.exceptions.playlists.PlaylistsNotFoundException;
+import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.DuplicatedSongInPlaylist;
 import com.ciandt.summit.bootcamp2022.domains.exceptions.songs.SongsNotFoundException;
 import com.ciandt.summit.bootcamp2022.domains.playlists.Playlist;
 import com.ciandt.summit.bootcamp2022.domains.playlists.ports.interfaces.PlaylistServicePort;
@@ -23,10 +24,16 @@ public class PlaylistServiceImp implements PlaylistServicePort {
     }
 
     @Override
-    public Playlist addSongsToPlaylist(String id, List<SongDTO> songs) throws SongsNotFoundException, PlaylistsNotFoundException {
+    public Playlist addSongsToPlaylist(String id, List<SongDTO> songs) throws SongsNotFoundException, PlaylistsNotFoundException, DuplicatedSongInPlaylist {
         Playlist playlist = this.playlistRespositoryPort.findById(id);
+
         for (SongDTO songDTO : songs) {
             Song song = this.songRepositoryPort.findById(songDTO.getId());
+
+            if (playlist.getSongs().contains(song)) {
+                throw new DuplicatedSongInPlaylist("Cannot add duplicate song(s) to playlist");
+            }
+
             playlist.getSongs().add(song);
         }
 
