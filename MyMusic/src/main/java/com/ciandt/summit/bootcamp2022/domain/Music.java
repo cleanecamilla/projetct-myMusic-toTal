@@ -10,21 +10,21 @@ public class Music {
 
     private String  id;
     private String name;
-    private String artistId;
+
+    private Artist artist;
     private List<PlaylistEntity> playlists = new ArrayList<>();
 
     public Music() {}
 
-    public Music(String  id, String name, String artistId) {
+    public Music(String  id, String name) {
         this.id = id;
         this.name = name;
-        this.artistId = artistId;
     }
 
     public Music(MusicDTO musicDTO) {
         this.id = musicDTO.getId();
         this.name = musicDTO.getName();
-        this.artistId = musicDTO.getArtistId();
+        this.artist = new Artist(musicDTO.getArtistDTO());
     }
 
     public String getId() {
@@ -35,8 +35,8 @@ public class Music {
         return name;
     }
 
-    public String getArtistId() {
-        return artistId;
+    public Artist getArtist() {
+        return artist;
     }
 
     public void setId(String id) {
@@ -47,15 +47,11 @@ public class Music {
         this.name = name;
     }
 
-    public void setArtistId(String artistId) {
-        this.artistId = artistId;
-    }
-
     public List<PlaylistEntity> getPlaylists() {
         return playlists;
     }
 
     public MusicDTO toMusicDTO() {
-        return new MusicDTO(this.id, this.name, this.artistId);
+        return new MusicDTO(this.id, this.name, this.getArtist().toArtistDTO());
     }
 }

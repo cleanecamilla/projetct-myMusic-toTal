@@ -12,13 +12,13 @@ public class MusicDTO implements Serializable {
 
     private String  id;
     private String name;
-    private String artistId;
-    private List<PlaylistEntity> playlists = new ArrayList<>();
 
-    public MusicDTO(String id, String name, String artistId) {
+    private ArtistDTO artist;
+
+    public MusicDTO(String id, String name, ArtistDTO artist) {
         this.id = id;
         this.name = name;
-        this.artistId = artistId;
+        this.artist = artist;
     }
 
     public String getId() {
@@ -29,11 +29,8 @@ public class MusicDTO implements Serializable {
         return name;
     }
 
-    public String getArtistId() {
-        return artistId;
+    public ArtistDTO getArtistDTO() {
+        return artist;
     }
 
-    public List<PlaylistEntity> getPlaylists() {
-        return playlists;
-    }
 }

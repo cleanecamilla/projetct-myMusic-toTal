@@ -1,5 +1,6 @@
 package com.ciandt.summit.bootcamp2022.domain.adapters.services;
 
+import com.ciandt.summit.bootcamp2022.domain.Music;
 import com.ciandt.summit.bootcamp2022.domain.dtos.MusicDTO;
 import com.ciandt.summit.bootcamp2022.domain.dtos.PlaylistDTO;
 import com.ciandt.summit.bootcamp2022.domain.ports.interfaces.PlaylistServicePort;
@@ -14,8 +15,8 @@ public class PlaylistServiceImpl implements PlaylistServicePort {
     }
 
     @Override
-    public PlaylistDTO addMusicToPlaylist(String playlistId, MusicDTO musicDTO) {
-        return null;
+    public void addMusicToPlaylist(String playlistId, MusicDTO musicDTO) {
+        this.playlistRepositoryPort.addMusicToPlaylist(playlistId, new Music(musicDTO));
     }
 
     @Override
