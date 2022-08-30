@@ -20,12 +20,10 @@ public class PlaylistController {
         this.playlistServicePort = playlistServicePort;
     }
 
-    @PostMapping("/{playlistId}/musicas")
+    @PutMapping("/{playlistId}/musicas")
     public ResponseEntity<MusicDataDTO> addMusicToPlaylist(@PathVariable String playlistId, @RequestBody MusicDataDTO data) {
-        System.out.println("a");
-        //this.playlistServicePort.addMusicToPlaylist(playlistId, data.getMusicList().get(0));
-        //return ResponseEntity.status(HttpStatus.CREATED).body(data);
-        return null;
+        this.playlistServicePort.addMusicToPlaylist(playlistId, data.getMusicList().get(0));
+        return ResponseEntity.status(HttpStatus.CREATED).body(data);
     }
 
     @PutMapping("/{playlistId}/musicas/{musicaId}")
