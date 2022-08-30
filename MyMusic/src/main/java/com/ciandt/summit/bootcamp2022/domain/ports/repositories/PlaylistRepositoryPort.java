@@ -1,6 +1,10 @@
 package com.ciandt.summit.bootcamp2022.domain.ports.repositories;
 
-public interface PlaylistRepositoryPort {
+import com.ciandt.summit.bootcamp2022.domain.Music;
+import com.ciandt.summit.bootcamp2022.domain.Playlist;
 
-    // insert methods below
+public interface PlaylistRepositoryPort {
+    void addMusicToPlaylist(String playlistId, Music music);
+    void removeMusicFromPlaylist();
+
 }

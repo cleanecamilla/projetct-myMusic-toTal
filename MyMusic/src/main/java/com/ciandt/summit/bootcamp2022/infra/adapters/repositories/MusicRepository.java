@@ -38,7 +38,7 @@ public class MusicRepository implements MusicRepositoryPort {
     public void save(Music music) {
         MusicEntity musicEntity;
         if (Objects.isNull(music.getId())) {
-            musicEntity = new MusicEntity(music.getId(), music.getName(), music.getArtistId());
+            musicEntity = new MusicEntity(music.getId(), music.getName());
             springMusicRepository.save(musicEntity);
         }
     }
