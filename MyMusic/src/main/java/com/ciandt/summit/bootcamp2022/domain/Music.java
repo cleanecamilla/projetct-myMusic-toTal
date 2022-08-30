@@ -1,12 +1,17 @@
 package com.ciandt.summit.bootcamp2022.domain;
 
 import com.ciandt.summit.bootcamp2022.domain.dtos.MusicDTO;
+import com.ciandt.summit.bootcamp2022.infra.adapters.entities.PlaylistEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Music {
 
     private String  id;
     private String name;
     private String artistId;
+    private List<PlaylistEntity> playlists = new ArrayList<>();
 
     public Music() {}
 
@@ -44,6 +49,10 @@ public class Music {
 
     public void setArtistId(String artistId) {
         this.artistId = artistId;
+    }
+
+    public List<PlaylistEntity> getPlaylists() {
+        return playlists;
     }
 
     public MusicDTO toMusicDTO() {

@@ -2,6 +2,8 @@ package com.ciandt.summit.bootcamp2022.infra.adapters.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Artist")
@@ -12,6 +14,9 @@ public class ArtistEntity implements Serializable {
     private String id;
     @Column(name="Name")
     private String name;
+
+    @OneToMany(mappedBy = "artist")
+    private Set<MusicEntity> musics = new HashSet<>();
 
     public ArtistEntity(String id, String name) {
         this.id = id;
@@ -35,5 +40,12 @@ public class ArtistEntity implements Serializable {
 
     public void setNome(String nome) {
         this.name = nome;
+    }
+
+    public Set<MusicEntity> getMusics() {
+        return musics;
+    }
+    public void setMusics(Set<MusicEntity> musics) {
+        this.musics = musics;
     }
 }
