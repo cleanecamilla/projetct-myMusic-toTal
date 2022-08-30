@@ -27,14 +27,14 @@ public class Artist {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Artist)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Artist artist = (Artist) o;
-        return Objects.equals(id, artist.id) && Objects.equals(name, artist.name) && Objects.equals(songs, artist.songs);
+        return Objects.equals(id, artist.id) && Objects.equals(name, artist.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, songs);
+        return Objects.hash(id, name);
     }
 
     @Override
@@ -42,7 +42,6 @@ public class Artist {
         return "Artist{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", songs=" + songs +
                 '}';
     }
 

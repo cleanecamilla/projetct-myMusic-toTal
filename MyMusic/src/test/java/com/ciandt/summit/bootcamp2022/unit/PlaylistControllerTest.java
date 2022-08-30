@@ -107,7 +107,7 @@ public class PlaylistControllerTest {
                 .thenReturn(ResponseEntity.status(201).body("ok"));
 
         when(playlistServicePort.addSongsToPlaylist(PLAYLIST_ID, defaultPlaylistSongsRequestDTO.getData()))
-                .thenThrow(SongsNotFoundException.class);
+                .thenThrow(new SongsNotFoundException("Specified song was not found."));
 
         mockMvc.perform(mockHttpServletRequestBuilder.content(defaultPlaylistSongsRequestDTO.toString()))
                 .andExpect(status().isBadRequest());

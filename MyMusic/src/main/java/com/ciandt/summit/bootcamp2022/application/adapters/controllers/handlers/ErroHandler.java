@@ -26,7 +26,7 @@ import java.util.Date;
 public class ErroHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public final ResponseEntity<ExceptionResponse> handlerAllExceptions (Exception exception, WebRequest request){
+    public final ResponseEntity<ExceptionResponse> handlerAllExceptions(Exception exception, WebRequest request) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(
                 new Date(), exception.getMessage(), request.getDescription(false)
         );
@@ -34,30 +34,34 @@ public class ErroHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(SongsNotFoundException.class)
-    public final ResponseEntity<SongResponseDTO> handlerSongNotFoundExceptions (Exception exception, WebRequest request){
+    public final ResponseEntity<SongResponseDTO> handlerSongNotFoundExceptions(Exception exception, WebRequest request) {
         ArrayList<SongDTO> songDTOS = new ArrayList<>();
         SongResponseDTO response = new SongResponseDTO(songDTOS);
-        return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
+        if (exception.getMessage().equals("No songs were found.")) {
+            return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @ExceptionHandler(InvalidSongNameOrArtistNameException.class)
-    public final ResponseEntity<SongDTO> handlerInvalidSongNameExceptions (Exception exception, WebRequest request){
+    public final ResponseEntity<SongDTO> handlerInvalidSongNameExceptions(Exception exception, WebRequest request) {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(BadAuthRequestException.class)
-    public final ResponseEntity<SongDTO> handlerBadRequestExceptions (Exception exception, WebRequest request){
+    public final ResponseEntity<SongDTO> handlerBadRequestExceptions(Exception exception, WebRequest request) {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(UnauthorizedException.class)
-    public final ResponseEntity<SongDTO> handlerUnauthorizedExceptions (Exception exception, WebRequest request){
+    public final ResponseEntity<SongDTO> handlerUnauthorizedExceptions(Exception exception, WebRequest request) {
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
-    @ExceptionHandler(PlaylistsNotFoundException.class)
-    public final ResponseEntity<ArrayList<Playlist>> handlerPlaylistsNotFoundException (Exception exception, WebRequest request){
-        ArrayList<Playlist> playlists = new ArrayList<>();
-        return new ResponseEntity<>(playlists, HttpStatus.NO_CONTENT);
-    }
 
+    @ExceptionHandler(PlaylistsNotFoundException.class)
+    public final ResponseEntity<ArrayList<Playlist>> handlerPlaylistsNotFoundException(Exception exception, WebRequest request) {
+        ArrayList<Playlist> playlists = new ArrayList<>();
+        return new ResponseEntity<>(playlists, HttpStatus.BAD_REQUEST);
+    }
 }

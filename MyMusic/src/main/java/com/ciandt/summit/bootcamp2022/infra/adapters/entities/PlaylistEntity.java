@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "Playlists")
 public class PlaylistEntity {
     @Id
     @Column(name = "Id")
