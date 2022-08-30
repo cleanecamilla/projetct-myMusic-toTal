@@ -7,7 +7,6 @@ import com.ciandt.summit.bootcamp2022.domain.ports.interfaces.MusicServicePort;
 
 import com.ciandt.summit.bootcamp2022.domain.ports.repositories.MusicRepositoryPort;
 
-import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -35,6 +34,8 @@ public class MusicServiceImpl implements MusicServicePort {
             throw new IllegalArgumentException("Insira um nome com 2 caracteres ou mais");
         } else if (name==null){
             throw new IllegalArgumentException("Insira um nome válido");
+        } else if ((musicDTOS.isEmpty())) {
+            throw new IllegalArgumentException("Não foram encontrados itens com esse nome");
         } else {
             return musicDTOS;
         }

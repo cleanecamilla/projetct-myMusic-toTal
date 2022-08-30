@@ -19,7 +19,7 @@ public class MusicController {
     public MusicController(MusicServicePort musicServicePort) {
         this.musicServicePort = musicServicePort;
     }
-
+// Retorna todas as músicas de uma playlist
     @GetMapping(value = "/all")
     public ResponseEntity<Set<MusicDTO>> getMusic() {
         return ResponseEntity.ok(musicServicePort.searchMusics());
@@ -29,10 +29,10 @@ public class MusicController {
     public ResponseEntity<Set<MusicDTO>> findMusicByName(@RequestParam("name") String name) {
         return ResponseEntity.ok(musicServicePort.getMusicsByFilter(name));
     }
-
-    @PostMapping(value = "/playlists")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void addMusics(@RequestBody MusicDTO musicDTO) {
-        musicServicePort.addMusic(musicDTO);
-    }
+//Adicionar músicas a uma playlist
+//    @PostMapping(value = "/playlists")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public void addMusics(@RequestBody MusicDTO musicDTO) {
+//        musicServicePort.addMusic(musicDTO);
+//    }
 }
