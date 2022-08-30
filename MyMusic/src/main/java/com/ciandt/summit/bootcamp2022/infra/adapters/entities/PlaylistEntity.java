@@ -21,6 +21,8 @@ public class PlaylistEntity {
     )
     private List<Music> musics = new ArrayList<>();
 
+    public PlaylistEntity() {}
+
     public PlaylistEntity(String id) {
         this.id = id;
     }
