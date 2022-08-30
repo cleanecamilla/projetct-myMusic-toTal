@@ -5,6 +5,6 @@ import com.ciandt.summit.bootcamp2022.domain.Playlist;
 
 public interface PlaylistRepositoryPort {
     void addMusicToPlaylist(String playlistId, Music music);
-    void removeMusicFromPlaylist();
+    void removeMusicFromPlaylist(String playlistId, String musicId);
 
 }

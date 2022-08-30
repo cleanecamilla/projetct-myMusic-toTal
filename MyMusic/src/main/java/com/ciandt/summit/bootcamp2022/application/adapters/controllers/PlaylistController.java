@@ -26,8 +26,9 @@ public class PlaylistController {
         return ResponseEntity.status(HttpStatus.CREATED).body(data);
     }
 
-    @PutMapping("/{playlistId}/musicas/{musicaId}")
-    public ResponseEntity<Void> removeMusicFromPlaylist(@PathVariable String playlistId, @PathVariable String musicaId) {
-        return null;
+    @PutMapping("/{playlistId}/musicas/{musicId}")
+    public ResponseEntity<Void> removeMusicFromPlaylist(@PathVariable String playlistId, @PathVariable String musicId) {
+        this.playlistServicePort.removeMusicFromPlaylist(playlistId, musicId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
 }

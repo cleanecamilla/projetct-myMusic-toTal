@@ -36,4 +36,12 @@ public class PlaylistEntity {
     public List<MusicEntity> getMusics() {
         return musics;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setMusics(List<MusicEntity> musics) {
+        this.musics = musics;
+    }
 }

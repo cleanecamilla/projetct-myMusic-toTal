@@ -6,6 +6,7 @@ import com.ciandt.summit.bootcamp2022.domain.dtos.PlaylistDTO;
 public interface PlaylistServicePort {
 
     void addMusicToPlaylist(String playlistId, MusicDTO musicDTO);
-    void removeMusicFromPlaylist();
+    void removeMusicFromPlaylist(String playlistId, String musicId);
+
 
 }

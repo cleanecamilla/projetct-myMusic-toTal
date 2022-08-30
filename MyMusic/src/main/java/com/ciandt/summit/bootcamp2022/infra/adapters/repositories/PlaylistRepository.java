@@ -6,6 +6,8 @@ import com.ciandt.summit.bootcamp2022.infra.adapters.entities.MusicEntity;
 import com.ciandt.summit.bootcamp2022.infra.adapters.entities.PlaylistEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.stream.Collectors;
+
 @Component
 public class PlaylistRepository implements PlaylistRepositoryPort {
 
@@ -23,8 +25,11 @@ public class PlaylistRepository implements PlaylistRepositoryPort {
     }
 
     @Override
-    public void removeMusicFromPlaylist() {
-
+    public void removeMusicFromPlaylist(String playlistId, String musicId) {
+        PlaylistEntity playlistEntity = this.springPlaylistRepository.getById(playlistId);
+        playlistEntity.setMusics(playlistEntity.getMusics().stream().filter(musicEntity -> !musicEntity.getId().equals(musicId)).collect(Collectors.toList()));
+        this.springPlaylistRepository.save(playlistEntity);
     }
+
 
 }
