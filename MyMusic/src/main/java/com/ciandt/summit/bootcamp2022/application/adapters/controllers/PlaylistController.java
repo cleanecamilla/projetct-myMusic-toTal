@@ -22,7 +22,7 @@ public class PlaylistController {
 
     @PutMapping("/{playlistId}/musicas")
     public ResponseEntity<MusicDataDTO> addMusicToPlaylist(@PathVariable String playlistId, @RequestBody MusicDataDTO data) {
-        this.playlistServicePort.addMusicToPlaylist(playlistId, data.getMusicList().get(0));
+        this.playlistServicePort.addMusicToPlaylist(playlistId, data.getData().get(0));
         return ResponseEntity.status(HttpStatus.CREATED).body(data);
     }
 

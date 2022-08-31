@@ -29,7 +29,7 @@ public class MusicDTO implements Serializable {
         return name;
     }
 
-    public ArtistDTO getArtistDTO() {
+    public ArtistDTO getArtist() {
         return artist;
     }
 

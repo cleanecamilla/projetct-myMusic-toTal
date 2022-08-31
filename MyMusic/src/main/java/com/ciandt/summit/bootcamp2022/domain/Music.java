@@ -16,15 +16,16 @@ public class Music {
 
     public Music() {}
 
-    public Music(String  id, String name) {
+    public Music(String  id, String name, Artist artist) {
         this.id = id;
         this.name = name;
+        this.artist = artist;
     }
 
     public Music(MusicDTO musicDTO) {
         this.id = musicDTO.getId();
         this.name = musicDTO.getName();
-        this.artist = new Artist(musicDTO.getArtistDTO());
+        this.artist = new Artist(musicDTO.getArtist());
     }
 
     public String getId() {
