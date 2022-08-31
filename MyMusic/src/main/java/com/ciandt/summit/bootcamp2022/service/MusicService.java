@@ -7,5 +7,4 @@ import java.util.Set;
 public interface MusicService {
 
     Set<MusicDTO> findAllWithFilter(String filter);
-
 }

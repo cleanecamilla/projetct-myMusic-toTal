@@ -1,7 +1,7 @@
 package com.ciandt.summit.bootcamp2022.service.mapper;
 
-import com.ciandt.summit.bootcamp2022.entity.Music;
 import com.ciandt.summit.bootcamp2022.dto.MusicDTO;
+import com.ciandt.summit.bootcamp2022.entity.Music;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -17,5 +17,4 @@ public interface MusicDTOMapper {
 
     @Mapping(source = "artist", target = "artist")
     Set<MusicDTO> toSetOfDTO(Set<Music> music);
-
 }
