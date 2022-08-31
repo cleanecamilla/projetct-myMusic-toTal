@@ -1,18 +1,15 @@
 package com.ciandt.summit.bootcamp2022.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
+import java.util.UUID;
+
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@Data
 public class ArtistDTO {
-    private String id;
+    private UUID id;
     private String name;
-
 }

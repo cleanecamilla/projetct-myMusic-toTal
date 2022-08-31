@@ -21,13 +21,8 @@ public class MusicController {
 
     private final MusicService musicService;
 
-    @GetMapping
-    public ResponseEntity<String> get() {
-        return ResponseEntity.ok("67f5976c-eb1e-404e-8220-2c2a8a23be47");
-    }
-
     @GetMapping("/musicas")
-    public ResponseEntity<Set<MusicDTO>> findAllWithFilterByName(
+    public ResponseEntity<Set<MusicDTO>> findAllWithFilter(
             @RequestParam(name = "filtro", required = false)
             @Size(min = 2, message = "The filter must have at least 2 characters")  final String filter){
 
