@@ -1,10 +1,12 @@
 package com.ciandt.summit.bootcamp2022.infra.adapters.entities;
 
 import com.ciandt.summit.bootcamp2022.domain.Artist;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,6 +18,10 @@ public class ArtistEntity implements Serializable {
     private String id;
     @Column(name="Nome")
     private String name;
+
+    @OneToMany(mappedBy = "artist")
+    @JsonIgnore
+    private List<MusicEntity> musics;
 
 
     public ArtistEntity(String id, String name) {
@@ -45,6 +51,10 @@ public class ArtistEntity implements Serializable {
 
     public void setNome(String nome) {
         this.name = nome;
+    }
+
+    public Artist toArtist() {
+        return new Artist(this.id, this.name);
     }
 
 }

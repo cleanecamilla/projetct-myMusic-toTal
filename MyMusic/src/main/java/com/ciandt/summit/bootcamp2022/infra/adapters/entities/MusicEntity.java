@@ -52,7 +52,7 @@ public class MusicEntity {
     }
 
     public Music toMusic() {
-        return new Music(this.id, this.nome);
+        return new Music(this.id, this.nome, this.artist.toArtist());
     }
 
     public List<PlaylistEntity> getPlaylists() {

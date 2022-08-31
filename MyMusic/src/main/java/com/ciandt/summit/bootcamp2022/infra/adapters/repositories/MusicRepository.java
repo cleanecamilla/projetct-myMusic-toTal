@@ -23,10 +23,19 @@ public class MusicRepository implements MusicRepositoryPort {
     @Override
     public Set<Music> getMusicsByFilter(String name) {
         List<MusicEntity> musicEntityList = springMusicRepository.findByNomeContains(name);
-        Set<Music> musicDTOList = musicEntityList.stream()
+
+        Set<Music> musicList = musicEntityList.stream()
                 .map(MusicEntity::toMusic)
                 .collect(Collectors.toSet());
-        return musicDTOList;
+
+        Set<Music> musicByArtistName = springMusicRepository.findAll().stream()
+                .filter(musicEntity -> musicEntity.getArtist().getNome().toLowerCase().contains(name.toLowerCase()))
+                .map(MusicEntity::toMusic)
+                .collect(Collectors.toSet());
+
+        musicList.addAll(musicByArtistName);
+
+        return musicList;
     }
 
     @Override

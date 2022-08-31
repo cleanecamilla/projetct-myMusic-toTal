@@ -7,6 +7,7 @@ import com.ciandt.summit.bootcamp2022.domain.ports.interfaces.MusicServicePort;
 
 import com.ciandt.summit.bootcamp2022.domain.ports.repositories.MusicRepositoryPort;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -26,11 +27,9 @@ public class MusicServiceImpl implements MusicServicePort {
         return musicDTOS;
     }
 
-    public Set<MusicDTO> getMusicsByFilter(String name) { // Comunicação com as Exceptions
+    public List<MusicDTO> getMusicsByFilter(String name) { // Comunicação com as Exceptions
         Set<Music> musicListFiltered = this.musicRepositoryPort.getMusicsByFilter(name);
-        Set<MusicDTO> musicDTOS = musicListFiltered.stream().map(Music::toMusicDTO).collect(Collectors.toSet());
-
-        return musicDTOS;
+        return musicListFiltered.stream().map(Music::toMusicDTO).collect(Collectors.toList());
     }
 
     @Override

@@ -22,7 +22,7 @@ public class MusicDataDTO implements Serializable {
         this.data = data;
     }
 
-    public List<MusicDTO> getMusicList() {
+    public List<MusicDTO> getData() {
         return data;
     }
 
