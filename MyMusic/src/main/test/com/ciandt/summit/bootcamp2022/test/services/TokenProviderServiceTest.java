@@ -35,9 +35,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-//@WebMvcTest(controllers = MusicController.class)
-//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-//@SpringBootTest
 @AutoConfigureMockMvc
 public class TokenProviderServiceTest {
 
@@ -54,11 +51,6 @@ public class TokenProviderServiceTest {
 
     private String universalToken;
 
-  /*  @BeforeAll
-    public void getAToken(){
-        when(tokenProviderServiceImpl.getToken("maria")).then(AdditionalAnswers.returnsFirstArg());
-        universalToken = tokenProviderServiceImpl.getToken("maria");
-    }*/
 
     @Test
     public void isTokenAString(){
