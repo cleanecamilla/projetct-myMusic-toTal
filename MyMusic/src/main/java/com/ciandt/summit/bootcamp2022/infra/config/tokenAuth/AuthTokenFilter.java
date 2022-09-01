@@ -1,5 +1,8 @@
 package com.ciandt.summit.bootcamp2022.infra.config.tokenAuth;
 
+import com.ciandt.summit.bootcamp2022.exceptions.UnauthorizedException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -16,6 +19,8 @@ import java.io.IOException;
 
 public class AuthTokenFilter extends AbstractAuthenticationProcessingFilter {
 
+    @Autowired
+    private ObjectMapper objectMapper;
     public AuthTokenFilter(RequestMatcher requiresAuthenticationRequestMatcher, AuthenticationManager authenticationManager) {
         super(requiresAuthenticationRequestMatcher);
         setAuthenticationManager(authenticationManager);
@@ -23,8 +28,19 @@ public class AuthTokenFilter extends AbstractAuthenticationProcessingFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        String name = request.getHeader("name");
-        String token = request.getHeader("token");
+        String name = null;
+        String token = null;
+        try {
+            name = request.getHeader("name");
+            token = request.getHeader("token");
+            if(name == null || token == null)
+                throw new UnauthorizedException("Acesso negado.");
+        } catch(UnauthorizedException e){
+            response.setStatus(401);
+            response.setContentType("application/json");
+            response.getWriter().write(e.getMessage());
+        }
+
         PreAuthenticatedAuthenticationToken auth = new PreAuthenticatedAuthenticationToken(token, name);
         return getAuthenticationManager().authenticate(auth);
     }
