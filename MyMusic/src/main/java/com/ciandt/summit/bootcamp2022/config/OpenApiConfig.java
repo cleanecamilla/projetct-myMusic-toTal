@@ -20,16 +20,15 @@ public class OpenApiConfig {
     public OpenAPI springShopOpenAPI() {
         String securitySchemeName = "ApiKeyAuth";
         return new OpenAPI()
-                .info(new Info().title("MyMusic")
-                        .description("API Documentation")
-                        .version("v1.0.0")
-                        .license(new License().name("Apache 2.0").url("https://springdoc.org")))
+                .info(new Info().title("My Music")
+                        .description("My Music API Documentation")
+                        .version("v1.0.0"))
                 .addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
                 .components(
                         new Components()
                                 .addSecuritySchemes("api_key", new SecurityScheme()
                                         .type(SecurityScheme.Type.APIKEY)
-                                        .description("Api Key access")
+                                        .description("Basic token authentication")
                                         .in(SecurityScheme.In.HEADER)
                                         .name("Authorization")
                                 ).addParameters("Version", new Parameter()

@@ -8,6 +8,7 @@ import com.ciandt.summit.bootcamp2022.exception.UserNotFoundException;
 import com.ciandt.summit.bootcamp2022.service.TokenProviderService;
 import com.ciandt.summit.bootcamp2022.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,6 +17,8 @@ import org.springframework.web.client.RestTemplate;
 public class TokenProviderServiceImpl implements TokenProviderService {
 
     private final UserService userService;
+    @Value("${token.provider.url}")
+    private String TOKEN_PROVIDER_URL;
 
     @Override
     public String getToken(String username) {
@@ -25,7 +28,7 @@ public class TokenProviderServiceImpl implements TokenProviderService {
         }
 
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://localhost:8081/api/v1/token";
+        String url = TOKEN_PROVIDER_URL + "api/v1/token";
         CreateTokenRequestData tokenRequestData = CreateTokenRequestData
                                                     .builder()
                                                     .name(username)
@@ -41,7 +44,7 @@ public class TokenProviderServiceImpl implements TokenProviderService {
     public boolean isTokenValid(String username, String token) {
         try {
             RestTemplate restTemplate = new RestTemplate();
-            String url = "http://localhost:8081/api/v1/token/authorizer";
+            String url = TOKEN_PROVIDER_URL + "api/v1/token/authorizer";
             CreateAuthorizerRequestData authorizerRequestData = CreateAuthorizerRequestData
                     .builder()
                     .name(username)
