@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value = HttpStatus.UNAUTHORIZED, reason = "INVALID USERNAME")
+@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "User was not found")
 public class UserNotFoundException extends AuthenticationException {
     private static final String MSG = "User was not found";
 
