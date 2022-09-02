@@ -12,8 +12,10 @@ public interface MusicRepository extends JpaRepository<Music, String> {
 
     @Query(value = "SELECT msc FROM Music msc " +
             "   JOIN FETCH msc.artist art " +
-            "   WHERE msc.name LIKE '%'||:name||'%' " +
-            "   OR msc.artist.name LIKE '%'||:name||'%' " )
+            "   WHERE :name IS NULL" +
+            "   OR UPPER(msc.name) LIKE UPPER('%'||:name||'%') " +
+            "   OR UPPER(msc.artist.name) LIKE UPPER('%'||:name||'%') "
+    )
     Set<Music> findAllWithFilter(@Param("name") String name, Sort sort);
 
 }
