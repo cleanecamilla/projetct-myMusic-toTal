@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ArtistDTOMapper {
 
     ArtistDTOMapper INSTANCE = Mappers.getMapper(ArtistDTOMapper.class);

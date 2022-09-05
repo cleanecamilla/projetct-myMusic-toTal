@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -12,9 +13,9 @@ import java.util.UUID;
 @Data
 @Schema(name = "Music", description = "Representation of a Music")
 public class MusicDTO {
-
     @Schema(description = "Unique value that represents a Music in database")
-    private UUID id;
+    @NotNull
+    private String id;
     @Schema(description = "Music's name")
     private String name;
     @Schema(description = "Music's author or artist")

@@ -8,7 +8,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.Set;
 
-@Mapper(uses = { ArtistDTOMapper.class } )
+@Mapper(componentModel = "spring", uses = { ArtistDTOMapper.class } )
 public interface MusicDTOMapper {
 
     MusicDTOMapper INSTANCE = Mappers.getMapper(MusicDTOMapper.class);

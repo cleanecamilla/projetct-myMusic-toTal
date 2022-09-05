@@ -13,7 +13,7 @@ import java.util.UUID;
 @Schema(name = "Artist", description = "Representation of a Artist or music's author")
 public class ArtistDTO {
     @Schema(description = "Unique value that represents a Artist in database")
-    private UUID id;
+    private String id;
     @Schema(description = "Artist's name")
     private String name;
 }
