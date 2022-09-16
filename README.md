@@ -1,12 +1,30 @@
 # MyMusic
 
 ## Features
-1. Permitir o usuário buscar novas músicas no banco de dados
-2. Permitir o usuário adicionar músicas na sua playlist
-3. Permitir o usuário remover músicas de sua playlist
-4. Criar perfil de usuário premium e comum
+1. Allows users to search for new musics in datatabase
+2. Allows users to add musics to their playlists
+3. Allows users to remove musics from their playlists
+4. Create premium and common user profiles
 
-Aplicação: https://my-music-jefferson023.cloud.okteto.net/
+Aplicação: https://my-music-jefferson023.cloud.okteto.net/swagger-ui/index.html
+
+## Routes
+
+### Music
+- **`GET /api/v1/musicas`**: search for music matching filter param.
+
+### Playlist
+- **`POST /api/v1/playlists/{playlistId}`**: add the music passed in the request's body to the playlist
+- **`DELETE /api/v1/playlists/{playlistId}`**: remove the music passed in the request's body to the playlist
+- **`GET /api/v1/playlists/{playlistId}`**: return the data of the playlist 
+
+### Login
+- **`POST /auth/login`**: return a token when the username passed in the request's body is valid. 
+
+### User
+- **`POST /api/v1/users`**: saves a new user in database
+- **`GET /api/v1/users/{userId}`**: return the data of the user
+
 
 ## Team
 - [Edimara](https://github.com/edimaras)
